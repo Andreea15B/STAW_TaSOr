@@ -1,0 +1,10 @@
+TaSOr - Task Smart Organizer
+
+Sa se conceapa un produs Web de tip PWA (Progressive Web Application) capabil sa gestioneze timpul de efectuare a unor activitati (tasks). 
+Utilizatorii autentificati vor propune (tipuri de) activitati (task-uri), asignandu-le apoi unor persoane care trebuie sa le execute intr-o perioada de timp specificata. 
+Printr-un URL anonim, informatiile despre un task ce trebuie efectuat pot fi expuse public. 
+Fiecare activitate va avea asociate informatii privind demararea acesteia (interval orar, zona geografica, doar utilizatori calificati intr-un domeniu specific etc.) 
+si finalizarea (i.e. dovada realizarii cu (in)succes a task-ului -- minimal, un URL indicand o resursa edificatoare: fotografie, video, depozit de cod-sursa, orice altceva). 
+Istoricul activitatilor + statistici vor fi disponibile tuturor celor implicati. 
+Diversele notificari vor fi disponibile direct in browser si/sau trimise prin posta electronica. 
+Inspiratie: Asana si Trello.
