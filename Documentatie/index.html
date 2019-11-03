@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TaSOr Scholarly HTML report</title>
+    <link rel="stylesheet" href="css/scholarly.min.css">
+    <script src="js/scholarly.min.js"></script>
+  </head>
+  <body prefix="schema: http://schema.org">
+    <header>
+      <div class="banner">
+        <img src="scholarly-html.svg" width="227" height="50" alt="Scholarly HTML logo">
+        <div class="status">TaSOr project</div>
+      </div>
+      <h1>Task Smart Organizer report</h1>
+    </header>
+    <div role="contentinfo">
+      <dl>
+        <dt>Authors</dt>
+        <dd>
+          Andreea Bucătaru
+          &amp;
+          Maria Bulboacă
+          &amp;
+          Matei Alexandru
+        </dd>
+      </dl>
+    </div>
+    <section id="introduction" role="doc-introduction">
+      <h2>Descrierea proiectului</h2>
+      <p>"Să se conceapă un produs Web de tip PWA (Progressive Web Application) capabil să gestioneze timpul de efectuare a unor activități (tasks). 
+        Utilizatorii autentificați vor propune (tipuri de) activități (task-uri), asignându-le apoi unor persoane care trebuie să le execute într-o perioadă de timp specificată. </p>
+      <p>Printr-un URL anonim, informațiile despre un task ce trebuie efectuat pot fi expuse public. </p> 
+      <p>Fiecare activitate va avea asociate informații privind demararea acesteia (interval orar, zona geografica, doar utilizatori calificați într-un domeniu specific etc.) 
+        și finalizarea (i.e. dovada realizării cu (in)succes a task-ului -- minimal, un URL indicând o resursă edificatoare: fotografie, video, depozit de cod-sursă, orice altceva). </p>
+      <p>Istoricul activităților și statistici vor fi disponibile tuturor celor implicați. 
+        Diversele notificări vor fi disponibile direct în browser și/sau trimise prin poșta electronică. </p>
+      <p>Inspirație: Asana si Trello."</p>
+    </section>
+    <section id="structure">
+      <h2>Tehnologii utilizate</h2>
+      <p>
+        Pentru crearea interfeței utilizatorului, folosim limbajele HTML și CSS.
+      </p>
+      <p>
+        Partea de back-end a interfeței va fi realizată cu ajutorul limbajului JavaScript.
+      </p>
+      <p>
+        Stocarea și managementul datelor vor fi realizate utilizând un server de baze de date relațional, MySql. 
+      </p>
+    </section>
+    <section id="structure">
+      <h2>Sistemul de stocare al codului</h2>
+      <p>Pentru stocarea și managementul online al codului-sursă folosim GitHub:</p>
+      <a href="https://github.com/Andreea15B/STAW_TaSOr">Repository-ul de pe GitHub</a>
+    </section>
+    <section id="structure">
+      <h2>Funcționalități ale aplicației</h2>
+      <ul>
+        <li>Adăugarea unui task</li>
+        <li>Asignarea de persoane pentru un task</li>
+        <li>Adăugarea unui deadline pentru un task</li>
+        <li>Posibilitatea adăugării de imagini, link-uri, depozit de cod sursă, zonă geografică, domeniu, subtask-uri, descriere pentru fiecare task</li>
+        <li>Distribuirea unui task, în mod public, printr-un URL anonim</li>
+        <li>Adăugarea de etichete/categorii și filtrarea task-urilor în funcție de ele</li>
+        <li>Afișarea istoricului fiecărui task</li>
+        <li>Dezvoltarea de statistici</li>
+        <li>Notificări direct în browser sau prin email</li>
+      </ul>
+    </section>
+    <section id="semantics">
+      <h2>Diagrame</h2>
+      <section id="Root">
+        <h3>Diagrama bazei de date</h3>
+        <!-- <img src="./diagrame/db.png" height=100% width=100%> -->
+      </section>
+      <section id="Root">
+          <h3>Diagrame UseCase</h3>
+          <!-- <img src="./diagrame/useCase.png" height=100% width=100%> -->
+      </section>
+      <section id="Root">
+          <h3>Arhitectura aplicației</h3>
+          <!-- <img src="./diagrame/arhitectura.png" height=100% width=100%> -->
+      </section>
+      <section id="Root">
+          <h3>Diagrame de activitate</h3>
+          <!-- <img src="./diagrame/activitate1.png" height=100% width=100%> -->
+          <!-- <img src="./diagrame/activitate2.png" height=100% width=100%> -->
+      </section>
+    </section>
+    <!-- <section id="Root">
+      <h2>Task-uri</h2>
+      <ul>
+        <li>Maria:
+          <ul style="text-decoration: none">User:
+            <li>login: user-ul introduce o parola&#771; și un username care sunt verificate sa&#771; fie în baza de date; pentru a-l menține conectat am creat o sesiune pentru username și una pentru imaginea de profil.</li>
+            <li>logout: user-ul este deconectat, sesiunea este distrusa&#771;.</li>
+            <li>înregistrarea: user-ul poate sa&#771;-și faca&#771; un cont nou; se verifica&#771; ca username-ul ales de utilizator sa&#771; nu existe deja în baza de date, validitatea email-ului și ca parola sa&#771; fie mai lunga&#771; de 7 caractere.</li>
+            <li>modificarea contului: user-ul logat poate sa&#771;-și schimbe anumite date legate de cont (username, parola, imaginea de profil etc).</li>
+            <li>votare sugestie: user-ul logat poate sa&#771; voteze fiecare sugestie.</li>
+            <li>distribuire sugestie: user-ul logat poate sa&#771; distribuie pe Twitter sugestiile.</li>
+          </ul>
+          <br>
+          <ul style="text-decoration: none">Admin:
+            <li>login: adminul se conecteaza&#771; pentru a avea acces la pagina pentru admin.</li>
+            <li>logout: adminul se poate deconecta.</li>
+            <li>inserare sugestie/recomandare</li>
+            <li>ștergere sugestie/recomandare</li>
+            <li>modificare sugestie/recomandare</li>
+          </ul>
+          <br>
+        </li>
+        <li>Andreea:
+          <ul>Filtre:
+            <li>Utilizatorul poate vizualiza produsele, selectând din meniul principal un anumit filtru; apoi, din meniul produselor, poate selecta mai multe filtre sau niciunul.
+              <br>Am evitat SQL injection prin folosirea funcției <code>mysqli_stmt::bind_param()</code>, care se asigura&#771; ca&#771; formateaza&#771; corect valorile primite.
+            </li>
+          </ul>
+          <br>
+          <ul>Newsletter:
+            <li>Utilizatorul se poate abona la newsletter completând formularul din footer și alegând domeniul de interes. În funcție de acesta, va primi mail-uri cu sugestii aflate pe prima pagina&#771; a site-ului.
+              <br>Am folosit tehnica de Ajax call pentru a crea un feedback pentru utilizator în momentul în care trimite formularul.
+              <br>Trimiterea mail-urilor am fa&#771;cut-o cu ajutorul SMTP4dev, mail server pentru development.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section> -->
+    <section id="Root">
+      <h3>Resurse</h3>
+      <ul>
+        <li><a href="https://jigsaw.w3.org/css-validator/">CSS Validator</a></li>
+        <li><a href="https://validator.w3.org/">HTML Validator</a></li>
+        <li><a href="https://www.w3schools.com/">W3Schools</a></li>
+        <li><a href="">Cursuri 	Dezvoltarea aplicatiilor Web cu JavaScript</a></li>
+      </ul>
+  </section>
+  <br><br><br>
+  </body>
+</html>
