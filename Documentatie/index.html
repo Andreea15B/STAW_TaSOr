@@ -50,15 +50,13 @@
       Pentru crearea interfeței utilizatorului, folosim limbajele HTML și CSS.
     </p>
     <p>
-      De asemenea, folosim și limbajul JavaScript care poate încărca conținut în document dacă și când utilizatorul are
-      nevoie,fără a reîncărca întreaga pagină - aceasta este denumită în mod obișnuit Ajax.<br />
-      <img src="./diagrame/ajax.png" height=80% width=80%><br /><br />
       Pe partea de client, vom utiliza doar cod-sursă ECMAScript pur. <br />
       Pe partea de server, folosim Node.js și framework-ul Express.js. Am ales acest framework deoarece este
       minim,flexibil și oferă un set robust de funcții pentru web.
     </p>
     <p>
-      Stocarea și managementul datelor pe partea de server vor fi realizate utilizând un server de baze de date relațional, MySql.
+      Stocarea și managementul datelor pe partea de server vor fi realizate utilizând un server de baze de date
+      relațional, MySql.
       Stocarea datelor pe partea de client se face face utilizand Cache API.
     </p>
   </section>
@@ -96,16 +94,48 @@
     <h2>Detalii despre proiect</h2>
     <section id="Root">
       <h3>Încadrarea aplicațieii într-o categorie de aplicație Web</h3>
-      <img src="./diagrame/staw_diagrama.jpeg" height=80% width=80%>
-      <p>Care sunt cerințele pentru a fi considerată o aplicație web progresivă:
-        <ul>
-          <li> Progresivă – Să funcționeze pentru orice utilizator, indiferent de browser-ul ales, deoarece este
-            construit cu o îmbunătățire progresivă ca principiu de bază</li>
-          <li>Responsive – Să aibă un design potrivit pentru orice dispozitiv: desktop, mobil sau tabletă</li>
-          <li>Independentă de conectivitate – Să funcționeze în mod offline sau în rețele de calitate scăzută</li>
-          <li> Proaspătă – Întotdeauna actualizată</li>
-        </ul>
-      </p>
+      <section>
+        <h3>Progresive Web Application(PWA)</h3>
+        <img src="./diagrame/staw_diagrama.jpeg" height=80% width=80%>
+        <p>Care sunt cerințele pentru a fi considerată o aplicație web progresivă:
+          <ul>
+            <li> Progresivă – Să funcționeze pentru orice utilizator, indiferent de browser-ul ales, deoarece este
+              construit cu o îmbunătățire progresivă ca principiu de bază</li>
+            <li>Responsive – Să aibă un design potrivit pentru orice dispozitiv: desktop, mobil sau tabletă</li>
+            <li>Independentă de conectivitate – Să funcționeze în mod offline sau în rețele de calitate scăzută</li>
+            <li> Proaspătă – Întotdeauna actualizată</li>
+          </ul>
+        </p>
+      </section>
+      <section>
+        <h3>Single Page Application(SPA)</h3>
+        <p>Care sunt cerințele pentru a fi considerată o aplicație SPA:
+          <li>Vom folosi JavaScript care poate încărca conținut în document dacă și când utilizatorul are
+            nevoie,fără a reîncărca întreaga pagină - aceasta este denumită în mod obișnuit <b>Ajax</b>.<br />
+            <img src="./diagrame/ajax.png" height=80% width=80%><br /><br /></li>
+          <li>Aceste api-uri vor trimite datele sub forma de fisiere JSON.
+            <p>API-uri pentru board-uri:</p>
+            <ul>
+              <li>POST "/boards" -> va crea un nou board</li>
+              <li>GET "/boards" -> va oferi toate board-urile </li>
+              <li>GET "/boards/{id}" -> va oferi board-ul cu id-ul specificat</li>
+              <li>DELETE "/boards/{id}" -> va sterge board-ul cu id-ul specificat </li>
+              <li>PUT "/boards/{id}" -> care va face update unui board </li>
+            </ul>
+            <p>API-uri pentru task-uri:</p>
+            <ul>
+              <li>POST "/tasks" -> va crea un nou task</li>
+              <li>GET "/tasks/{id_board}" -> va oferi toate task-urile unui board</li>
+              <li>DELETE "/tasks/{id}" -> va sterge task-ul cu id-ul specificat </li>
+              <li>PUT "/tasks/{id}" -> care va face update la task-ul cu id-ul dat ca parametru</li>
+            </ul>
+            <p>API pentru users:</p>
+            <ul>
+              <li>GET "/users/{username}" -> va oferi detaliile despre un user</li>
+            </ul>
+          </li>
+        </p>
+      </section>
     </section>
     <section id="Root">
       <h3>Service worker</h3>
@@ -130,29 +160,6 @@
       <h3>Modelarea datelor</h3>
       <img src="./diagrame/database_diagram.png" height=100% width=100%>
     </section>
-  </section>
-  <section id="api">
-    <h2>API-uri disponibile</h2>
-    <p>Aceste api-uri vor trimite datele sub forma de fisiere JSON.</p>
-    <p>API-uri pentru board-uri:</p>
-    <ul>
-      <li>POST "/boards" -> va crea un nou board</li>
-      <li>GET "/boards" -> va oferi toate board-urile </li>
-      <li>GET "/boards/{id}" -> va oferi board-ul cu id-ul specificat</li>
-      <li>DELETE "/boards/{id}" -> va sterge board-ul cu id-ul specificat </li>
-      <li>PUT "/boards/{id}" -> care va face update unui board </li>
-    </ul>
-    <p>API-uri pentru task-uri:</p>
-    <ul>
-      <li>POST "/tasks" -> va crea un nou task</li>
-      <li>GET "/tasks/{id_board}" -> va oferi toate task-urile unui board</li>
-      <li>DELETE "/tasks/{id}" -> va sterge task-ul cu id-ul specificat </li>
-      <li>PUT "/tasks/{id}" -> care va face update la task-ul cu id-ul dat ca parametru</li>
-    </ul>
-    <p>API pentru users:</p>
-    <ul>
-      <li>GET "/users/{username}" -> va oferi detaliile despre un user</li>
-    </ul>
   </section>
   <section id="Root">
     <h3>Resurse</h3>
