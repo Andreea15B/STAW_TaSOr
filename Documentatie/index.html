@@ -143,6 +143,16 @@
             <ul>
               <li>http://ip-api.com/json/{query}</li>
               <li>Acest API ne oferă geolocația sub formă de JSON în funcție de IP-ul dat.</li>
+			  <li>{query} poate fi o singură adresă IPv4 / IPv6 sau un nume de domeniu. Dacă nu furnizăm un query, se va utiliza adresa IP curentă.</li>
+			  <li>Parametrii de interogare (cum ar fi câmpurile personalizate și returnarea apelurilor JSON) sunt 
+			  adăugați ca parametri de solicitare GET, de exemplu:http://ip-api.com/json/?fields=61439.</li>
+			  <li><img src="./diagrame/campuri.PNG"></li>
+			  <li>API-ul poate returna următoarele câmpuri și valori:<br/>
+				<img src ="./diagrame/exemplu.PNG">
+			  </li>
+			  <li>Exemplu de JSON <br/>
+				<img src="./diagrame/response.PNG">
+			  </li>  
             </ul>
         </p>
       </section>
