@@ -110,6 +110,7 @@
       <section>
         <h3>Single Page Application(SPA)</h3>
         <p>Care sunt cerințele pentru a fi considerată o aplicație SPA:
+          <li>Aplicația va încărca conținut dinamic. Vom încarca o pagină doar când vom intra pe ruta ei.</li>
           <li>Vom folosi JavaScript care poate încărca conținut în document dacă și când utilizatorul are
             nevoie,fără a reîncărca întreaga pagină - aceasta este denumită în mod obișnuit <b>Ajax</b>.<br />
             <img src="./diagrame/ajax.png" height=80% width=80%><br /><br /></li>
@@ -138,6 +139,12 @@
               <li>GET "/history/{id_board}" -> va oferi istoricul pentru un board dat ca parametru</li>
             </ul>
           </li>
+          <p>API-uri externe:</p>
+            Vom folosi un API extern pentru aflarea zonei geografice.
+            <ul>
+              <li>http://ip-api.com/json/{query}</li>
+              <li>Acest API ne oferă geolocația sub formă de JSON în funcție de IP-ul dat.</li>
+            </ul>
         </p>
       </section>
     </section>
