@@ -45,7 +45,7 @@ body {
     font-size: 18px;
     width: 100%;
     background: transparent;
-    height: 55px;
+    height: 32px;
     padding: 0 25px 0 25px;
     outline: none;
 }
@@ -71,9 +71,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 150px;
-    height: 55px;
+    min-width: 100px;
+    height: 32px;
     background-color: #00994d;
     border-radius: 20px;
     outline: none;
+}
+
+.register-container {
+    display: flex;
+    align-items: center;
+    margin-top: 32px;
+    color: #1a1aff;
+}
+
+button {
+    border: none;
+}
+
+.create-icon {
+    width: 16px;
+    height: 16px;
 }
