@@ -1,11 +1,13 @@
-const express = require('express');
-const app = express();
-const PORT = 3000;
+const express = require('express'),
+    app = express(),
+    bodyParser = require('body-parser');
 
-app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
+port = process.env.PORT || 3000;
 
+app.listen(port);
 
-app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}!`));
+var routes = require('./routes/users'); //importing route
+routes(app); //register the route
