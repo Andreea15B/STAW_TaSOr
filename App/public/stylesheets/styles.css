@@ -83,6 +83,7 @@ body {
     align-items: center;
     margin-top: 32px;
     color: #1a1aff;
+    cursor: pointer;
 }
 
 button {

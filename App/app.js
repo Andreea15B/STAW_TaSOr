@@ -1,16 +1,10 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const path = require('path');
 
-var loginRouter = require('./routes/login');
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
 
-
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname + '/login.html'));
-// })
-
-app.use('/', loginRouter);
 
 app.use(express.static(__dirname + '/public'));
 
