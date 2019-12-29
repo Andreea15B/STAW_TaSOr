@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', (req, res) => res.redirect('/users/login'));
+router.get('/', (req, res) => res.send('home'));
 
 module.exports = router;

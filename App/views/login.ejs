@@ -1,0 +1,31 @@
+<div class="info-content">
+    <img src="/images/first-image.jpg" alt="Image" class="first-image">
+</div>
+<div class="formular-login">
+    <form id="login-form" action="/login" method="POST">
+        <span class="login-title">Login</span>
+
+        <div id="error-messages">
+            <%- include  ('./partials/messages') %>
+        </div>
+
+        <span class="label-content">Username</span>
+        <div class="input-container">
+            <input type="text" name="username" class="input-content">
+        </div>
+
+        <span class="label-content">Password</span>
+        <div class="input-container">
+            <input type="password" name="password" class="input-content">
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="button-content">Login</button>
+        </div>
+    </form>
+
+    <div class="register-container">
+        <img src="/images/create-icon.png" alt="Create image" class="create-icon">
+        <a href="/register">Create your account</a>
+    </div>
+</div>

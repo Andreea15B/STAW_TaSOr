@@ -1,5 +1,5 @@
 'user strict';
-var sql = require('../db');
+var sql = require('../config/db');
 
 var User = function(user) {
     this.username = user.username;
