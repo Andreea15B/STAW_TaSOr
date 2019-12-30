@@ -7,8 +7,20 @@
             <span class="title register">Register</span>
 
             <div id="error-messages">
-                <!-- <%- include  ('./partials/messages') %> -->
+                <%- include  ('./partials/messages') %>
             </div>
+            <br />
+
+            <span class="register-label">Domain</span>
+            <div id="mainselection">
+                <select name="domain"> 
+                    <option value="Frontend">Frontend</option>
+                    <option value="Backend">Backend</option>
+                    <option value="Design">Design</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+
             <br />
             <span class="register-label">Username</span>
             <div class="input-container">
@@ -32,7 +44,7 @@
 
             <span class="register-label">Repeat password</span>
             <div class="input-container">
-                <input type="password" name="repet-password" class="input-content register">
+                <input type="password" name="password2" class="input-content register">
             </div>
 
             <div class="button-container">

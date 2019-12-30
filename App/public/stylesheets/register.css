@@ -17,3 +17,23 @@
 .register {
     color: white !important;
 }
+
+#mainselection select {
+    border: 0;
+    background: transparent;
+    padding: 2px 10px;
+    width: 378px;
+    *width: 350px;
+    *background: transparent;
+    -webkit-appearance: none;
+    font-family: Raleway-Medium;
+    color: white;
+    font-size: 18px;
+}
+
+#mainselection {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 9px;
+    background: transparent no-repeat scroll 319px center;
+}
