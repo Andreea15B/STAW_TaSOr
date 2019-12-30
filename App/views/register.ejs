@@ -1,0 +1,43 @@
+<div class="register-container">
+    <div class="icon-register">
+        <img src="/images/register.svg" alt="Image" class="first-image">
+    </div>
+    <div class="formular">
+        <form id="register-form" action="/register" method="POST">
+            <span class="title register">Register</span>
+
+            <div id="error-messages">
+                <!-- <%- include  ('./partials/messages') %> -->
+            </div>
+            <br />
+            <span class="register-label">Username</span>
+            <div class="input-container">
+                <input type="text" name="username" class="input-content register">
+            </div>
+
+            <span class="register-label">Fullname</span>
+            <div class="input-container">
+                <input type="text" name="fullname" class="input-content register">
+            </div>
+
+            <span class="register-label">Email</span>
+            <div class="input-container">
+                <input type="text" name="email" class="input-content register">
+            </div>
+
+            <span class="register-label">Password</span>
+            <div class="input-container">
+                <input type="password" name="password" class="input-content register">
+            </div>
+
+            <span class="register-label">Repeat password</span>
+            <div class="input-container">
+                <input type="password" name="repet-password" class="input-content register">
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="button-content">Register</button>
+            </div>
+        </form>
+    </div>
+</div>

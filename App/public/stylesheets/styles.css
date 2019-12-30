@@ -1,5 +1,10 @@
+html {
+    height: 100%;
+}
+
 body {
     margin: 0;
+    height: 100%;
 }
 
 .logo-image {
@@ -16,7 +21,7 @@ body {
     height: 100vh;
 }
 
-.formular-login {
+.formular {
     margin: 50px;
 }
 
@@ -25,7 +30,7 @@ body {
     height: 600px;
 }
 
-.login-title {
+.title {
     font-family: Raleway-Medium;
     font-size: 30px;
     color: #555555;
@@ -79,7 +84,7 @@ body {
     cursor: pointer;
 }
 
-.register-container {
+.register-container-link {
     display: flex;
     align-items: center;
     margin-top: 32px;
