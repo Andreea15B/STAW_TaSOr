@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 app.use('/', require('./routes/login'));
 app.use('/home', require('./routes/home'));
+app.use('/board', require('./routes/board'));
 
 app.listen(port);
 
