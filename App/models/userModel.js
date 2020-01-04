@@ -35,7 +35,6 @@ User.getUserByUsername = function(username, result) {
 
 User.getAllUsers = function(result) {
     sql.query("Select * from users", function(err, res) {
-
         if (err) {
             result(null, err);
         } else {

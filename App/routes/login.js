@@ -18,6 +18,7 @@ router.post('/login', (req, res) => {
         fetch('http://localhost:3000/users/' + username)
             .then(response => response.json())
             .then(async response => {
+                //console.log(response);
                 if (response.length == 0) {
                     errors.push({ msg: 'User doesn`t exist' });
                 } else {
