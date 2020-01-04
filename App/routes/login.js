@@ -29,12 +29,14 @@ router.post('/login', (req, res) => {
                     } catch {
                         console.log('Bycrypt error');
                     }
-
                 }
 
                 if (errors.length > 0) res.render('login', { errors });
-                else
+                else {
+                    req.session.username = username;
                     res.redirect('/home');
+                }
+
             });
     }
 });

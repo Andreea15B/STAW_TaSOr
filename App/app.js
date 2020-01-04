@@ -3,11 +3,21 @@ const express = require('express'),
     bodyParser = require('body-parser');
 
 const expressLayouts = require('express-ejs-layouts');
+const session = require('express-session');
+var livereload = require("connect-livereload");
 
 port = process.env.PORT || 3000;
 
-// EJS
+app.use(session({
+    secret: 'I love cat',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { secure: false, maxAge: 8 * 60 * 60 * 1000 }
+}));
 
+app.use(livereload())
+
+// EJS
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
