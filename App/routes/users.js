@@ -4,11 +4,11 @@ module.exports = function(app) {
 
     // users Routes
     app.route('/users')
-        .get(users.list_all_users);
-    //     .post(users.create_a_user);
+        .get(users.list_all_users)
+        .post(users.create_a_user);
 
     app.route('/users/:username')
-        .get(users.read_a_user);
-    //     .put(users.update_a_user)
-    //     .delete(users.delete_a_user);
+        .get(users.read_user)
+        .put(users.update_user)
+        .delete(users.delete_user);
 };

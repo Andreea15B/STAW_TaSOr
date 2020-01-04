@@ -46,7 +46,6 @@ User.getAllUsers = function(result) {
 User.updateByUsername = function(username, user, result) {
     var mm;
     var values = [];
-    //console.log(user);
     if (user.username != undefined && user.password != undefined) {
         values.push(user.username, user.password, username);
         mm = "UPDATE users SET username = ?, password = ? WHERE username = ?";
@@ -66,14 +65,12 @@ User.updateByUsername = function(username, user, result) {
             result(null, err);
         } else {
             result(null, res);
-            //console.log('ieii', res)
         }
     });
 };
 
 
 User.remove = function(username, result) {
-    console.log(username);
     sql.query("DELETE FROM users WHERE username = ?", [username], function(err, res) {
         if (err) {
             result(null, err);
