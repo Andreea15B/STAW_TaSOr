@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fetch = require("node-fetch");
+var bycript = require("bcryptjs");
 
 router.get('/', (req, res) => res.redirect('/login'));
 
@@ -16,61 +17,24 @@ router.post('/login', (req, res) => {
     } else {
         fetch('http://localhost:3000/users/' + username)
             .then(response => response.json())
-            .then(response => {
+            .then(async response => {
                 if (response.length == 0) {
                     errors.push({ msg: 'User doesn`t exist' });
                 } else {
                     let actual_password = response[0]['password'];
-                    if (actual_password != password) {
-                        errors.push({ msg: 'Incorect password' });
+                    try {
+                        if (!await bycript.compare(password, actual_password)) {
+                            errors.push({ msg: 'Incorect password' });
+                        }
+                    } catch {
+                        console.log('Bycrypt error');
                     }
+
                 }
 
                 if (errors.length > 0) res.render('login', { errors });
                 else
                     res.redirect('/home');
-            });
-    }
-});
-
-router.get('/register', (req, res) => res.render('register'));
-router.post('/register', (req, res) => {
-    let { domain, username, fullname, email, password, password2 } = req.body;
-    let errors = [];
-
-    if (username == '' || password == '' || fullname == '' || email == '' || password2 == '') {
-        errors.push({ msg: 'Fill all the fields' });
-        res.render('register', { errors });
-    } else {
-        fetch('http://localhost:3000/users/' + username)
-            .then(response => response.json())
-            .then(response => {
-                if (response.length > 0) {
-                    errors.push({ msg: 'Username already exist' });
-                } else {
-                    if (password.length < 7) {
-                        errors.push({ msg: 'Password must be at least 7 letters' });
-                    } else {
-                        if (password != password2) {
-                            errors.push({ msg: 'Passwords do not match' });
-                        }
-                    }
-                }
-                if (errors.length > 0) res.render('register', { errors });
-                else {
-                    const data = { username, fullname, password, email, domain };
-
-                    fetch('http://localhost:3000/users/', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(data),
-                    });
-
-                    res.redirect('/login');
-                }
-
             });
     }
 });
