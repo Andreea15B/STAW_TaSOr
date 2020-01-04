@@ -32,7 +32,7 @@ exports.read_a_user = function(req, res) {
     usersService.get_user(req.params.username, (req, err) => {
         if (err)
             res.send(err);
-        res.json(user);
+        res.json(req);
     });
 };
 
