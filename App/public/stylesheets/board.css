@@ -18,10 +18,12 @@
 .home-button {
   background: rgba(0, 0, 0, 0.2);
   margin-left: 47px;
-  border-radius: 3px;
+  border-radius: 50%;
+  padding: 5px 5px;
 }
 .home-button:hover {
   background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }
 .board-title {
   color: white;

@@ -1,14 +1,18 @@
 var modal = document.getElementById("modal-task");
-var button = document.getElementById("button-task");
-var span = document.getElementsByClassName("close")[0];
+var closeButtons = document.getElementsByClassName("close");
+var addButtons = document.getElementsByClassName("button-add-task");
 
-button.onclick = function() {
-  modal.style.display = "block";
-};
+for (var i=0; i < addButtons.length; i++) {
+  addButtons[i].onclick = function() {
+    modal.style.display = "block";
+  }
+}
 
-span.onclick = function() {
-  modal.style.display = "none";
-};
+for (var i=0; i < closeButtons.length; i++) {
+  closeButtons[i].onclick = function() {
+    modal.style.display = "none";
+  }
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
