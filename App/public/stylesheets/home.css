@@ -28,11 +28,12 @@
 
 .input-content-home {
     font-family: Raleway-Medium;
+    margin-top: 4px;
     color: #555555;
-    font-size: 18px;
+    font-size: 16px;
     width: 50%;
     background: transparent;
-    height: 32px;
+    height: 25px;
     padding: 0 25px 0 15px;
     outline: none;
 }
@@ -171,16 +172,48 @@
     width: 30%;
 }
 
-.close {
-    color: #aaaaaa;
+.closed {
+    color: #ffffff;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin-right: 8px;
 }
 
-.close:hover,
-.close:focus {
+.closed:hover,
+.closed:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.modal-title{
+    display: flex;
+    color: white;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Raleway-SemiBold;
+    background-color: #44c19e;
+    height: 10%;
+    font-size: 20px;
+    align-items: center;
+}
+
+.title-create{
+    margin-left: 8px;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.create-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    margin-top: 15px;
 }
