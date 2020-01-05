@@ -13,7 +13,7 @@ var Task = function(task) {
   this.geographical_area = task.geographical_area;
 };
 
-Task.createTask = function(newTask, result) {
+Task.create_a_task = function(newTask, result) {
   sql.query("INSERT INTO tasks set ?", newTask, function(err, res) {
     if (err) {
       result(err, null);
@@ -43,7 +43,7 @@ Task.getTaskByTitle = function(title, result) {
   });
 };
 
-Task.remove = function(title, result) {
+Task.remove_task = function(title, result) {
   sql.query("DELETE FROM tasks WHERE title = ?", [title], function(err, res) {
     if (err) {
       result(null, err);
