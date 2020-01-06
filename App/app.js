@@ -34,6 +34,7 @@ app.use('/board', require('./routes/board'));
 app.use('/logout', require('./routes/logout'));
 
 app.use('/tasks', require('./routes/tasks'))
+app.use('/user-settings',require('./routes/user-settings'))
 app.listen(port);
 
 
