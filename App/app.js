@@ -31,6 +31,7 @@ app.use('/', require('./routes/login'));
 app.use('/register', require('./routes/register'));
 app.use('/home', require('./routes/home'));
 app.use('/board', require('./routes/board'));
+app.use('/logout', require('./routes/logout'));
 
 app.listen(port);
 
