@@ -4,7 +4,7 @@ var { ensureAuthenticated } = require('../middleware/auth');
 
 
 router.get('/', ensureAuthenticated, (req, res) => {
-    req.session.destroy;
+    req.session.destroy();
     res.redirect('/login');
 });
 
