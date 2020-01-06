@@ -1,6 +1,4 @@
-/* Style all input fields */
-
-input {
+.settings-input {
     width: 50%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -10,25 +8,18 @@ input {
     margin-bottom: 16px;
 }
 
-
-/* Style the submit button */
-
-input[type=submit] {
+.submit-update {
     background-color: #4CAF50;
     color: white;
 }
 
-
-/* Style the container for inputs */
-
 .container {
-    background-color: #f1f1f1;
+    background-color: white;
     padding: 20px;
     height: 93%;
+    display: flex;
+    flex-direction: row;
 }
-
-
-/* The message box is shown when the user clicks on the password field */
 
 #message {
     display: none;
@@ -44,9 +35,6 @@ input[type=submit] {
     font-size: 18px;
 }
 
-
-/* Add a green text color and a checkmark when the requirements are right */
-
 .valid {
     color: green;
 }
@@ -56,9 +44,6 @@ input[type=submit] {
     left: -35px;
     content: "&#10004;";
 }
-
-
-/* Add a red text color and an "x" icon when the requirements are wrong */
 
 .invalid {
     color: red;
