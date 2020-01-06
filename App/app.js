@@ -38,6 +38,8 @@ app.use('/user-settings',require('./routes/user-settings'))
 app.listen(port);
 
 
-var routes = require('./routes/users'); //importing route
-
-routes(app); //register the route
+// for API
+var routes = require('./routes/users');
+routes(app);
+var routes_boards = require('./api/boards');
+routes_boards(app);
