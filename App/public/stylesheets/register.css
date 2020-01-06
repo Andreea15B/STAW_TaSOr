@@ -10,31 +10,40 @@
 .register-label {
     font-family: Raleway-SemiBold;
     font-size: 16px;
-    color: white;
+    color: #555555;
     text-transform: uppercase;
-}
-
-.register {
-    color: white !important;
 }
 
 #mainselection select {
     cursor: pointer;
     border: 0;
-    background: transparent;
+    background: white;
     padding: 2px 10px;
-    width: 378px;
-    *width: 350px;
-    *background: transparent;
-    -webkit-appearance: none;
+    width: 100%;
     font-family: Raleway-Medium;
-    color: white;
+    color: 555555;
     font-size: 18px;
 }
 
 #mainselection {
-    overflow: hidden;
+    outline: none;
     width: 100%;
     border-radius: 9px;
     background: transparent no-repeat scroll 319px center;
+}
+
+.formular-register-container {
+    background-color: white;
+    border-radius: 8px;
+    width: 30%;
+}
+
+#register-form {
+    margin: 10px;
+}
+
+.input-container-register {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
 }
