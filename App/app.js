@@ -33,8 +33,10 @@ app.use('/home', require('./routes/home'));
 app.use('/board', require('./routes/board'));
 app.use('/logout', require('./routes/logout'));
 
+app.use('/tasks', require('./routes/tasks'))
 app.listen(port);
 
 
 var routes = require('./routes/users'); //importing route
+
 routes(app); //register the route
