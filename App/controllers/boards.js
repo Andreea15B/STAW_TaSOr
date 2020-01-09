@@ -1,6 +1,6 @@
 'use strict';
 
-var boardsService = require('../services/boardsService');
+var boardsService = require('../services/boards');
 
 function formatDate(date) {
     var d = new Date(date),

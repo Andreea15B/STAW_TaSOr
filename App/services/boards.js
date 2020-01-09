@@ -1,6 +1,6 @@
 "use strict";
 
-var Board = require('../models/boardModel');
+var Board = require('../models/board');
 
 exports.get_all_boards = (username, result) => {
     Board.getBoard(username, (err, req) => result(req, err));

@@ -1,15 +1,16 @@
 'user strict';
 var sql = require('../config/db');
 
-var User = function(user) {
-    this.username = user.username;
-    this.fullname = user.fullname;
-    this.password = user.password;
-    this.email = user.email;
-    this.domain = user.domain;
-    this.session_token = user.session_token;
-};
 
+class User {
+    constructor(user) {
+        this.username = user.username;
+        this.fullname = user.fullname;
+        this.password = user.password;
+        this.email = user.email;
+        this.domain = user.domain;
+    }
+}
 
 User.createUser = function(newUser, result) {
     sql.query("INSERT INTO users set ?", newUser, function(err, res) {

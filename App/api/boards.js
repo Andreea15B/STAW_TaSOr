@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(app) {
-    var boards = require('../controllers/boardsController');
+    var boards = require('../controllers/boards');
 
     // users Routes
     app.route('/boards/:username')
