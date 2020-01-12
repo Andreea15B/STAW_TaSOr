@@ -17,12 +17,12 @@
             <div class="username-member">AB</div>
             <div class="username-member">MB</div>
         </div>
-        <div class="cards">
+        <div class="board-cards">
             <div class="card-container">
                 <div class="card-header">
                     <p>To do</p>
                 </div>
-                <div class="card-body">
+                <div class="board-card-body">
                     <button class="button-add-task" id="button-task">+ Add a task</button>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <div class="card-header">
                     <p>In progress</p>
                 </div>
-                <div class="card-body">
+                <div class="board-card-body">
                     <button class="button-add-task" id="button-task">+ Add a task</button>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <div class="card-header">
                     <p>Done</p>
                 </div>
-                <div class="card-body">
+                <div class="board-card-body">
                     <button class="button-add-task" id="button-task">+ Add a task</button>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-style-2">
-                            <form action="/tasks" method="post">
+                            <form action="/boards" method="POST">
                                 <label for="field1"><span>Title <span class="required">*</span></span><input type="text"
                                         class="input-field" name="field1" value="" /></label>
                                 <label for="field2"><span>Deadline</span><input type="date" class="input-field"

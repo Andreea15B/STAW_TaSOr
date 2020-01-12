@@ -79,8 +79,7 @@
     display: flex;
 }
 
-.cards {
-    height: 85%;
+.board-cards {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -96,7 +95,7 @@
 
 .card-header {
     background-color: #44c19e;
-    height: 10%;
+    height: 5vh;
     color: white;
     font-family: Raleway-SemiBold;
     font-size: 16px;
@@ -107,7 +106,7 @@
     flex-direction: row;
 }
 
-.card-body {
+.board-card-body {
     display: flex;
     justify-content: center;
     align-items: center;
