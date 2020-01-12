@@ -7,7 +7,7 @@ module.exports = function(app) {
         .get(tasks.list_all_tasks)
         .post(tasks.create_a_task);
     
-    app.route('/tasks/:title')
+    app.route('/tasks/:id')
         .get(tasks.read_task)
         .put(tasks.update_task)
         .delete(tasks.delete_task);

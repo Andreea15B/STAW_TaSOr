@@ -12,7 +12,6 @@ exports.get_task = function(req, result) {
 
 exports.create_task = function(task, result) {
     var new_task = new Task(task);
-    console.log("service create_task ok");
     Task.createTask(new_task, (err, req) => result(req, err))
 };
 

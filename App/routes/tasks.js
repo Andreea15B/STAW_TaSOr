@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
     else {
       try {
         const data = { title };
-        console.log("data: ", data);
+        console.log(data);
         fetch("http://localhost:3000/tasks/", {
           method: "POST",
           headers: {
@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
           },
           body: JSON.stringify(data)
         });
+        res.redirect('/board');
       } catch {
         console.log("erori: ", errors);
       }
