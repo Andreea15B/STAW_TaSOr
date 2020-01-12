@@ -32,9 +32,7 @@ app.use('/register', require('./routes/register'));
 app.use('/home', require('./routes/home'));
 app.use('/board', require('./routes/board'));
 app.use('/logout', require('./routes/logout'));
-
-app.use('/tasks', require('./routes/tasks'))
-app.use('/user-settings', require('./routes/user-settings'))
+app.use('/user-settings', require('./routes/user-settings'));
 app.listen(port);
 
 
@@ -43,3 +41,5 @@ var routes = require('./api/users');
 routes(app);
 var routes_boards = require('./api/boards');
 routes_boards(app);
+var routes_tasks = require('./api/tasks');
+routes_tasks(app);

@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
             .then(response => response.json())
             .then(async response => {
                 if (response.length > 0) {
-                    errors.push({ msg: 'Username already exist' });
+                    errors.push({ msg: 'Username already exists' });
                 } else {
                     if (password.length < 7) {
                         errors.push({ msg: 'Password must be at least 7 letters' });
