@@ -137,17 +137,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .image-empty {
-    height: 90%;
-    width: 100%;
+    height: 40%;
+    width: 30%;
+    filter: opacity(0.5);
 }
 
-.image-empty-belong {
-    height: 50%;
-    width: 40%;
-    filter: opacity(0.3);
+.empty-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+    color: #B3B3B3;
+    margin-right: 12px;
 }
 
 .modal {
@@ -187,7 +190,7 @@
     cursor: pointer;
 }
 
-.modal-title{
+.modal-title {
     display: flex;
     color: white;
     flex-direction: row;
@@ -199,18 +202,18 @@
     align-items: center;
 }
 
-.title-create{
+.title-create {
     margin-left: 8px;
 }
 
-.input-container{
+.input-container {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
     margin-left: 10px;
 }
 
-.create-button{
+.create-button {
     display: flex;
     align-items: center;
     justify-content: center;
