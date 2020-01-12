@@ -3,24 +3,28 @@ var sql = require("../config/db");
 
 class Task {
   constructor(task) {
-    this.id = task.id;
+    // this.id = task.id;
     this.title = task.title;
     this.status = task.status;
     this.created_at = task.created_at;
     this.updated_at = task.updated_at;
-    this.deadline = task.deadline;
+    // this.deadline = task.deadline;
     this.finished_at = task.finished_at;
     this.description = task.description;
     this.domain = task.domain;
-    this.area = task.area;
+    this.geographical_area = task.geographical_area;
   }
 }
 
 Task.createTask = function(newTask, result) {
   sql.query("INSERT INTO tasks set ?", newTask, function(err, res) {
     if (err) {
+      console.log("model createTask NOT ok");
+      console.log("newTask: ", newTask);
+      console.log("eroare: ", err);
       result(err, null);
     } else {
+      console.log("model createTask ok");
       result(null, res.insertId);
     }
   });

@@ -2,9 +2,9 @@ var express = require("express");
 var router = express.Router();
 var fetch = require("node-fetch");
 
-// router.get("/tasks", (req, res) => res.render("tasks"));
+router.get('/tasks', (req, res) => res.render('tasks'));
 
-router.post("/", (req, res) => {
+router.post('/', (req, res) => {
   let { title } = req.body;
   let errors = [];
   if (title == '') {
@@ -15,12 +15,16 @@ router.post("/", (req, res) => {
     else {
       try {
         const data = { title };
+        console.log("data: ", data);
         fetch("http://localhost:3000/tasks/", {
           method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
           body: JSON.stringify(data)
         });
       } catch {
-        console.log(errors);
+        console.log("erori: ", errors);
       }
     }
   }

@@ -11,8 +11,10 @@ exports.list_all_tasks = (req, res) => {
 
 exports.create_a_task = (req, res) => {
   if (!req.body.title) {
+    console.log("controller create_a_task NOT ok");
     res.status(400).send({ error: true, message: "Please provide a title" });
   } else {
+    console.log("controller create_a_task ok");
     taskService.create_task(req.body, (task, err) => {
       if (err) res.send(err);
       res.json(task);
