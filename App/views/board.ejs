@@ -1,130 +1,102 @@
 <div class="board-container">
-  <div class="header-container">
-    <button class="home-button" id="home-btn">
-      <img id="home-image" src="/images/home-icon.png" />
-    </button>
+    <div class="board-header-container">
+        <button class="home-button" id="home-btn">
+            <img class="home-image" src="/images/home-icon.png" />
+        </button>
 
-    <div class="board-title">
-      Nume board
+        <div class="board-title">
+            Nume board
+        </div>
+
+        <%- include ('./partials/user-info') %>
     </div>
 
-    <%- include ('./partials/user-info') %>
-  </div>
-
-  <div class="main-content">
-    <div class="members">
-      <!-- TODO: Get members that are in the board -->
-      <p>Members:</p>
-      <div class="username-member">AB</div>
-      <div class="username-member">MB</div>
-    </div>
-    <div class="board-cards">
-      <div class="card-container">
-        <div class="card-header">
-          <p>To do</p>
+    <div class="main-content">
+        <div class="members">
+            <!-- TODO: Get members that are in the board -->
+            <p>Members:</p>
+            <div class="username-member">AB</div>
+            <div class="username-member">MB</div>
         </div>
-        <div class="board-card-body" id="brd-card-body">
-          <button class="button-add-task" id="button-task">+ Add a task</button>
-        </div>
-      </div>
-
-      <div class="card-container">
-        <div class="card-header">
-          <p>In progress</p>
-        </div>
-        <div class="board-card-body"></div>
-      </div>
-
-      <div class="card-container">
-        <div class="card-header">
-          <p>Done</p>
-        </div>
-        <div class="board-card-body"></div>
-      </div>
-
-      <div id="modal-task" class="modal">
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Add a new task</h2>
-          </div>
-          <div class="modal-body">
-            <div class="form-style-2">
-              <form action="/task" method="POST">
-                <label for="field1"
-                  ><span>Title <span class="required">*</span></span
-                  ><input
-                    type="text"
-                    class="input-field"
-                    id="task-title"
-                    name="title"
-                    value=""
-                /></label>
-                <label for="field2"
-                  ><span>Deadline</span
-                  ><input
-                    type="date"
-                    class="input-field"
-                    name="deadline"
-                    value=""
-                /></label>
-                <label for="field3"
-                  ><span>Domain</span
-                  ><input type="text" class="input-field" name="domain" value=""
-                /></label>
-                <label for="field4"
-                  ><span>Region</span
-                  ><input
-                    type="text"
-                    class="input-field"
-                    name="geographical_area"
-                    value=""
-                /></label>
-                <label for="field5"
-                  ><span>Description</span
-                  ><textarea
-                    name="description"
-                    class="textarea-field"
-                  ></textarea
-                ></label>
-
-                <label
-                  ><span> </span
-                  ><input
-                    class="createTask"
-                    id="add-task-submit"
-                    type="submit"
-                    value="Create"
-                /></label>
-              </form>
+        <div class="board-cards">
+            <div class="card-container">
+                <div class="card-header-tasks">
+                    <p>To do</p>
+                </div>
+                <div class="board-card-body" id="to-do-card">
+                    <button class="button-add-task" id="button-task">+ Add a task</button>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <script src="/javascripts/openmodal-task.js"></script>
-    </div>
-  </div>
 
-  <div class="history-dropup">
-    <button class="history-dropbtn">Show history for this board</button>
-    <div class="dropup-content">
-      <div class="oneHistory">
-        <div class="history-username">AB</div>
-        <div class="history-info">
-          <div class="history-text">History text</div>
-          <div class="history-date">02-Jan-2020</div>
-        </div>
-      </div>
+            <div class="card-container">
+                <div class="card-header-tasks">
+                    <p>In progress</p>
+                </div>
+                <div class="board-card-body" id="in-progress-card">
+                    <div class="no-task-in-card">There are no tasks in progress.</div>
+                </div>
+            </div>
 
-      <div class="oneHistory">
-        <div class="history-username">MB</div>
-        <div class="history-info">
-          <div class="history-text">Another history text</div>
-          <div class="history-date">10-Jan-2020</div>
+            <div class="card-container">
+                <div class="card-header-tasks">
+                    <p>Done</p>
+                </div>
+                <div class="board-card-body" id="done-card">
+                    <div class="no-task-in-card">There are no tasks done.</div>
+                </div>
+            </div>
+
+            <div id="modal-task" class="modal-task">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Add a new task</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-style-2">
+                            <form action="/task" method="POST">
+                                <label for="field1"><span>Title <span class="required">*</span></span><input type="text"
+                                        class="input-field" id="task-title" name="title" value="" /></label>
+                                <label for="field2"><span>Deadline</span><input type="date" class="input-field"
+                                        name="deadline" value="" /></label>
+                                <label for="field3"><span>Domain</span><input type="text" class="input-field"
+                                        name="domain" value="" /></label>
+                                <label for="field4"><span>Region</span><input type="text" class="input-field"
+                                        name="geographical_area" value="" /></label>
+                                <label for="field5"><span>Description</span><textarea name="description"
+                                        class="textarea-field"></textarea></label>
+
+                                <label><span> </span><input class="createTask" id="add-task-submit" type="submit"
+                                        value="Create" /></label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="/javascripts/openmodal-task.js"></script>
         </div>
-      </div>
     </div>
-  </div>
+
+    <div class="history-dropup">
+        <button class="history-dropbtn">Show history for this board</button>
+        <div class="dropup-content">
+            <div class="oneHistory">
+                <div class="history-username">AB</div>
+                <div class="history-info">
+                    <div class="history-text">History text</div>
+                    <div class="history-date">02-Jan-2020</div>
+                </div>
+            </div>
+
+            <div class="oneHistory">
+                <div class="history-username">MB</div>
+                <div class="history-info">
+                    <div class="history-text">Another history text</div>
+                    <div class="history-date">10-Jan-2020</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="/javascripts/board-buttons.js"></script>
