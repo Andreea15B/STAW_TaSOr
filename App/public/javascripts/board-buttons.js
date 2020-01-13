@@ -13,7 +13,7 @@ addTaskSubmit.onclick = function addTask(event) {
   var taskTitle = document.getElementById("task-title").value;
   cardContent.innerHTML = taskTitle;
   cardBodyDiv.appendChild(cardContent);
-  
+
   event.preventDefault();
   var modal = document.getElementById("modal-task");
   modal.style.display = "none";
