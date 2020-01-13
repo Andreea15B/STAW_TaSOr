@@ -5,24 +5,22 @@ class Task {
   constructor(task) {
     // this.id_task = task.id_task;
     this.title = task.title;
-    // this.status = task.status;
-    // this.created_at = task.created_at;
-    // this.updated_at = task.updated_at;
-    // this.deadline = task.deadline;
-    // this.finished_at = task.finished_at;
-    // this.description = task.description;
-    // this.domain = task.domain;
-    // this.geographical_area = task.geographical_area;
+    this.status = task.status;
+    this.created_at = task.created_at;
+    this.updated_at = task.updated_at;
+    this.deadline = task.deadline;
+    this.finished_at = task.finished_at;
+    this.description = task.description;
+    this.domain = task.domain;
+    this.geographical_area = task.geographical_area;
   }
 }
 
 Task.createTask = function(newTask, result) {
   sql.query("INSERT INTO tasks set ?", newTask, function(err, res) {
     if (err) {
-      console.log("eroare: ", err);
       result(err, null);
     } else {
-      console.log("ok: ", res, res.insertId);
       result(null, res.insertId);
     }
   });

@@ -23,7 +23,7 @@
                 <div class="card-header">
                     <p>To do</p>
                 </div>
-                <div class="board-card-body">
+                <div class="board-card-body" id="brd-card-body">
                     <button class="button-add-task" id="button-task">+ Add a task</button>
                 </div>
             </div>
@@ -33,7 +33,6 @@
                     <p>In progress</p>
                 </div>
                 <div class="board-card-body">
-                    <button class="button-add-task" id="button-task">+ Add a task</button>
                 </div>
             </div>
 
@@ -42,7 +41,6 @@
                     <p>Done</p>
                 </div>
                 <div class="board-card-body">
-                    <button class="button-add-task" id="button-task">+ Add a task</button>
                 </div>
             </div>
 
@@ -54,19 +52,19 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-style-2">
-                            <form action="/tasks" method="POST">
+                            <form action="/task" method="POST">
                                 <label for="field1"><span>Title <span class="required">*</span></span><input type="text"
-                                        class="input-field" name="title" value="" /></label>
+                                        class="input-field" id="task-title" name="title" value="" /></label>
                                 <label for="field2"><span>Deadline</span><input type="date" class="input-field"
                                         name="deadline" value="" /></label>
                                 <label for="field3"><span>Domain</span><input type="text" class="input-field"
                                         name="domain" value="" /></label>
                                 <label for="field4"><span>Region</span><input type="text" class="input-field"
-                                        name="region" value="" /></label>
+                                        name="geographical_area" value="" /></label>
                                 <label for="field5"><span>Description</span><textarea name="description"
                                         class="textarea-field"></textarea></label>
 
-                                <label><span> </span><input class="createTask" type="submit" value="Create" /></label>
+                                <label><span> </span><input class="createTask" id="add-task-submit" type="submit" value="Create" /></label>
                             </form>
                         </div>
                     </div>

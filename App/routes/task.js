@@ -2,10 +2,10 @@ var express = require("express");
 var router = express.Router();
 var fetch = require("node-fetch");
 
-router.get('/tasks', (req, res) => res.render('tasks'));
+router.get('/task', (req, res) => res.render('tasks'));
 
 router.post('/', (req, res) => {
-  let { title } = req.body;
+  let { title, status, deadline, description, domain, geographical_area } = req.body;
   let errors = [];
   if (title == '') {
     errors.push({ msg: "Fill at least the title" });
@@ -14,8 +14,7 @@ router.post('/', (req, res) => {
     if (errors.length > 0) res.render('board', { errors });
     else {
       try {
-        const data = { title };
-        console.log(data);
+        const data = { title, status, deadline, description, domain, geographical_area };
         fetch("http://localhost:3000/tasks/", {
           method: "POST",
           headers: {
