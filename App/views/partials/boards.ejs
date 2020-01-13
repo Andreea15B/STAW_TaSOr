@@ -1,0 +1,16 @@
+<% if(typeof boards != 'undefined') { %>
+    <% boards.forEach(function(error) { %>
+        <div class="board-title-request">
+            <%=  error.title %>
+        </div>
+
+
+        <% }); %>
+            <%} %>
+
+                <% if (typeof boards == 'undefined') { %>
+                    <div class="empty-state">
+                        <img class="image-empty" src="/images/img_519534.png">
+                        <p class="empty-text">No boards here</p>
+                    </div>
+                    <% } %>

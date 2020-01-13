@@ -6,7 +6,7 @@ class Board {
         this.title = board.title;
         this.created_at = board.created_at;
         this.updated_at = board.created_at;
-        this.created_by = board.create_by;
+        this.created_by = board.created_by;
     }
 };
 

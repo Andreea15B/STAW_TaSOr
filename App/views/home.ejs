@@ -18,7 +18,7 @@
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <div class="form">
-                    <form id="create-board-form">
+                    <form id="create-board-form" method="POST" action="/home">
                         <div class="modal-title">
                             <span class="title-create">Create new board</span>
                             <span class="closed">&times;</span>
@@ -44,10 +44,7 @@
                     <p>Boards created by you</p>
                 </div>
                 <div class="card-body">
-                    <div class="empty-state">
-                        <img class="image-empty" src="/images/img_519534.png">
-                        <p class="empty-text">No boards here</p>
-                    </div>
+                    <%- include  ('./partials/boards') %>
                 </div>
             </div>
 

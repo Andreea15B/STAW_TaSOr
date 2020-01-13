@@ -6,7 +6,7 @@
 
 .header-container {
     height: 50px;
-    background-image: linear-gradient(-90deg, #3399ff, #b3d9ff);
+    background-image: linear-gradient(-90deg, #20a882, #045643);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -54,7 +54,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: blue;
+    color: #d85a4f;
 }
 
 .home-content {
@@ -106,7 +106,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .image {

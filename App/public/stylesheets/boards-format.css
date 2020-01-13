@@ -1,0 +1,16 @@
+.board-title-request {
+    background-color: #ebebe0;
+    border-radius: 5px;
+    width: 13%;
+    margin-left: 10px;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.board-title-request:hover {
+    transform: scale(1.5);
+}
