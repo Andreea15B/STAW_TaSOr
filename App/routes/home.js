@@ -35,22 +35,36 @@ router.post('/', ensureAuthenticated, (req, res) => {
     var { name } = req.body;
     var created_by = req.session.username;
     var date_ = formatDate(Date.now());
+    var errors = [];
 
-    const data = { title: name, created_by: created_by, created_at: date_, updated_at: date_ };
 
-    fetch('http://localhost:3000/boards/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
-
-    fetch('http://localhost:3000/boards/' + created_by)
+    fetch('http://localhost:3000/board/' + name)
         .then(response => response.json())
         .then(response => {
-            res.render('home', { username: created_by[0].toUpperCase() + created_by[1].toUpperCase(), boards: response });
+            if (response.length > 0) {
+                errors.push({ msg: 'Board already exist' });
+                fetch('http://localhost:3000/boards/' + created_by)
+                    .then(response => response.json())
+                    .then(response => {
+                        res.render('home', { username: created_by[0].toUpperCase() + created_by[1].toUpperCase(), errors, boards: response });
+                    });
+            } else {
+                const data = { title: name, created_by: created_by, created_at: date_, updated_at: date_ };
 
+                fetch('http://localhost:3000/boards/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                fetch('http://localhost:3000/boards/' + created_by)
+                    .then(response => response.json())
+                    .then(response => {
+                        res.render('home', { username: created_by[0].toUpperCase() + created_by[1].toUpperCase(), boards: response });
+                    });
+            }
         });
 });
 

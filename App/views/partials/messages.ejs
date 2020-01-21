@@ -1,5 +1,13 @@
 <% if(typeof errors != 'undefined') { %>
-    <% errors.forEach(function(error) { %>
-        <%=  error.msg %>
-            <% }); %>
-                <%} %>
+    <div class="error-container">
+        <div class="title-errors">
+            <span class="margin-error">Errors</span>
+            <span class="margin-error click-area">&times;</span>
+        </div>
+        <div class="errors-container">
+            <% errors.forEach(function(error) { %>
+                <%=  error.msg %>
+                    <% }); %>
+        </div>
+    </div>
+    <%} %>

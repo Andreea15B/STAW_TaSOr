@@ -110,3 +110,42 @@ button {
     color: red;
     margin-top: 6px;
 }
+
+.error-container {
+    width: 400px;
+    height: 80px;
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    left: 70%;
+    top: 80%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ff1a1a;
+}
+
+.click-area {
+    cursor: pointer;
+    font-size: 28px;
+}
+
+.title-errors {
+    border-bottom: 1px solid;
+    width: 400px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.margin-error {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.errors-container {
+    margin: 4px;
+}
