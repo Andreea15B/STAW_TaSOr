@@ -1,14 +1,12 @@
-<% if(typeof boards != 'undefined') { %>
-    <% boards.forEach(function(error) { %>
+<% if( boards.length != 0 ) { %>
+    <% boards.forEach(function(board) { %>
         <div class="board-title-request">
-            <%=  error.title %>
+            <%=  board.title %>
         </div>
-
-
         <% }); %>
             <%} %>
 
-                <% if (typeof boards == 'undefined' ||  boards == []) { %>
+                <% if (boards.length == 0 ) { %>
                     <div class="empty-state">
                         <img class="image-empty" src="/images/img_519534.png">
                         <p class="empty-text">No boards here</p>
