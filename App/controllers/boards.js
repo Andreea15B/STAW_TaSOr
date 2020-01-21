@@ -3,7 +3,15 @@
 var boardsService = require('../services/boards');
 
 exports.list_all_boards = (req, res) => {
-    boardsService.get_all_boards(req.params.username, (req, err) => {
+    boardsService.get_boards_for_user(req.params.username, (req, err) => {
+        if (err)
+            res.send(err);
+        res.json(req);
+    });
+};
+
+exports.get_board = (req, res) => {
+    boardsService.get_board_by_name(req.params.name, (req, err) => {
         if (err)
             res.send(err);
         res.json(req);

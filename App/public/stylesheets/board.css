@@ -23,6 +23,7 @@
     margin-left: 47px;
     border-radius: 50%;
     padding: 5px 5px;
+    outline: none;
 }
 
 .home-button:hover {

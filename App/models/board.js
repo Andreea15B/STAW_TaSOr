@@ -10,7 +10,6 @@ class Board {
     }
 };
 
-
 Board.create_Board = (newBoard, result) => {
     sql.query("INSERT INTO boards set ?", newBoard, (error, res) => {
         if (error) {
@@ -21,7 +20,7 @@ Board.create_Board = (newBoard, result) => {
     });
 };
 
-Board.getBoard = (username, result) => {
+Board.getBoardForUsername = (username, result) => {
     sql.query("Select * from boards where created_by = ?", username, (error, res) => {
         if (error) {
             result(error, null);
@@ -30,5 +29,16 @@ Board.getBoard = (username, result) => {
         }
     });
 };
+
+Board.getBoardByName = (name, result) => {
+    sql.query("SELECT * from boards where title = ?", name, (error, res) => {
+        if (error) {
+            result(error, null);
+        } else {
+            result(null, res);
+        }
+    });
+};
+
 
 module.exports = Board;
