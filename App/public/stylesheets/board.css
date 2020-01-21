@@ -97,9 +97,9 @@
 
 .board-card-body {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 100%;
 }
 
 .no-task-in-card {
@@ -115,6 +115,10 @@
     margin: 10px 10px;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
+}
+
+#task-title {
+    cursor: grab;
 }
 
 .button-add-task:hover {

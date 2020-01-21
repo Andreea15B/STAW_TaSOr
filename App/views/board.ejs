@@ -19,30 +19,34 @@
             <div class="username-member">MB</div>
         </div>
         <div class="board-cards">
-            <div class="card-container">
+            <div class="card-container" id="to-do-task" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <div class="card-header-tasks">
                     <p>To do</p>
+                </div>
+                <!-- fiecare element trebuie sa aiba draggble = true si dragstart
+                am pus asa sa vad ca merge , ca css vom avea cursor:grab-->
+                <div class="button-add-task" id="task-title" draggable="true" ondragstart="drag(event)">
+                    <span id="task1"> TASKKKKK </span>
                 </div>
                 <div class="board-card-body" id="to-do-card">
                     <button class="button-add-task" id="button-task">+ Add a task</button>
                 </div>
             </div>
 
-            <div class="card-container">
+            <div class="card-container" id="in-progress-task">
                 <div class="card-header-tasks">
                     <p>In progress</p>
                 </div>
-                <div class="board-card-body" id="in-progress-card">
-                    <div class="no-task-in-card">There are no tasks in progress.</div>
+                <div class="board-card-body" id="in-progress-card" ondrop="drop(event)" ondragover="allowDrop(event)">
+
                 </div>
             </div>
 
-            <div class="card-container">
+            <div class="card-container" id="done-task">
                 <div class="card-header-tasks">
                     <p>Done</p>
                 </div>
-                <div class="board-card-body" id="done-card">
-                    <div class="no-task-in-card">There are no tasks done.</div>
+                <div class="board-card-body" id="done-card" ondrop="drop(event)" ondragover="allowDrop(event)">
                 </div>
             </div>
 
@@ -76,6 +80,8 @@
             <script src="/javascripts/openmodal-task.js"></script>
         </div>
     </div>
+
+    <script src="/javascripts/dragTask.js"></script>
 
     <div class="history-dropup">
         <button class="history-dropbtn">Show history for this board</button>
