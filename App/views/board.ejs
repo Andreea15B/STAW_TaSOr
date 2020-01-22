@@ -19,17 +19,21 @@
             <div class="username-member">MB</div>
         </div>
         <div class="board-cards">
-            <div class="card-container" id="to-do-task" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="card-container" id="to-do-task">
                 <div class="card-header-tasks">
                     <p>To do</p>
                 </div>
                 <!-- fiecare element trebuie sa aiba draggble = true si dragstart
                 am pus asa sa vad ca merge , ca css vom avea cursor:grab-->
-                <div class="button-add-task" id="task-title" draggable="true" ondragstart="drag(event)">
+                <!-- <div class="button-add-task" id="task-title" draggable="true" ondragstart="drag(event)">
                     <span id="task1"> TASKKKKK </span>
-                </div>
-                <div class="board-card-body" id="to-do-card">
+                </div> -->
+
+                <div class="board-card-body" id="to-do-card" ondrop="drop(event)" ondragover="allowDrop(event)">
                     <button class="button-add-task" id="button-task">+ Add a task</button>
+                    <button class="btn-task" id="button-task" draggable="true" ondragstart="drag(event)">
+                        <%- include  ('./partials/tasks') %>
+                    </button>
                 </div>
             </div>
 

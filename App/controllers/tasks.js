@@ -13,6 +13,7 @@ exports.create_a_task = (req, res) => {
   if (!req.body.title) {
     res.status(400).send({ error: true, message: "Please provide a title" });
   } else {
+    req.body.status = "todo";
     taskService.create_task(req.body, (task, err) => {
       if (err) res.send(err);
       res.json(task);
@@ -21,7 +22,14 @@ exports.create_a_task = (req, res) => {
 };
 
 exports.read_task = function(req, res) {
-  taskService.get_task(req.params.id, (req, err) => {
+  taskService.get_task(req.params.id_task, (req, err) => {
+    if (err) res.send(err);
+    res.json(req);
+  });
+};
+
+exports.read_task_by_status = function(req, res) {
+  taskService.get_task_by_status(req.params.status, (req, err) => {
     if (err) res.send(err);
     res.json(req);
   });
