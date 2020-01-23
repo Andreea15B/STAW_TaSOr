@@ -1,0 +1,7 @@
+<% if( tasksToDo.length != 0 ) { %>
+    <% tasksToDo.forEach(function(taskToDo) { %>
+        <button class="btn-task" id="btn-task" draggable="true" ondragstart="drag(event)">
+        <%=  taskToDo.title %>
+        </button>
+    <% }); %>
+<%} %>

@@ -7,8 +7,12 @@ exports.get_all_tasks = result => {
 };
 
 exports.get_task = function(req, result) {
-    Task.getTaskById(req, (err, req) => result(req, err));
+    Task.getTaskByID(req, (err, req) => result(req, err));
 };
+
+exports.get_task_by_status = function(req, result) {
+    Task.getTaskByStatus(req, (err, req) => result(req, err));
+}
 
 exports.create_task = function(task, result) {
     var new_task = new Task(task);

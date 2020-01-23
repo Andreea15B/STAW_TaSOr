@@ -7,7 +7,6 @@ function drag(ev) {
 }
 
 function drop(ev, where) {
-    console.log(where);
     ev.preventDefault();
 
     var data = { type: where };

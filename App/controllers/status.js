@@ -3,7 +3,6 @@
 var statusService = require('../services/status');
 
 exports.add_status = (req, res) => {
-    console.log(req.body)
     statusService.add_status(req.body, (req, err) => {
         if (err)
             res.send(err);

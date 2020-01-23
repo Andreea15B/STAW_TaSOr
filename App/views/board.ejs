@@ -19,23 +19,14 @@
             <div class="username-member">MB</div>
         </div>
         <div class="board-cards">
-            <div class="card-container" id="to-do-task" ondrop="drop(event,'to-do')" ondragover="allowDrop(event)">
+            <div class="card-container" id="to-do-task">
                 <div class="card-header-tasks">
                     <p>To do</p>
                 </div>
-                <!-- fiecare element trebuie sa aiba draggble = true si dragstart
-                am pus asa sa vad ca merge , ca css vom avea cursor:grab-->
-                <div class="button-add-task" id="task-title" draggable="true" ondragstart="drag(event)">
-                    <span id="task1"> TASKKKKK </span>
-                </div>
-                <div class="button-add-task" id="task-title_" draggable="true" ondragstart="drag(event)">
-                    <span id="task1"> TASKKKKK </span>
-                </div>
-                <div class="button-add-task" id="task-title_2" draggable="true" ondragstart="drag(event)">
-                    <span id="task1"> TASKKKKK </span>
-                </div>
-                <div class="board-card-body" id="to-do-card">
-                    <button class="button-add-task" id="button-task">+ Add a task</button>
+
+                <div class="board-card-body" id="to-do-card" ondrop="drop(event,'to-do')" ondragover="allowDrop(event)">
+                    <%- include  ('./partials/tasksToDo') %>
+                        <button class="button-add-task" id="button-task">+ Add a task</button>
                 </div>
             </div>
 
@@ -43,8 +34,8 @@
                 <div class="card-header-tasks">
                     <p>In progress</p>
                 </div>
-                <div class="board-card-body" id="in-progress-card" ondrop="drop(event,'progress')" ondragover="allowDrop(event)">
-
+                <div class="board-card-body" id="in-progress-card" ondrop="drop(event,'in-progress')" ondragover="allowDrop(event)">
+                    <%- include  ('./partials/tasksInProgress') %>
                 </div>
             </div>
 
@@ -53,6 +44,7 @@
                     <p>Done</p>
                 </div>
                 <div class="board-card-body" id="done-card" ondrop="drop(event,'done')" ondragover="allowDrop(event)">
+                    <%- include  ('./partials/tasksDone') %>
                 </div>
             </div>
 

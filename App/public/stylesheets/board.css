@@ -109,7 +109,8 @@
     font-style: oblique;
 }
 
-.button-add-task {
+.button-add-task,
+.btn-task {
     width: 90%;
     padding: 10px 10px;
     margin: 10px 10px;
@@ -117,7 +118,8 @@
     border-radius: 3px;
 }
 
-#task-title {
+.btn-task:hover {
+    background: rgba(0, 0, 0, 0.3);
     cursor: grab;
 }
 
@@ -345,4 +347,19 @@
     display: flex;
     flex-direction: column;
     margin-top: 7px;
+}
+
+.empty-Tasks {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.empty-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+    color: #B3B3B3;
+    margin-right: 12px;
 }

@@ -3,7 +3,6 @@ var sql = require("../config/db");
 
 class Task {
   constructor(task) {
-    // this.id_task = task.id_task;
     this.title = task.title;
     this.status = task.status;
     this.created_at = task.created_at;
@@ -27,7 +26,7 @@ Task.createTask = function(newTask, result) {
 };
 
 Task.getTaskByID = function(id_task, result) {
-  sql.query("Select * from tasks where id_task = ? ", id_task, function(err, res) {
+  sql.query("Select * from tasks where id_task = ?", id_task, function(err, res) {
     if (err) {
       result(err, null);
     } else {
@@ -35,6 +34,16 @@ Task.getTaskByID = function(id_task, result) {
     }
   });
 };
+
+Task.getTaskByStatus = function(status, result) {
+  sql.query("Select * from tasks where status = ?", status, function(err, res) {
+    if (err) {
+      result(err, null);
+    } else {
+      result(null, res);
+    }
+  });
+}
 
 Task.getAllTasks = function(result) {
   sql.query("Select * from tasks", function(err, res) {
