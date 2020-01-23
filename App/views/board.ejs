@@ -18,6 +18,7 @@
             <div class="username-member">AB</div>
             <div class="username-member">MB</div>
         </div>
+
         <div class="board-cards">
             <div class="card-container" id="to-do-task">
                 <div class="card-header-tasks">
@@ -48,10 +49,11 @@
                 </div>
             </div>
 
+            <!-- AddTask Modal -->
             <div id="modal-task" class="modal-task">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <span class="close">&times;</span>
+                        <span id="close">&times;</span>
                         <h2>Add a new task</h2>
                     </div>
                     <div class="modal-body">
@@ -67,7 +69,7 @@
                                 </label>
                                 <label for="field3">
                                     <span>Domain</span>
-                                    <select class="input-field" name="domain" value="" >
+                                    <select class="input-field" name="domain" value="">
                                         <option value=""></option>
                                         <option value="Frontend">Frontend</option>
                                         <option value="Backend">Backend</option>
@@ -92,11 +94,24 @@
                     </div>
                 </div>
             </div>
-            <script src="/javascripts/openmodal-task.js"></script>
+
+            <!-- EditTask Modal -->
+            <div id="modal-editTask" class="modal-editTask">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span id="close-edit">&times;</span>
+                        <h2>Edit task</h2>
+                    </div>
+                    <div class="modal-body">
+                        
+
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-
-    <script src="/javascripts/dragTask.js"></script>
 
     <div class="history-dropup">
         <button class="history-dropbtn">Show history for this board</button>
@@ -121,3 +136,6 @@
 </div>
 
 <script src="/javascripts/board-buttons.js"></script>
+<script src="/javascripts/dragTask.js"></script>
+<script src="/javascripts/openmodal-task.js"></script>
+<script src="/javascripts/openmodal-editTask.js"></script>

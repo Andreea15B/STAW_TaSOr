@@ -135,7 +135,8 @@
 
 /* Add-task modal: */
 
-.modal-task {
+.modal-task,
+.modal-editTask {
     display: none;
     position: fixed;
     z-index: 1;
@@ -187,15 +188,18 @@
     }
 }
 
-.close {
+#close,
+#close-edit {
     color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+#close:hover,
+#close:focus,
+#close-edit:hover,
+#close-edit:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
