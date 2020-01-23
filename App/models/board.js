@@ -40,5 +40,4 @@ Board.getBoardByName = (name, result) => {
     });
 };
 
-
 module.exports = Board;

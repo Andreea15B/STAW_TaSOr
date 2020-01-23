@@ -44,3 +44,5 @@ var routes_boards = require('./api/boards');
 routes_boards(app);
 var routes_tasks = require('./api/tasks');
 routes_tasks(app);
+var routes_tasks = require('./api/status');
+routes_tasks(app);
