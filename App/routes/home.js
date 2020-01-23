@@ -42,7 +42,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
         .then(response => response.json())
         .then(response => {
             if (response.length > 0) {
-                errors.push({ msg: 'Board already exist' });
+                errors.push({ msg: 'Board already exists' });
                 fetch('http://localhost:3000/boards/' + created_by)
                     .then(response => response.json())
                     .then(response => {

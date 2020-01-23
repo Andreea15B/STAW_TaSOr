@@ -135,7 +135,8 @@
 
 /* Add-task modal: */
 
-.modal-task {
+.modal-task,
+.modal-editTask {
     display: none;
     position: fixed;
     z-index: 1;
@@ -187,15 +188,18 @@
     }
 }
 
-.close {
+#close,
+#close-edit {
     color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+#close:hover,
+#close:focus,
+#close-edit:hover,
+#close-edit:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -234,12 +238,14 @@
     color: red;
 }
 
-.form-style-2 input.input-field {
+.form-style-2 input.input-field select.input-field {
     width: 48%;
 }
 
 .form-style-2 input.input-field,
-.form-style-2 .textarea-field {
+.form-style-2 .textarea-field,
+.form-style-2 select.input-field {
+    width: 50%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -255,7 +261,8 @@
 }
 
 .form-style-2 .input-field:focus,
-.form-style-2 .textarea-field:focus {
+.form-style-2 .textarea-field:focus,
+.form-style-2 select.input-field:focus {
     border: 1px solid #0c0;
 }
 

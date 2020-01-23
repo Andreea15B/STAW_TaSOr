@@ -18,6 +18,7 @@
             <div class="username-member">AB</div>
             <div class="username-member">MB</div>
         </div>
+
         <div class="board-cards">
             <div class="card-container" id="to-do-task">
                 <div class="card-header-tasks">
@@ -48,38 +49,69 @@
                 </div>
             </div>
 
+            <!-- AddTask Modal -->
             <div id="modal-task" class="modal-task">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <span class="close">&times;</span>
+                        <span id="close">&times;</span>
                         <h2>Add a new task</h2>
                     </div>
                     <div class="modal-body">
                         <div class="form-style-2">
-                            <form action="/task" method="POST">
-                                <label for="field1"><span>Title <span class="required">*</span></span><input type="text"
-                                        class="input-field" id="task-title" name="title" value="" /></label>
-                                <label for="field2"><span>Deadline</span><input type="date" class="input-field"
-                                        name="deadline" value="" /></label>
-                                <label for="field3"><span>Domain</span><input type="text" class="input-field"
-                                        name="domain" value="" /></label>
-                                <label for="field4"><span>Region</span><input type="text" class="input-field"
-                                        name="geographical_area" value="" /></label>
-                                <label for="field5"><span>Description</span><textarea name="description"
-                                        class="textarea-field"></textarea></label>
+                            <form name="newTask-form" action="/task" method="POST" onsubmit="return validateForm()">
+                                <label for="field1">
+                                    <span>Title <span class="required">*</span></span>
+                                    <input type="text" class="input-field" id="task-title" name="title" value="" />
+                                </label>
+                                <label for="field2">
+                                    <span>Deadline</span>
+                                    <input type="date" class="input-field" name="deadline" value="" />
+                                </label>
+                                <label for="field3">
+                                    <span>Domain</span>
+                                    <select class="input-field" name="domain" value="">
+                                        <option value=""></option>
+                                        <option value="Frontend">Frontend</option>
+                                        <option value="Backend">Backend</option>
+                                        <option value="Design">Design</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </label>
+                                <label for="field4">
+                                    <span>Region</span>
+                                    <input type="text" class="input-field" name="geographical_area" value="" />
+                                </label>
+                                <label for="field5">
+                                    <span>Description</span>
+                                    <textarea name="description" class="textarea-field"></textarea>
+                                </label>
 
-                                <label><span> </span><input class="createTask" id="add-task-submit" type="submit"
-                                        value="Create" /></label>
+                                <label>
+                                    <input class="createTask" id="add-task-submit" type="submit" value="Create" />
+                                </label>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <script src="/javascripts/openmodal-task.js"></script>
+
+            <!-- EditTask Modal -->
+            <div id="modal-editTask" class="modal-editTask">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span id="close-edit">&times;</span>
+                        <h2>Edit task</h2>
+                    </div>
+                    <div class="modal-body">
+                        
+
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-
-    <script src="/javascripts/dragTask.js"></script>
 
     <div class="history-dropup">
         <button class="history-dropbtn">Show history for this board</button>
@@ -104,3 +136,6 @@
 </div>
 
 <script src="/javascripts/board-buttons.js"></script>
+<script src="/javascripts/dragTask.js"></script>
+<script src="/javascripts/openmodal-task.js"></script>
+<script src="/javascripts/openmodal-editTask.js"></script>
