@@ -348,3 +348,18 @@
     flex-direction: column;
     margin-top: 7px;
 }
+
+.empty-Tasks {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.empty-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+    color: #B3B3B3;
+    margin-right: 12px;
+}
