@@ -41,7 +41,7 @@
 .username-member {
     height: 35px;
     width: 35px;
-    background-color: #3399ff;
+    background-color: #47c5d8;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -52,7 +52,7 @@
 }
 
 .username-member:hover {
-    background-color: #5eaeff;
+    background-color: #5dc8d8;
 }
 
 .main-content {
@@ -118,13 +118,17 @@
     border-radius: 3px;
 }
 
+.button-add-task {
+    background-color: #D85A47;
+}
+
 .btn-task:hover {
     background: rgba(0, 0, 0, 0.3);
     cursor: grab;
 }
 
 .button-add-task:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background-color: rgb(212, 83, 63);
     cursor: pointer;
 }
 
@@ -332,7 +336,7 @@
 .history-username {
     height: 35px;
     width: 35px;
-    background-color: #3399ff;
+    background-color: #47c5d8;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -348,6 +352,7 @@
     flex-direction: column;
     margin-top: 7px;
 }
+
 
 .empty-Tasks {
     height: 100%;
