@@ -234,12 +234,14 @@
     color: red;
 }
 
-.form-style-2 input.input-field {
+.form-style-2 input.input-field select.input-field {
     width: 48%;
 }
 
 .form-style-2 input.input-field,
-.form-style-2 .textarea-field {
+.form-style-2 .textarea-field,
+.form-style-2 select.input-field {
+    width: 50%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -255,7 +257,8 @@
 }
 
 .form-style-2 .input-field:focus,
-.form-style-2 .textarea-field:focus {
+.form-style-2 .textarea-field:focus,
+.form-style-2 select.input-field:focus {
     border: 1px solid #0c0;
 }
 
