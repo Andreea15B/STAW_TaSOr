@@ -32,14 +32,12 @@ router.post('/', ensureAuthenticated, (req, res) => {
     var date_ = formatDate(Date.now());
     var errors = [];
 
-
-    fetch('http://localhost:3000/board/' + name)
+    fetch('http://localhost:3000/board_add/' + name)
         .then(response => response.json())
         .then(response => {
             if (response.length > 0) {
                 errors.push({ msg: 'Board already exists' });
                 res.render('home', { username: created_by, errors });
-
             } else {
                 const data = { title: name, created_by: created_by, created_at: date_, updated_at: date_ };
 

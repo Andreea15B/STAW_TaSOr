@@ -9,7 +9,7 @@ module.exports = function(app) {
     app.route('/boards')
         .post(boards.create_board);
 
-    app.route('/board/:name')
+    app.route('/board_add/:name')
         .get(boards.get_board);
 
 };
