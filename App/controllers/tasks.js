@@ -29,7 +29,7 @@ exports.read_task = function(req, res) {
 };
 
 exports.read_task_by_status = function(req, res) {
-    taskService.get_task_by_status(req.params.status, (req, err) => {
+    taskService.get_task_by_status(req.params, (req, err) => {
         if (err) res.send(err);
         res.json(req);
     });

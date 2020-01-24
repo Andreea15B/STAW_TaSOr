@@ -4,8 +4,8 @@
             <img class="home-image" src="/images/home-icon.png" />
         </button>
 
-        <div class="board-title">
-            Nume board
+        <div class="board-title" id="board_name">
+            <%- name_board %>
         </div>
 
         <%- include ('./partials/user-info') %>
@@ -63,6 +63,15 @@
                     <div class="modal-body">
                         <div class="form-style-2">
                             <form name="newTask-form" action="/task" method="POST" onsubmit="return validateForm()">
+                                <label for="field0">
+                                    <span>Board</span>
+                                    <input type="text" name="board_to_add" id="board_value" readonly><br>
+                                </label>
+                                <script>
+                                    var value_ = document.getElementById('board_value');
+                                    var board = document.getElementById('board_name').innerText;
+                                    value_.value = board;
+                                </script>
                                 <label for="field1">
                                     <span>Title <span class="required">*</span></span>
                                     <input type="text" class="input-field" id="task-title" name="title" value="" />

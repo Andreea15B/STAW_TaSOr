@@ -2,11 +2,12 @@ var container_to_do = document.getElementById('to-do-card');
 var container_in_progress = document.getElementById('in-progress-card');
 var container_done = document.getElementById('done-card');
 var username = document.getElementById('username').innerText;
+var name_board = document.getElementById('board_name').innerText;
 
-var api_tasks = 'http://localhost:3000/tasks/';
+var api_tasks = 'http://localhost:3000/tasks/' + name_board;
 var id_to_update = null;
 
-fetch(api_tasks + 'todo')
+fetch(api_tasks + '/todo')
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
@@ -23,7 +24,7 @@ fetch(api_tasks + 'todo')
 
     });
 
-fetch(api_tasks + 'in-progress')
+fetch(api_tasks + '/in-progress')
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
@@ -40,7 +41,7 @@ fetch(api_tasks + 'in-progress')
     });
 
 
-fetch(api_tasks + 'done')
+fetch(api_tasks + '/done')
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
@@ -77,7 +78,6 @@ function drop(ev, where) {
             },
             body: JSON.stringify(data),
         });
-
 
         var data = ev.dataTransfer.getData("text");
         ev.target.appendChild(document.getElementById(data));

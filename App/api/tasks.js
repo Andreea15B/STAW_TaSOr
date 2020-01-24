@@ -10,6 +10,6 @@ module.exports = function(app) {
     app.route('/tasks/:id_task')
         .put(tasks.update_task)
 
-    app.route('/tasks/:status')
+    app.route('/tasks/:board_name/:status')
         .get(tasks.read_task_by_status);
 };
