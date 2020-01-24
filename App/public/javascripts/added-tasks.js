@@ -69,14 +69,18 @@ function drag(ev) {
 function drop(ev, where) {
     ev.preventDefault();
     var data = { status: where };
-    fetch('http://localhost:3000/tasks/' + id_to_update, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
+    if (ev.target.hasAttribute('draggable') == false) {
+        fetch('http://localhost:3000/tasks/' + id_to_update, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
 
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
 }
