@@ -25,9 +25,13 @@
                     <p>To do</p>
                 </div>
 
-                <div class="board-card-body" id="to-do-card" ondrop="drop(event,'to-do')" ondragover="allowDrop(event)">
-                    <%- include  ('./partials/tasksToDo') %>
+                <div class="board-card-body">
+                    <div class="container-div" id="to-do-card" ondrop="drop(event,'to-do')" ondragover="allowDrop(event)">
+
+                    </div>
+                    <div class="container-div">
                         <button class="button-add-task" id="button-task">+ Add a task</button>
+                    </div>
                 </div>
             </div>
 
@@ -36,7 +40,7 @@
                     <p>In progress</p>
                 </div>
                 <div class="board-card-body" id="in-progress-card" ondrop="drop(event,'in-progress')" ondragover="allowDrop(event)">
-                    <%- include  ('./partials/tasksInProgress') %>
+
                 </div>
             </div>
 
@@ -45,7 +49,7 @@
                     <p>Done</p>
                 </div>
                 <div class="board-card-body" id="done-card" ondrop="drop(event,'done')" ondragover="allowDrop(event)">
-                    <%- include  ('./partials/tasksDone') %>
+
                 </div>
             </div>
 
@@ -103,7 +107,7 @@
                         <h2>Edit task</h2>
                     </div>
                     <div class="modal-body">
-                        
+
 
 
                     </div>
@@ -136,6 +140,6 @@
 </div>
 
 <script src="/javascripts/board-buttons.js"></script>
-<script src="/javascripts/dragTask.js"></script>
+<script src="/javascripts/added-tasks.js"></script>
 <script src="/javascripts/openmodal-task.js"></script>
 <script src="/javascripts/openmodal-editTask.js"></script>

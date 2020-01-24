@@ -47,9 +47,10 @@
 
 .username-container {
     height: 35px;
-    width: 35px;
+    width: auto;
+    padding: 2px;
     background-color: white;
-    border-radius: 50%;
+    border-radius: 4px;
     margin-right: 47px;
     display: flex;
     align-items: center;

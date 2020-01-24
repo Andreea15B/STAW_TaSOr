@@ -23,12 +23,7 @@ function formatDate(date) {
 
 router.get('/', ensureAuthenticated, (req, res) => {
     const initiale = req.session.username;
-    fetch('http://localhost:3000/boards/' + initiale)
-        .then(response => response.json())
-        .then(response => {
-            res.render('home', { username: initiale[0].toUpperCase() + initiale[1].toUpperCase(), boards: response });
-
-        });
+    res.render('home', { username: initiale });
 });
 
 router.post('/', ensureAuthenticated, (req, res) => {
@@ -43,11 +38,8 @@ router.post('/', ensureAuthenticated, (req, res) => {
         .then(response => {
             if (response.length > 0) {
                 errors.push({ msg: 'Board already exists' });
-                fetch('http://localhost:3000/boards/' + created_by)
-                    .then(response => response.json())
-                    .then(response => {
-                        res.render('home', { username: created_by[0].toUpperCase() + created_by[1].toUpperCase(), errors, boards: response });
-                    });
+                res.render('home', { username: created_by, errors });
+
             } else {
                 const data = { title: name, created_by: created_by, created_at: date_, updated_at: date_ };
 
@@ -59,11 +51,8 @@ router.post('/', ensureAuthenticated, (req, res) => {
                     body: JSON.stringify(data),
                 });
 
-                fetch('http://localhost:3000/boards/' + created_by)
-                    .then(response => response.json())
-                    .then(response => {
-                        res.render('home', { username: created_by[0].toUpperCase() + created_by[1].toUpperCase(), boards: response });
-                    });
+                res.render('home', { username: created_by });
+
             }
         });
 });

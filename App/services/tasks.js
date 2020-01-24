@@ -20,7 +20,7 @@ exports.create_task = function(task, result) {
 };
 
 exports.update_task = (id, req, result) => {
-    var new_task = new User(req);
+    var new_task = new Task(req);
     Task.updateTask(id, new_task, (err, req) => result(req, err))
 };
 

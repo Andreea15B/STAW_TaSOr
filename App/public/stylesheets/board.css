@@ -116,6 +116,7 @@
     margin: 10px 10px;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
+    outline: none;
 }
 
 .button-add-task {
@@ -361,6 +362,7 @@
 }
 
 
+/* 
 .empty-Tasks {
     height: 100%;
     display: flex;
@@ -374,4 +376,23 @@
     font-style: oblique;
     color: #B3B3B3;
     margin-right: 12px;
+} */
+
+#to-do-card {
+    width: 100%;
+}
+
+.add-container {
+    width: 40%;
+}
+
+.button-add {
+    padding: 10px 10px;
+    margin: 10px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+}
+
+.container-div {
+    width: 100%;
 }
