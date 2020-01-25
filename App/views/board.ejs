@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/stylesheets/vanillaSelectBox.css">
 <div class="board-container">
     <div class="board-header-container">
         <button class="home-button" id="home-btn">
@@ -26,7 +27,8 @@
                 </div>
 
                 <div class="board-card-body">
-                    <div class="container-div" id="to-do-card" ondrop="drop(event,'to-do')" ondragover="allowDrop(event)">
+                    <div class="container-div" id="to-do-card" ondrop="drop(event,'to-do')"
+                        ondragover="allowDrop(event)">
 
                     </div>
                     <div class="container-div">
@@ -39,7 +41,8 @@
                 <div class="card-header-tasks">
                     <p>In progress</p>
                 </div>
-                <div class="board-card-body" id="in-progress-card" ondrop="drop(event,'in-progress')" ondragover="allowDrop(event)">
+                <div class="board-card-body" id="in-progress-card" ondrop="drop(event,'in-progress')"
+                    ondragover="allowDrop(event)">
 
                 </div>
             </div>
@@ -65,7 +68,8 @@
                             <form name="newTask-form" action="/task" method="POST" onsubmit="return validateForm()">
                                 <label for="field0">
                                     <span>Board</span>
-                                    <input type="text" name="board_to_add" id="board_value" readonly><br>
+                                    <input type="text" class="input-field" name="board_to_add" id="board_value"
+                                        readonly><br>
                                 </label>
                                 <script>
                                     var value_ = document.getElementById('board_value');
@@ -116,7 +120,77 @@
                         <h2>Edit task</h2>
                     </div>
                     <div class="modal-body">
+                        <div class="form-style-2">
+                            <form name="editTask-form" action="/task" method="POST" onsubmit="return validateForm()">
+                                <label for="field0">
+                                    <span>Board</span>
+                                    <input type="text" class="input-field" name="board_to_add" id="board_title"
+                                        readonly><br>
+                                </label>
+                                <script>
+                                    var value_ = document.getElementById('board_title');
+                                    var board = document.getElementById('board_name').innerText;
+                                    value_.value = board;
+                                </script>
+                                <label for="field1">
+                                    <span>Title <span class="required">*</span></span>
+                                    <input type="text" class="input-field" id="task-title" name="title" value="" />
+                                </label>
+                                <label for="field2">
+                                    <span>Deadline</span>
+                                    <input type="date" class="input-field" name="deadline" value="" />
+                                </label>
+                                <label for="field3">
+                                    <span>Domain</span>
+                                    <select class="input-field" name="domain" value="">
+                                        <option value=""></option>
+                                        <option value="Frontend">Frontend</option>
+                                        <option value="Backend">Backend</option>
+                                        <option value="Design">Design</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </label>
+                                <label for="field4">
+                                    <span>Region</span>
+                                    <input type="text" class="input-field" name="geographical_area" value="" />
+                                </label>
+                                <label for="field5">
+                                    <span>Image</span>
+                                    <input type="file" class="image-field" name="image" id="image" />
+                                </label>
+                                <label for="field6">
+                                    <span>Link</span>
+                                    <input type="url" class="input-field" name="url" id="url" />
+                                </label>
+                                <label for="field7">
+                                    <span>Assign users</span>
+                                    <select id="assigned-users" multiple size=3>
+                                        <!-- TODO get users -->
+                                        <option value=""></option>
+                                        <option>User nr1</option>
+                                        <option>User nr2</option>
+                                    </select>
+                                </label>
+                                <script src="/javascripts/vanillaSelectBox.js"></script>
+                                <script>
+                                    selectBox2 = new vanillaSelectBox("#assigned-users", { "maxHeight": 200, "search": true });
+                                </script>
 
+                                <label for="field8">
+                                    <span>Description</span>
+                                    <textarea name="description" class="textarea-field"></textarea>
+                                </label>
+
+                                <div class="form-buttons">
+                                    <label>
+                                        <input class="edit-task" id="edit-task-submit" type="submit" value="Save" />
+                                    </label>
+                                    <label>
+                                        <button class="delete-task" id="delete-task">Delete task</button>
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
 
 
                     </div>
