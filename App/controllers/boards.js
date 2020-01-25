@@ -28,5 +28,4 @@ exports.create_board = (req, res) => {
             res.json(board);
         });
     }
-
 };

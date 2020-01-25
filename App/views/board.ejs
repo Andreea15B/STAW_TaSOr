@@ -15,10 +15,38 @@
     <div class="main-content">
         <div class="members">
             <!-- TODO: Get members that are in the board -->
-            <p>Members:</p>
-            <div class="username-member">AB</div>
-            <div class="username-member">MB</div>
+            <div>
+                <p>Members:</p>
+                <div id="members-container">
+
+                </div>
+            </div>
+
+            <div>
+                <button class="myButton" id="add-button">+ Add member</button>
+            </div>
+            <div id="add-member-modal" class="modal">
+                <div class="modal-content">
+                    <div class="form">
+                        <form id="add-member-form">
+                            <div class="modal-title">
+                                <span class="title-create">Add member</span>
+                                <span class="closed">&times;</span>
+                            </div>
+                            <div class="input-container">
+                                <span class="label-content">Name</span>
+                                <div id="select-container"></div>
+                            </div>
+
+                            <div class="create-button">
+                                <button type="submit" class="button-content">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         <div class="board-cards">
             <div class="card-container" id="to-do-task">
@@ -27,8 +55,7 @@
                 </div>
 
                 <div class="board-card-body">
-                    <div class="container-div" id="to-do-card" ondrop="drop(event,'to-do')"
-                        ondragover="allowDrop(event)">
+                    <div class="container-div" id="to-do-card" ondrop="drop(event,'to-do')" ondragover="allowDrop(event)">
 
                     </div>
                     <div class="container-div">
@@ -41,8 +68,7 @@
                 <div class="card-header-tasks">
                     <p>In progress</p>
                 </div>
-                <div class="board-card-body" id="in-progress-card" ondrop="drop(event,'in-progress')"
-                    ondragover="allowDrop(event)">
+                <div class="board-card-body" id="in-progress-card" ondrop="drop(event,'in-progress')" ondragover="allowDrop(event)">
 
                 </div>
             </div>
@@ -173,7 +199,10 @@
                                 </label>
                                 <script src="/javascripts/vanillaSelectBox.js"></script>
                                 <script>
-                                    selectBox2 = new vanillaSelectBox("#assigned-users", { "maxHeight": 200, "search": true });
+                                    selectBox2 = new vanillaSelectBox("#assigned-users", {
+                                        "maxHeight": 200,
+                                        "search": true
+                                    });
                                 </script>
 
                                 <label for="field8">
@@ -191,12 +220,9 @@
                                 </div>
                             </form>
                         </div>
-
-
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -226,3 +252,5 @@
 <script src="/javascripts/added-tasks.js"></script>
 <script src="/javascripts/openmodal-task.js"></script>
 <script src="/javascripts/openmodal-editTask.js"></script>
+<script src="/javascripts/add-member-modal.js"></script>
+<script src="/javascripts/add-member.js"></script>

@@ -66,6 +66,12 @@
     margin-left: 47px;
     margin-top: 10px;
     display: flex;
+    justify-content: space-between;
+}
+
+#members-container {
+    display: flex;
+    flex-direction: row;
 }
 
 .board-cards {
