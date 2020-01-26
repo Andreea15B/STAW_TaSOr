@@ -81,7 +81,7 @@ function open_modal() {
 
     closeButton_edit.onclick = function() {
         modal_edit.style.display = "none";
-    }
+    };
 
     var saveButton = document.getElementById("edit-task-submit");
     saveButton.onclick = function(event) {
@@ -89,9 +89,9 @@ function open_modal() {
         title = event.target.form.elements[1].value;
         deadline = event.target.form.elements[2].value;
         domain = event.target.form.elements[3].value;
-        region = event.target.form.elements[4].value;
+        geographical_area = event.target.form.elements[4].value;
         description = event.target.form.elements[10].value;
-        var data = { title, deadline, domain, region, description };
+        var data = { title, deadline, domain, geographical_area, description };
         fetch("http://localhost:3000/tasks/" + taskId, {
             method: "PUT",
             headers: {
