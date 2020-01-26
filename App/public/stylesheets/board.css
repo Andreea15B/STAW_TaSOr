@@ -132,11 +132,11 @@
     outline: none;
 }
 
-.btn-task {
+/* .btn-task {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
+} */
 
 .dots-image {
     cursor: pointer;
@@ -175,6 +175,12 @@
     color: #fff;
     box-shadow: 1px 1px 4px #dadada;
     border-radius: 3px;
+}
+
+.share-task:hover {
+    background: rgb(28, 148, 228);
+    color: #fff;
+    cursor: pointer;
 }
 
 .header-url {
@@ -501,4 +507,10 @@
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
+}
+
+.form-style-2 .delete-task:hover {
+    background: rgb(212, 97, 79);
+    color: #fff;
+    cursor: pointer;
 }

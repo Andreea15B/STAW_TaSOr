@@ -93,7 +93,6 @@ Task.updateTask = function(id_task, task, result) {
         mm += "deadline = ?";
         values.push(task.deadline);
     }
-    console.log("Area: ", task.geographical_area);
     if (task.geographical_area != undefined) {
         if(flagIsFirst == 1) {
             flagIsFirst = 0;
@@ -111,9 +110,7 @@ Task.updateTask = function(id_task, task, result) {
         values.push(task.domain);
     }
     mm += " WHERE id_task = ?";
-    console.log(mm);
     values.push(id_task);
-    console.log("values: ", values);
 
     sql.query(mm, values, function(err, res) {
         if (err) {

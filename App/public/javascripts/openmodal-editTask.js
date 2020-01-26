@@ -67,6 +67,10 @@ function open_modal() {
         show.style.display = "none";
     }
 
+    closeButton_edit.onclick = function () {
+      modal_edit.style.display = "none";
+    };
+
     var saveButton = document.getElementById("edit-task-submit");
     saveButton.onclick = function(event) {
         event.preventDefault();

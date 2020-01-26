@@ -36,7 +36,6 @@ exports.read_task_by_status = function(req, res) {
 };
 
 exports.update_task = (req, res) => {
-    console.log("controller: ", req.body);
     taskService.update_task(req.params.id_task, req.body, (task, err) => {
         if (err) res.send(err);
         res.json(task);
