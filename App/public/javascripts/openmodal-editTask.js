@@ -42,6 +42,18 @@ function open_modal() {
                     taskDescriptionElement.value = response[0].description;
                 });
 
+            var images_tasks = 'http://localhost:3000/images/' + taskId;
+            var images_container = document.getElementById('image-task-container');
+            fetch(images_tasks)
+                .then(response => response.json())
+                .then(response => {
+                    var image_res = response[0].image;
+                    var blob = new Blob(image_res.data, { type: image_res.type });
+                    var image = document.createElement('img');
+                    image.src = window.URL.createObjectURL(blob);
+                    images_container.appendChild(image);
+                });
+
             function makeid(length) {
                 var result = '';
                 var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -65,6 +77,10 @@ function open_modal() {
 
     close_url.onclick = function() {
         show.style.display = "none";
+    }
+
+    closeButton_edit.onclick = function() {
+        modal_edit.style.display = "none";
     }
 
     var saveButton = document.getElementById("edit-task-submit");
