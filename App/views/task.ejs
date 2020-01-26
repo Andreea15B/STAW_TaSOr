@@ -1,3 +1,50 @@
-<div>
-    <%- task.title %>
+<div class="public-task-container">
+    <div class="public-task-content">
+        <div class="public-title-container">
+            <h3>
+                <%- task.title %>
+            </h3>
+        </div>
+
+        <div class="public-status-container">
+            <span class="public-field">Status:</span>
+            <%- task.status %>
+        </div>
+
+        <div class="public-description-container">
+            <span class="public-field">Description :</span><br />
+            <% if (task.description == "") { %>
+                <p class="empty-field">No description</p>
+                <% } %>
+
+                    <% if (task.description != "") { %>
+                        <%- task.description %>
+                            <% } %>
+
+        </div>
+
+        <div class="public-domain-container">
+            <span class="public-field">Domain :</span><br />
+            <% if (task.domain == "") { %>
+                <p class="empty-field">No domain</p>
+                <% } %>
+
+                    <% if (task.domain!= "") { %>
+                        <%- task.domain %>
+                            <% } %>
+        </div>
+
+        <div class="public-deadline-container">
+            <span class="public-field">Deadline :</span><br />
+            <% if (task.deadline == "0000-00-00") { %>
+                <p class="empty-field">No deadline</p>
+                <% } %>
+
+                    <% if (task.domain != "0000-00-00") { %>
+                        <%- task.domain %>
+                            <% } %>
+        </div>
+    </div>
+
+
 </div>

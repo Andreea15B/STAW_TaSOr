@@ -1,0 +1,27 @@
+.public-task-container {
+    background-image: linear-gradient(45deg, #1a8065 25%, #afe6ce 25%, #afe6ce 50%, #1a8065 50%, #1a8065 75%, #afe6ce 75%, #afe6ce 100%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.public-task-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 40%;
+    height: 400px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.empty-field {
+    font-style: oblique;
+}
+
+.public-field {
+    font-weight: bold;
+}
