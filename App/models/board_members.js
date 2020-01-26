@@ -28,4 +28,15 @@ BoardMembers.get_all_users = (name, result) => {
         }
     });
 };
+
+BoardMembers.get_board_for_user = (username, result) => {
+    sql.query("SELECT *  FROM boards WHERE title in (SELECT board_name FROM boards_members  WHERE username = ? )", username, (error, res) => {
+        if (error) {
+            result(error, null);
+        } else {
+            result(null, res);
+        }
+    });
+};
+
 module.exports = BoardMembers;

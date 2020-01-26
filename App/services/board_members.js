@@ -10,3 +10,7 @@ exports.createBoard = (newBoard, result) => {
 exports.getAllUsersForBoard = (name, result) => {
     BoardMember.get_all_users(name, (error, request) => result(request, error));
 }
+
+exports.get_boards = (username, result) => {
+    BoardMember.get_board_for_user(username, (error, request) => result(request, error));
+}

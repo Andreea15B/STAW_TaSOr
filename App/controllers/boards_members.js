@@ -15,3 +15,10 @@ exports.get_users = (req, res) => {
         res.json(board);
     });
 };
+
+exports.get_belong_board = (req, res) => {
+    boardsService.get_boards(req.params.username, (board, err) => {
+        if (err) res.send(err);
+        res.json(board);
+    });
+};

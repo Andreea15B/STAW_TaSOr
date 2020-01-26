@@ -1,26 +1,26 @@
-var container = document.getElementById('board-created');
+var container_belong = document.getElementById('board-belong');
 var username = document.getElementById('username').innerText;
 
-var api_boards = 'http://localhost:3000/boards/' + username;
-
+var api_boards = 'http://localhost:3000/boards_get/' + username;
+var boards = []
 fetch(api_boards)
     .then(response => response.json())
     .then(response => {
         if (response.length == 0) {
-            var div_ = document.createElement('div');
+            var div1 = document.createElement('div');
             var image = document.createElement('img');
             image.src = "/images/img_519534.png";
             image.setAttribute('width', '20px');
             image.setAttribute('heigth', '30px');
             image.style.filter = 'opacity(50%)';
-            div_.appendChild(image);
+            div1.appendChild(image);
 
             var p = document.createElement('p');
             p.innerHTML = "No boards here";
             p.style.fontFamily = 'oblic';
-            div_.appendChild(p);
+            div1.appendChild(p);
 
-            container.appendChild(div_);
+            container_belong.appendChild(div1);
 
         } else {
             response.forEach(element => {
@@ -31,14 +31,7 @@ fetch(api_boards)
                 div_.addEventListener('click', function(ev) {
                     redirect_page(ev);
                 }, false)
-                container.appendChild(div_);
+                container_belong.appendChild(div_);
             });
         }
-
-
     });
-
-function redirect_page(event) {
-    var board_name = event.target.innerText;
-    window.location.href = "http://localhost:3000/board/" + board_name;
-}
