@@ -60,7 +60,6 @@ function open_modal() {
     region = event.target.form.elements[4].value;
     description = event.target.form.elements[10].value;
     var data = {title, deadline, domain, region, description};
-    console.log("taskId: ", taskId);
     fetch("http://localhost:3000/tasks/" + taskId, {
       method: "PUT",
       headers: {
