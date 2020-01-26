@@ -22,24 +22,15 @@ function formatDate(date) {
     return [date_, hours].join(' ');
 }
 
-function makeid(length) {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-
-// router.get('/task', (req, res) => res.render('tasks'));
-
 router.get('/:name', (req, res) => {
-    console.log(makeid(16));
+    var id = req.params.name;
+    var send_ = id.slice(16);
 
-    var id = makeid(16) + req.params.name;
-    var send_ = id.slice(16)
-    res.render('task', { id: send_ })
+    fetch('http://localhost:3000/tasks/' + send_)
+        .then(response => response.json())
+        .then(response => {
+            res.render('task', { task: response[0] })
+        });
 });
 
 router.post('/', ensureAuthenticated, (req, res) => {
@@ -47,7 +38,6 @@ router.post('/', ensureAuthenticated, (req, res) => {
 
     if (!deadline) deadline = '0000-00-00';
     var date_ = formatDate(Date.now());
-    const initiale = req.session.username;
 
     try {
         const data = { title, status, created_at: date_, deadline, description, domain, geographical_area, name_board: board_to_add };
@@ -60,7 +50,8 @@ router.post('/', ensureAuthenticated, (req, res) => {
         });
         res.redirect('/board/' + board_to_add);
     } catch {
-        console.log("errors");
+        console.log("errors on post for task");
     }
 });
+
 module.exports = router;
