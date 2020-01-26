@@ -40,7 +40,6 @@ router.post('/', ensureAuthenticated, (req, res) => {
                 res.render('home', { username: created_by, errors });
             } else {
                 const data = { title: name, created_by: created_by, created_at: date_, updated_at: date_ };
-
                 fetch('http://localhost:3000/boards/', {
                     method: 'POST',
                     headers: {
@@ -48,9 +47,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
                     },
                     body: JSON.stringify(data),
                 });
-
                 res.render('home', { username: created_by });
-
             }
         });
 });

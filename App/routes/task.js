@@ -27,7 +27,6 @@ router.post('/', (req, res) => {
 
     if (!deadline) deadline = '0000-00-00';
     var date_ = formatDate(Date.now());
-    const initiale = req.session.username;
 
     try {
         const data = { title, status, created_at: date_, deadline, description, domain, geographical_area, name_board: board_to_add };
@@ -40,7 +39,8 @@ router.post('/', (req, res) => {
         });
         res.redirect('/board/' + board_to_add);
     } catch {
-        console.log("errors");
+        console.log("errors on post for task");
     }
 });
+
 module.exports = router;

@@ -58,6 +58,7 @@ Task.getAllTasks = function(result) {
 };
 
 Task.updateTask = function(id_task, task, result) {
+    //  TODO add update description, deadline, region, domain 
     var mm;
     var values = [];
     if (task.title != undefined && task.status != undefined) {
