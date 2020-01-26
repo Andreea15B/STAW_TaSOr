@@ -52,8 +52,15 @@ function open_modal() {
   };
 
   var saveButton = document.getElementById("edit-task-submit");
-  saveButton.onclick = function () {
-    // TODO put data
+  saveButton.onclick = function (event) {
+    event.preventDefault();
+    title = event.target.form.elements[1].value;
+    deadline = event.target.form.elements[2].value;
+    domain = event.target.form.elements[3].value;
+    region = event.target.form.elements[4].value;
+    description = event.target.form.elements[10].value;
+    var data = {title, deadline, domain, region, description};
+    console.log("taskId: ", taskId);
     fetch("http://localhost:3000/tasks/" + taskId, {
       method: "PUT",
       headers: {
@@ -61,6 +68,8 @@ function open_modal() {
       },
       body: JSON.stringify(data)
     });
+    modal_edit.style.display = "none";
+    location.reload();
   }
 }
 
