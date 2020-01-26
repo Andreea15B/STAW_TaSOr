@@ -8,12 +8,11 @@ module.exports = function(app) {
         .post(tasks.create_a_task);
 
     app.route('/tasks/:id_task')
-        .put(tasks.update_task)
-
+        .put(tasks.update_task);
 
     app.route('/tasks/:board_name/:status')
         .get(tasks.read_task_by_status);
 
-    app.route('/tasks/:board_name/:id_task')
-        .get(tasks.read_task)
+    app.route('/tasks/:id_task')
+        .get(tasks.read_task);
 };

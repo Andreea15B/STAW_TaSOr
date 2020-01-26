@@ -91,7 +91,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-style-2">
-                            <form name="newTask-form" action="/task" method="POST" onsubmit="return validateForm()">
+                            <form name="newTask-form" action="/task" method="POST" onsubmit="return validateFormCreate()">
                                 <label for="field0">
                                     <span>Board</span>
                                     <input type="text" class="input-field" name="board_to_add" id="board_value"
@@ -147,7 +147,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-style-2">
-                            <form name="editTask-form" action="/task" method="POST" onsubmit="return validateForm()">
+                            <form name="editTask-form" onsubmit="return validateFormEdit()">
                                 <label for="field0">
                                     <span>Board</span>
                                     <input type="text" class="input-field" name="board_to_add" id="board_title"
@@ -160,15 +160,15 @@
                                 </script>
                                 <label for="field1">
                                     <span>Title <span class="required">*</span></span>
-                                    <input type="text" class="input-field" id="task-title" name="title" value="" />
+                                    <input type="text" class="input-field" id="edit-task-title" name="title" value="" />
                                 </label>
                                 <label for="field2">
                                     <span>Deadline</span>
-                                    <input type="date" class="input-field" name="deadline" value="" />
+                                    <input type="date" class="input-field" id="edit-task-deadline" name="deadline" value="" />
                                 </label>
                                 <label for="field3">
                                     <span>Domain</span>
-                                    <select class="input-field" name="domain" value="">
+                                    <select class="input-field" id="edit-task-domain" name="domain" value="">
                                         <option value=""></option>
                                         <option value="Frontend">Frontend</option>
                                         <option value="Backend">Backend</option>
@@ -178,15 +178,15 @@
                                 </label>
                                 <label for="field4">
                                     <span>Region</span>
-                                    <input type="text" class="input-field" name="geographical_area" value="" />
+                                    <input type="text" class="input-field" id="edit-task-region" name="geographical_area" value="" />
                                 </label>
                                 <label for="field5">
                                     <span>Image</span>
-                                    <input type="file" class="image-field" name="image" id="image" />
+                                    <input type="file" class="image-field" id="edit-task-image" name="image" id="image" />
                                 </label>
                                 <label for="field6">
                                     <span>Link</span>
-                                    <input type="url" class="input-field" name="url" id="url" />
+                                    <input type="url" class="input-field" id="edit-task-link" name="url" id="url" />
                                 </label>
                                 <label for="field7">
                                     <span>Assign users</span>
@@ -207,7 +207,7 @@
 
                                 <label for="field8">
                                     <span>Description</span>
-                                    <textarea name="description" class="textarea-field"></textarea>
+                                    <textarea name="description" id="edit-task-description" class="textarea-field"></textarea>
                                 </label>
 
                                 <div class="form-buttons">
