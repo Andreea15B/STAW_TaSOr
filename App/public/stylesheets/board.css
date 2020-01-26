@@ -125,6 +125,46 @@
     outline: none;
 }
 
+.btn-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dots-image {
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 100px;
+    height: 100px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1;
+    left: 63%;
+    top: 31%;
+}
+
+#show-url-container {
+    /* display: none; */
+}
+
+.menu-item {
+    height: 30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.menu-item:hover {
+    background-color: #ddd;
+}
+
 .button-add-task {
     background-color: #D85A47;
 }
@@ -148,7 +188,7 @@
     position: fixed;
     z-index: 1;
     /* Sit on top */
-    padding-top: 100px;
+    padding-top: 50px;
     left: 0;
     top: 0;
     width: 100%;

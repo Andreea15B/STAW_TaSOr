@@ -71,6 +71,11 @@
                 <div class="board-card-body" id="in-progress-card" ondrop="drop(event,'in-progress')" ondragover="allowDrop(event)">
 
                 </div>
+                <div id="menu-dots" class="dropdown-content">
+                    <a class="menu-item">Edit</a>
+                    <a class="menu-item">Delete</a>
+                    <a class="menu-item">Share</a>
+                </div>
             </div>
 
             <div class="card-container" id="done-task">
@@ -138,6 +143,14 @@
                 </div>
             </div>
 
+            <div id="show-url-container" class="modal-editTask">
+                Your url is:
+                <div id="">
+
+                </div>
+            </div>
+
+
             <!-- EditTask Modal -->
             <div id="modal-editTask" class="modal-editTask">
                 <div class="modal-content">
@@ -160,7 +173,7 @@
                                 </script>
                                 <label for="field1">
                                     <span>Title <span class="required">*</span></span>
-                                    <input type="text" class="input-field" id="task-title" name="title" value="" />
+                                    <input type="text" class="input-field" id="task-title-edit" name="title" value="" />
                                 </label>
                                 <label for="field2">
                                     <span>Deadline</span>
@@ -217,6 +230,9 @@
                                     <label>
                                         <button class="delete-task" id="delete-task">Delete task</button>
                                     </label>
+                                    <label>
+                                        <button class="share-task" id="share-task">Share task</button>
+                                    </label>
                                 </div>
                             </form>
                         </div>
@@ -248,9 +264,12 @@
     </div>
 </div>
 
+
 <script src="/javascripts/board-buttons.js"></script>
 <script src="/javascripts/added-tasks.js"></script>
+<script src="/javascripts/open-menu.js"></script>
 <script src="/javascripts/openmodal-task.js"></script>
 <script src="/javascripts/openmodal-editTask.js"></script>
 <script src="/javascripts/add-member-modal.js"></script>
 <script src="/javascripts/add-member.js"></script>
+<script src="/javascripts/share-task.js"></script>

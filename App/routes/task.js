@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var fetch = require("node-fetch");
+var { ensureAuthenticated } = require('../middleware/auth');
+
 
 function formatDate(date) {
     var d = new Date(date),
@@ -20,9 +22,27 @@ function formatDate(date) {
     return [date_, hours].join(' ');
 }
 
-router.get('/task', (req, res) => res.render('tasks'));
+function makeid(length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
 
-router.post('/', (req, res) => {
+// router.get('/task', (req, res) => res.render('tasks'));
+
+router.get('/:name', (req, res) => {
+    console.log(makeid(16));
+
+    var id = makeid(16) + req.params.name;
+    var send_ = id.slice(16)
+    res.render('task', { id: send_ })
+});
+
+router.post('/', ensureAuthenticated, (req, res) => {
     let { board_to_add, title, status, deadline, description, domain, geographical_area } = req.body;
 
     if (!deadline) deadline = '0000-00-00';

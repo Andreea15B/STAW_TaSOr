@@ -134,12 +134,20 @@
     position: relative;
 }
 
-.empty-state {
+#empty-state-boards {
     height: 100%;
-    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    display: none;
+}
+
+.empty-state {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
 }
 
 .image-empty {
