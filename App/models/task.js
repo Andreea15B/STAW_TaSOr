@@ -93,13 +93,14 @@ Task.updateTask = function(id_task, task, result) {
         mm += "deadline = ?";
         values.push(task.deadline);
     }
-    if (task.region != undefined) {
+    console.log("Area: ", task.geographical_area);
+    if (task.geographical_area != undefined) {
         if(flagIsFirst == 1) {
             flagIsFirst = 0;
         }
         else mm += ", ";
-        mm += "region = ?";
-        values.push(task.region);
+        mm += "geographical_area = ?";
+        values.push(task.geographical_area);
     }
     if (task.domain != undefined) {
         if(flagIsFirst == 1) {
@@ -109,8 +110,10 @@ Task.updateTask = function(id_task, task, result) {
         mm += "domain = ?";
         values.push(task.domain);
     }
-    mm += " WHERE id_task = ?;";
-    values.push(task.id_task);
+    mm += " WHERE id_task = ?";
+    console.log(mm);
+    values.push(id_task);
+    console.log("values: ", values);
 
     sql.query(mm, values, function(err, res) {
         if (err) {
