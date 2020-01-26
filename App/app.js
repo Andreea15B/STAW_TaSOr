@@ -46,3 +46,5 @@ var routes_tasks = require('./api/tasks');
 routes_tasks(app);
 var routes_members = require('./api/board_members');
 routes_members(app);
+var routes_images = require('./api/images');
+routes_images(app);

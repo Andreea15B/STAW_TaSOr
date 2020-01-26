@@ -44,8 +44,12 @@
                     <p>Boards created by you</p>
                 </div>
                 <div class="card-body" id="board-created">
-                    <script src="/javascripts/add-board.js"></script>
+                    <div id="empty-state-boards">
+                        <img class="image-empty" src="/images/img_519534.png">
+                        <p class="empty-text">No boards here</p>
+                    </div>
                 </div>
+                <script src="/javascripts/add-board.js"></script>
             </div>
 
             <div class="boards-container">
@@ -54,6 +58,10 @@
                     <p>Boards you belong to</p>
                 </div>
                 <div class="card-body" id="board-belong">
+                    <div id="empty-state-boards-belong">
+                        <img class="image-empty" src="/images/img_519534.png">
+                        <p class="empty-text">No boards here</p>
+                    </div>
                     <script src="/javascripts/belong-board.js"></script>
                 </div>
             </div>

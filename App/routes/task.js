@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var fetch = require("node-fetch");
+var { ensureAuthenticated } = require('../middleware/auth');
+
 
 function formatDate(date) {
     var d = new Date(date),
@@ -20,9 +22,18 @@ function formatDate(date) {
     return [date_, hours].join(' ');
 }
 
-router.get('/task', (req, res) => res.render('tasks'));
+router.get('/:name', (req, res) => {
+    var id = req.params.name;
+    var send_ = id.slice(16);
 
-router.post('/', (req, res) => {
+    fetch('http://localhost:3000/tasks/' + send_)
+        .then(response => response.json())
+        .then(response => {
+            res.render('task', { task: response[0] })
+        });
+});
+
+router.post('/', ensureAuthenticated, (req, res) => {
     let { board_to_add, title, status, deadline, description, domain, geographical_area } = req.body;
 
     if (!deadline) deadline = '0000-00-00';

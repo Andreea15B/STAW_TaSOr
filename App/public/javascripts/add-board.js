@@ -1,5 +1,6 @@
 var container = document.getElementById('board-created');
 var username = document.getElementById('username').innerText;
+var empty_state = document.getElementById('empty-state-boards');
 
 var api_boards = 'http://localhost:3000/boards/' + username;
 
@@ -7,21 +8,9 @@ fetch(api_boards)
     .then(response => response.json())
     .then(response => {
         if (response.length == 0) {
-            var div_ = document.createElement('div');
-            var image = document.createElement('img');
-            image.src = "/images/img_519534.png";
-            image.setAttribute('width', '20px');
-            image.setAttribute('heigth', '30px');
-            image.style.filter = 'opacity(50%)';
-            div_.appendChild(image);
 
-            var p = document.createElement('p');
-            p.innerHTML = "No boards here";
-            p.style.fontFamily = 'oblic';
-            div_.appendChild(p);
 
-            container.appendChild(div_);
-
+            empty_state.style.display = "flex";
         } else {
             response.forEach(element => {
                 var div_ = document.createElement('div');
@@ -33,6 +22,7 @@ fetch(api_boards)
                 }, false)
                 container.appendChild(div_);
             });
+
         }
 
 

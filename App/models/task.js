@@ -58,21 +58,59 @@ Task.getAllTasks = function(result) {
 };
 
 Task.updateTask = function(id_task, task, result) {
-    //  TODO add update description, deadline, region, domain 
-    var mm;
+    var flagIsFirst = 1;
     var values = [];
-    if (task.title != undefined && task.status != undefined) {
-        values.push(task.title, task.status, id_task);
-        mm = "UPDATE tasks SET title = ?, status = ? WHERE id_task = ?";
+    var mm = "UPDATE tasks SET ";
+    if (task.title != undefined) {
+        if(flagIsFirst == 1) {
+            flagIsFirst = 0;
+        }
+        else mm += ", ";
+        mm += "title = ?";
+        values.push(task.title);
     }
-    if (task.title != undefined && task.status == undefined) {
-        values.push(task.title, id_task);
-        mm = "UPDATE tasks SET title = ? WHERE id_task = ?";
+    if (task.status != undefined) {
+        if(flagIsFirst == 1) {
+            flagIsFirst = 0;
+        }
+        else mm += ", ";
+        mm += "status = ?";
+        values.push(task.status);
     }
-    if (task.title == undefined && task.status != undefined) {
-        values.push(task.status, id_task);
-        mm = "UPDATE tasks SET status = ? WHERE id_task = ?";
+    if (task.description != undefined) {
+        if(flagIsFirst == 1) {
+            flagIsFirst = 0;
+        }
+        else mm += ", ";
+        mm += "description = ?";
+        values.push(task.description);
     }
+    if (task.deadline != undefined) {
+        if(flagIsFirst == 1) {
+            flagIsFirst = 0;
+        }
+        else mm += ", ";
+        mm += "deadline = ?";
+        values.push(task.deadline);
+    }
+    if (task.geographical_area != undefined) {
+        if(flagIsFirst == 1) {
+            flagIsFirst = 0;
+        }
+        else mm += ", ";
+        mm += "geographical_area = ?";
+        values.push(task.geographical_area);
+    }
+    if (task.domain != undefined) {
+        if(flagIsFirst == 1) {
+            flagIsFirst = 0;
+        }
+        else mm += ", ";
+        mm += "domain = ?";
+        values.push(task.domain);
+    }
+    mm += " WHERE id_task = ?";
+    values.push(id_task);
 
     sql.query(mm, values, function(err, res) {
         if (err) {

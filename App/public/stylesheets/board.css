@@ -132,6 +132,84 @@
     outline: none;
 }
 
+/* .btn-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} */
+
+.dots-image {
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 100px;
+    height: 100px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1;
+    left: 63%;
+    top: 31%;
+}
+
+#show-url-container {
+    display: none;
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    width: 300px;
+    height: 100px;
+    color: white;
+    background-image: linear-gradient(-90deg, #045643, #20a882);
+}
+
+.share-task {
+    border: none;
+    padding: 8px 15px 8px 15px;
+    background: #008ae6;
+    color: #fff;
+    box-shadow: 1px 1px 4px #dadada;
+    border-radius: 3px;
+}
+
+.share-task:hover {
+    background: rgb(28, 148, 228);
+    color: #fff;
+    cursor: pointer;
+}
+
+.header-url {
+    height: 30px;
+    padding-left: 4px;
+    padding-right: 4px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+#content-url {
+    word-wrap: break-word;
+    font-size: 16px;
+    border-top: 2px solid white;
+}
+
+.menu-item {
+    height: 30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.menu-item:hover {
+    background-color: #ddd;
+}
+
 .button-add-task {
     background-color: #D85A47;
 }
@@ -155,7 +233,7 @@
     position: fixed;
     z-index: 1;
     /* Sit on top */
-    padding-top: 100px;
+    padding-top: 50px;
     left: 0;
     top: 0;
     width: 100%;
@@ -203,7 +281,8 @@
 }
 
 #close,
-#close-edit {
+#close-edit,
+.close-url {
     color: white;
     float: right;
     font-size: 28px;
@@ -213,7 +292,9 @@
 #close:hover,
 #close:focus,
 #close-edit:hover,
-#close-edit:focus {
+#close-edit:focus,
+.close-url:hover,
+.close-url:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -426,4 +507,10 @@
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
+}
+
+.form-style-2 .delete-task:hover {
+    background: rgb(212, 97, 79);
+    color: #fff;
+    cursor: pointer;
 }
