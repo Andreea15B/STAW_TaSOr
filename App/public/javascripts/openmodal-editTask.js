@@ -2,6 +2,9 @@ function open_modal() {
     var modal_edit = document.getElementById("modal-editTask");
     var closeButton_edit = document.getElementById("close-edit");
     var taskButtons = document.getElementsByClassName("btn-task");
+    var dotsButtons = document.getElementsByClassName("fa");
+    var menuDots = document.getElementById("menu-dots");
+    var editButtons = document.getElementsByClassName("menu-edit");
     var close_url = document.getElementById("close-url");
 
     var button = document.getElementById('share-task');
@@ -22,8 +25,21 @@ function open_modal() {
         return [year, month, day].join('-');
     }
 
-    for (var i = 0; i < taskButtons.length; i++) {
-        taskButtons[i].onclick = function(event) {
+    for (var i = 0; i < dotsButtons.length; i++) {
+        dotsButtons[i].onclick = function(event) {
+            menuDots.style.display = "flex";
+        }
+    }
+
+    // close the menu when clicking anywhere else -- NOT WORKING
+    window.onclick = function(event) {
+        if (event.target == menuDots) {
+            menuDots.style.display = "none";
+        }
+    };
+
+    for (var i = 0; i < editButtons.length; i++) {
+        editButtons[i].onclick = function(event) {
             taskId = event.toElement.id;
             modal_edit.style.display = "block";
             var api_tasks = 'http://localhost:3000/tasks/' + taskId;

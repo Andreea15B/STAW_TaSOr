@@ -1,16 +1,15 @@
-var container = document.getElementById('board-created');
+var container_belong = document.getElementById('board-belong');
 var username = document.getElementById('username').innerText;
-var empty_state = document.getElementById('empty-state-boards');
+var empty_state_belong = document.getElementById('empty-state-boards-belong');
 
-var api_boards = 'http://localhost:3000/boards/' + username;
-
+var api_boards = 'http://localhost:3000/boards_get/' + username;
+var boards = []
 fetch(api_boards)
     .then(response => response.json())
     .then(response => {
         if (response.length == 0) {
+            empty_state_belong.style.display = "flex";
 
-
-            empty_state.style.display = "flex";
         } else {
             response.forEach(element => {
                 var div_ = document.createElement('div');
@@ -20,15 +19,7 @@ fetch(api_boards)
                 div_.addEventListener('click', function(ev) {
                     redirect_page(ev);
                 }, false)
-                container.appendChild(div_);
+                container_belong.appendChild(div_);
             });
-
         }
-
-
     });
-
-function redirect_page(event) {
-    var board_name = event.target.innerText;
-    window.location.href = "http://localhost:3000/board/" + board_name;
-}

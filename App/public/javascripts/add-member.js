@@ -3,6 +3,7 @@ var board_name = document.getElementById('board_name').innerText;
 //Create array of options to be added
 var array = [];
 var board_members = [];
+
 fetch('http://localhost:3000/boards_members/' + board_name)
     .then(response => response.json())
     .then(response => {

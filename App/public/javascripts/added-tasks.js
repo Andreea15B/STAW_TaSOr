@@ -29,23 +29,12 @@ fetch(api_tasks + '/in-progress')
     .then(response => {
         response.forEach(element => {
             var div_ = document.createElement('button');
-            // var span_title = document.createElement('span');
-            // span_title.innerHTML = element.title;
-            // div_.appendChild(span_title);
-
-            // var div_empty = document.createElement('div');
-            // div_empty.setAttribute('class', 'dots-image')
-
-            // var image = document.createElement("IMG");
-            // image.setAttribute('src', '/images/3_dots.png');
-            // image.setAttribute('width', '3px');
-            // image.setAttribute('heigth', '5px');
-            // image.setAttribute('class', 'dots-image-style');
-
-            // div_empty.appendChild(image);
-            // div_.appendChild(div_empty)
+            var divDotsIcon = document.createElement('i');
+            divDotsIcon.setAttribute('class', 'fa');
+            divDotsIcon.innerHTML = "&#xf142"; // the 3 dots unicode
             div_.innerHTML = element.title;
-            div_.setAttribute('id', element.id_task)
+            div_.appendChild(divDotsIcon);
+            div_.setAttribute('id', element.id_task);
             div_.setAttribute('class', 'btn-task');
             div_.setAttribute('draggable', true);
             div_.addEventListener("dragstart", function(ev) {
