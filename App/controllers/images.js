@@ -5,21 +5,35 @@ var fs = require("fs");
 
 
 exports.assign_image = (req, res) => {
-    var image = fs.readFileSync(req.body.image);
+    var image_ = 'C:/Users/maria/Desktop/' + req.body.image.replace(/^.*\\/, "");
     var id_task = req.body.id_task;
+    var image = fs.readFileSync(image_);
+    console.log('post');
 
-    imageService.assign_image({ id_task, image }, (req, err) => {
+    var data = { id_task, image };
+    imageService.assign_image(data, (req, err) => {
         if (err)
             res.send(err);
         res.json(req);
+        res.end();
     });
 };
 
 exports.update_image = (req, res) => {
-    imageService.update_image(req.params, (req, err) => {
-        if (err)
+    var image_ = 'C:/Users/maria/Desktop/' + req.body.image.replace(/^.*\\/, "");
+    var id_task = req.body.id_task;
+    var image = fs.readFileSync(image_);
+
+    console.log('update');
+
+    imageService.update_image({ id_task, image }, (req, err) => {
+        if (err) {
             res.send(err);
-        res.json(req);
+        } else {
+            res.json(req);
+        }
+
+        res.end();
     });
 };
 

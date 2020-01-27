@@ -2,10 +2,8 @@ function open_modal() {
     var modal_edit = document.getElementById("modal-editTask");
     var closeButton_edit = document.getElementById("close-edit");
     var taskButtons = document.getElementsByClassName("btn-task");
-    var dotsButtons = document.getElementsByClassName("fa");
-    var menuDots = document.getElementById("menu-dots");
-    var editButtons = document.getElementsByClassName("menu-edit");
     var close_url = document.getElementById("close-url");
+    var images_container = document.getElementById('image-task-container');
 
     var button = document.getElementById('share-task');
     var show = document.getElementById('show-url-container');
@@ -25,21 +23,8 @@ function open_modal() {
         return [year, month, day].join('-');
     }
 
-    for (var i = 0; i < dotsButtons.length; i++) {
-        dotsButtons[i].onclick = function(event) {
-            menuDots.style.display = "flex";
-        }
-    }
-
-    // close the menu when clicking anywhere else -- NOT WORKING
-    window.onclick = function(event) {
-        if (event.target == menuDots) {
-            menuDots.style.display = "none";
-        }
-    };
-
-    for (var i = 0; i < editButtons.length; i++) {
-        editButtons[i].onclick = function(event) {
+    for (var i = 0; i < taskButtons.length; i++) {
+        taskButtons[i].onclick = function(event) {
             taskId = event.toElement.id;
             modal_edit.style.display = "block";
             var api_tasks = 'http://localhost:3000/tasks/' + taskId;
@@ -59,19 +44,24 @@ function open_modal() {
                 });
 
             var images_tasks = 'http://localhost:3000/images/' + taskId;
-            var images_container = document.getElementById('image-task-container');
-            fetch(images_tasks)
-                .then(response => response.json())
-                .then(response => {
-                    var image_res = response[0].image;
-                    var arrayBufferView = new Uint8Array(image_res.data);
-                    var blob = new Blob([arrayBufferView], { type: "image/jpeg" })
-                    var image = new Image();
-                    image.src = window.URL.createObjectURL(blob);
-                    image.style.width = '40px';
-                    image.style.height = '40px';
-                    images_container.appendChild(image);
-                });
+            if (images_container.childNodes.length == 1) {
+                fetch(images_tasks)
+                    .then(response => response.json())
+                    .then(response => {
+                        if (response.length > 0) {
+                            var image_res = response[0].image;
+                            var arrayBufferView = new Uint8Array(image_res.data);
+                            var blob = new Blob([arrayBufferView], { type: "image/jpeg" })
+                            var image = new Image();
+                            image.src = window.URL.createObjectURL(blob);
+                            image.style.width = '40px';
+                            image.style.height = '40px';
+                            image.setAttribute('class', 'image-task');
+                            images_container.appendChild(image);
+                        }
+
+                    });
+            }
 
             function makeid(length) {
                 var result = '';
@@ -118,9 +108,39 @@ function open_modal() {
             },
             body: JSON.stringify(data)
         });
+
+        var image = event.target.form.elements[5].value;
+        var data = {
+            id_task: taskId,
+            image
+        };
+
+        if (images_container.childNodes.length == 1) {
+            fetch("http://localhost:3000/images", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+        } else {
+            fetch("http://localhost:3000/images", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+        }
+
+
+
+
+
         modal_edit.style.display = "none";
         location.reload();
     }
+
 }
 
 window.onload = function() {

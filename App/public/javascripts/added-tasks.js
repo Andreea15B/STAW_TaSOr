@@ -29,12 +29,8 @@ fetch(api_tasks + '/in-progress')
     .then(response => {
         response.forEach(element => {
             var div_ = document.createElement('button');
-            var divDotsIcon = document.createElement('i');
-            divDotsIcon.setAttribute('class', 'fa');
-            divDotsIcon.innerHTML = "&#xf142"; // the 3 dots unicode
             div_.innerHTML = element.title;
-            div_.appendChild(divDotsIcon);
-            div_.setAttribute('id', element.id_task);
+            div_.setAttribute('id', element.id_task)
             div_.setAttribute('class', 'btn-task');
             div_.setAttribute('draggable', true);
             div_.addEventListener("dragstart", function(ev) {

@@ -95,6 +95,10 @@
     background-color: white;
 }
 
+.image-task:hover {
+    transform: scale(4.5);
+}
+
 .card-header-tasks {
     background-color: #44c19e;
     height: 5vh;
@@ -132,12 +136,6 @@
     background: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     outline: none;
-}
-
-.fa {
-    font-size: 16px;
-    cursor: pointer;
-    padding: 2px 10px;
 }
 
 .dropdown-content {
@@ -195,22 +193,6 @@
     word-wrap: break-word;
     font-size: 16px;
     border-top: 2px solid white;
-}
-
-.menu-edit,
-.menu-delete,
-.menu-share {
-    height: 30px;
-    padding-top: 10px;
-    padding-left: 10px;
-    width: 100%;
-}
-
-.menu-edit:hover,
-.menu-delete:hover,
-.menu-share:hover {
-    background-color: #ddd;
-    cursor: pointer;
 }
 
 .button-add-task {
