@@ -48,3 +48,5 @@ var routes_members = require('./api/board_members');
 routes_members(app);
 var routes_images = require('./api/images');
 routes_images(app);
+var routes_history = require('./api/history');
+routes_history(app);
