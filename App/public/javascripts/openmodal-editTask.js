@@ -48,9 +48,12 @@ function open_modal() {
                 .then(response => response.json())
                 .then(response => {
                     var image_res = response[0].image;
-                    var blob = new Blob(image_res.data, { type: image_res.type });
-                    var image = document.createElement('img');
+                    var arrayBufferView = new Uint8Array(image_res.data);
+                    var blob = new Blob([arrayBufferView], { type: "image/jpeg" })
+                    var image = new Image();
                     image.src = window.URL.createObjectURL(blob);
+                    image.style.width = '40px';
+                    image.style.height = '40px';
                     images_container.appendChild(image);
                 });
 

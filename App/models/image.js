@@ -31,7 +31,7 @@ Image.update_image = (image, result) => {
 }
 
 Image.get_image = (id_task, result) => {
-    sql.query("SELECT * FROM images WHERE id_task = ?", id_task, (err, res) => {
+    sql.query("SELECT image FROM images WHERE id_task = ?", id_task, (err, res) => {
         if (err) {
             result(err, null);
         } else {
