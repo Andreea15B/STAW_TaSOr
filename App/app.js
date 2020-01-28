@@ -50,3 +50,5 @@ var routes_images = require('./api/images');
 routes_images(app);
 var routes_history = require('./api/history');
 routes_history(app);
+var routes_links = require('./api/links');
+routes_links(app);

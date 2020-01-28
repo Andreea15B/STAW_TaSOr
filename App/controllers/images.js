@@ -5,7 +5,7 @@ var fs = require("fs");
 
 
 exports.assign_image = (req, res) => {
-    var image_ = 'C:/Users/maria/Desktop/' + req.body.image.replace(/^.*\\/, "");
+    var image_ = 'C:/Users/Andreea/Desktop/' + req.body.image.replace(/^.*\\/, "");
     var id_task = req.body.id_task;
     var image = fs.readFileSync(image_);
     console.log('post');
@@ -20,7 +20,7 @@ exports.assign_image = (req, res) => {
 };
 
 exports.update_image = (req, res) => {
-    var image_ = 'C:/Users/maria/Desktop/' + req.body.image.replace(/^.*\\/, "");
+    var image_ = 'C:/Users/Andreea/Desktop/' + req.body.image.replace(/^.*\\/, "");
     var id_task = req.body.id_task;
     var image = fs.readFileSync(image_);
 

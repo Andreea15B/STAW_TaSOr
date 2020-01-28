@@ -4,6 +4,7 @@ function open_modal() {
     var taskButtons = document.getElementsByClassName("btn-task");
     var close_url = document.getElementById("close-url");
     var images_container = document.getElementById('image-task-container');
+    var links_container = document.getElementById("link-task-container");
 
     var button = document.getElementById('share-task');
     var show = document.getElementById('show-url-container');
@@ -58,6 +59,24 @@ function open_modal() {
                             image.style.height = '40px';
                             image.setAttribute('class', 'image-task');
                             images_container.appendChild(image);
+                        }
+
+                    });
+            }
+
+            var links_tasks = 'http://localhost:3000/links/' + taskId;
+            console.log("links route to fetch: ", links_tasks);
+            if (links_container.childNodes.length == 1) {
+                fetch(links_tasks)
+                    .then(response => response.json())
+                    .then(response => {
+                        console.log("response: ", response);
+                        if (response.length > 0) {
+                            console.log("response fetch links: ", response);
+                            var linkElement = document.createElement('div');
+                            linkElement.value = response[0].link; // ???
+                            linkElement.setAttribute('class', 'link-task');
+                            links_container.appendChild(linkElement);
                         }
 
                     });
@@ -132,6 +151,18 @@ function open_modal() {
                 body: JSON.stringify(data)
             });
         }
+
+        var link = event.target.form.elements[6].value;
+        var data = {id_task: taskId, link};
+        console.log("saveButton onclick data: ", data);
+
+        fetch("http://localhost:3000/links", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
 
         modal_edit.style.display = "none";
         location.reload();
