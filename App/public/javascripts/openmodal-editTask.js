@@ -4,7 +4,6 @@ function open_modal() {
     var taskButtons = document.getElementsByClassName("btn-task");
     var close_url = document.getElementById("close-url");
     var images_container = document.getElementById('image-task-container');
-    var links_container = document.getElementById("link-task-container");
 
     var button = document.getElementById('share-task');
     var show = document.getElementById('show-url-container');
@@ -37,11 +36,13 @@ function open_modal() {
                     var taskDomainElement = document.getElementById("edit-task-domain");
                     var taskRegionElement = document.getElementById("edit-task-region");
                     var taskDescriptionElement = document.getElementById("edit-task-description");
+                    var taskLinkElement = document.getElementById("edit-task-link");
                     taskTitleElement.value = response[0].title;
                     taskDeadlineElement.value = formatDate(response[0].deadline);
                     taskDomainElement.value = response[0].domain;
                     taskRegionElement.value = response[0].geographical_area;
                     taskDescriptionElement.value = response[0].description;
+                    taskLinkElement.value = response[0].link;
                 });
 
             var images_tasks = 'http://localhost:3000/images/' + taskId;
@@ -59,24 +60,6 @@ function open_modal() {
                             image.style.height = '40px';
                             image.setAttribute('class', 'image-task');
                             images_container.appendChild(image);
-                        }
-
-                    });
-            }
-
-            var links_tasks = 'http://localhost:3000/links/' + taskId;
-            console.log("links route to fetch: ", links_tasks);
-            if (links_container.childNodes.length == 1) {
-                fetch(links_tasks)
-                    .then(response => response.json())
-                    .then(response => {
-                        console.log("response: ", response);
-                        if (response.length > 0) {
-                            console.log("response fetch links: ", response);
-                            var linkElement = document.createElement('div');
-                            linkElement.value = response[0].link; // ???
-                            linkElement.setAttribute('class', 'link-task');
-                            links_container.appendChild(linkElement);
                         }
 
                     });
@@ -119,7 +102,8 @@ function open_modal() {
         domain = event.target.form.elements[3].value;
         geographical_area = event.target.form.elements[4].value;
         description = event.target.form.elements[10].value;
-        var data = { title, deadline, domain, geographical_area, description };
+        link = event.target.form.elements[6].value;
+        var data = { title, deadline, domain, geographical_area, description, link };
         fetch("http://localhost:3000/tasks/" + taskId, {
             method: "PUT",
             headers: {
@@ -151,18 +135,6 @@ function open_modal() {
                 body: JSON.stringify(data)
             });
         }
-
-        var link = event.target.form.elements[6].value;
-        var data = {id_task: taskId, link};
-        console.log("saveButton onclick data: ", data);
-
-        fetch("http://localhost:3000/links", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
 
         modal_edit.style.display = "none";
         location.reload();

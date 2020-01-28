@@ -13,6 +13,7 @@ class Task {
         this.domain = task.domain;
         this.geographical_area = task.geographical_area;
         this.name_board = task.name_board;
+        this.link = task.link;
     }
 }
 
@@ -108,6 +109,14 @@ Task.updateTask = function(id_task, task, result) {
         else mm += ", ";
         mm += "domain = ?";
         values.push(task.domain);
+    }
+    if (task.link != undefined) {
+        if(flagIsFirst == 1) {
+            flagIsFirst = 0;
+        }
+        else mm += ", ";
+        mm += "link = ?";
+        values.push(task.link);
     }
     mm += " WHERE id_task = ?";
     values.push(id_task);

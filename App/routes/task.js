@@ -34,14 +34,14 @@ router.get('/:name', (req, res) => {
 });
 
 router.post('/', ensureAuthenticated, (req, res) => {
-    let { board_to_add, title, status, deadline, description, domain, geographical_area } = req.body;
+    let { board_to_add, title, status, deadline, description, domain, geographical_area, link } = req.body;
 
     if (!deadline) deadline = '0000-00-00';
     var date_ = formatDate(Date.now());
     var username = req.session.username;
 
     try {
-        const data = { title, status, created_at: date_, deadline, description, domain, geographical_area, name_board: board_to_add };
+        const data = { title, status, created_at: date_, deadline, description, domain, geographical_area, link, name_board: board_to_add };
         fetch("http://localhost:3000/tasks/", {
             method: "POST",
             headers: {
