@@ -8,8 +8,6 @@ fetch(api_boards)
     .then(response => response.json())
     .then(response => {
         if (response.length == 0) {
-
-
             empty_state.style.display = "flex";
         } else {
             response.forEach(element => {

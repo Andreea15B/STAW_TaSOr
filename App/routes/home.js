@@ -47,6 +47,17 @@ router.post('/', ensureAuthenticated, (req, res) => {
                     },
                     body: JSON.stringify(data),
                 });
+
+                var history = "This board was created by " + created_by;
+                var new_history = { name_board: name, activity: history }
+                fetch('http://localhost:3000/history', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(new_history),
+                });
+
                 res.render('home', { username: created_by });
             }
         });

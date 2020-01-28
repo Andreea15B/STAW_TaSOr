@@ -2,11 +2,10 @@
 module.exports = function(app) {
     var history = require('../controllers/history');
 
-    // boards Routes
     app.route('/history')
         .post(history.create_history);
 
-    app.route('/history/:id_board/:id_task')
+    app.route('/history/:name_board')
         .get(history.get_history);
 
 };

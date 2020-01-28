@@ -133,10 +133,6 @@ function open_modal() {
             });
         }
 
-
-
-
-
         modal_edit.style.display = "none";
         location.reload();
     }

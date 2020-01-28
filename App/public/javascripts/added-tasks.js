@@ -79,6 +79,24 @@ function drop(ev, where) {
             body: JSON.stringify(data),
         });
 
+        var history = username + ' move task ';
+        fetch('http://localhost:3000/tasks/' + id_to_update)
+            .then(response => response.json())
+            .then(response => {
+                var title = response[0].title;
+                history = history + title + ' in ' + where;
+                var data = { name_board, id_task: id_to_update, activity: history }
+                fetch('http://localhost:3000/history', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+                location.reload();
+            })
+
+
         var data = ev.dataTransfer.getData("text");
         ev.target.appendChild(document.getElementById(data));
     }

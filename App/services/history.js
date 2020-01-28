@@ -6,6 +6,6 @@ exports.create_history = (newHistory, result) => {
     History.createHistory(newHistory, (err, req) => result(req, err));
 };
 
-exports.get_history = (id_board, id_task, result) => {
-    History.getHistory(id_board, id_task, (err, req) => result(req, err));
+exports.get_history = (name_board, result) => {
+    History.getHistory(name_board, (err, req) => result(req, err));
 }

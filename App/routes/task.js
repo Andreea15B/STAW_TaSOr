@@ -38,6 +38,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
 
     if (!deadline) deadline = '0000-00-00';
     var date_ = formatDate(Date.now());
+    var username = req.session.username;
 
     try {
         const data = { title, status, created_at: date_, deadline, description, domain, geographical_area, name_board: board_to_add };
@@ -48,7 +49,18 @@ router.post('/', ensureAuthenticated, (req, res) => {
             },
             body: JSON.stringify(data)
         });
+
+        var history = username + " add new task : " + title;
+        var new_history = { name_board: board_to_add, activity: history }
+        fetch('http://localhost:3000/history', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(new_history),
+        });
         res.redirect('/board/' + board_to_add);
+
     } catch {
         console.log("errors on post for task");
     }

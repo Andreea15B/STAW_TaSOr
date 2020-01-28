@@ -1,5 +1,6 @@
 var myParent = document.getElementById("select-container");
 var board_name = document.getElementById('board_name').innerText;
+var username_session = document.getElementById('username').innerText;
 //Create array of options to be added
 var array = [];
 var board_members = [];
@@ -66,6 +67,17 @@ formular.addEventListener('submit', (event) => {
         },
         body: JSON.stringify(data),
     });
+
+    var history = username_session + ' add new member : ' + username;
+    var data = { name_board, activity: history }
+    fetch('http://localhost:3000/history', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
 
     window.location.href = "http://localhost:3000/board/" + board_name;
 
