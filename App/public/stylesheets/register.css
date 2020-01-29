@@ -7,6 +7,19 @@
     align-items: center;
 }
 
+.back-button {
+    background-color: white;
+    height: 40px;
+    width: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5%;
+    left: 3%;
+}
+
 .register-label {
     font-family: Raleway-SemiBold;
     font-size: 16px;
