@@ -13,7 +13,7 @@ exports.create_a_task = (req, res) => {
     if (!req.body.title) {
         res.status(400).send({ error: true, message: "Please provide a title" });
     } else {
-        req.body.status = "todo";
+        req.body.status = "to-do";
         req.body.link = "";
         taskService.create_task(req.body, (task, err) => {
             if (err) res.send(err);

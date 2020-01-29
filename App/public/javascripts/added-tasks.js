@@ -7,7 +7,7 @@ var name_board = document.getElementById('board_name').innerText;
 var api_tasks = 'http://localhost:3000/tasks/' + name_board;
 var id_to_update = null;
 
-fetch(api_tasks + '/todo')
+fetch(api_tasks + '/to-do')
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
@@ -69,36 +69,46 @@ function drag(ev) {
 
 function drop(ev, where) {
     ev.preventDefault();
-    var data = { status: where };
     if (ev.target.hasAttribute('draggable') == false) {
-        fetch('http://localhost:3000/tasks/' + id_to_update, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        var history = username + ' move task ';
         fetch('http://localhost:3000/tasks/' + id_to_update)
             .then(response => response.json())
             .then(response => {
-                var title = response[0].title;
-                history = history + title + ' in ' + where;
-                var data = { name_board, id_task: id_to_update, activity: history }
-                fetch('http://localhost:3000/history', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-                location.reload();
-            })
+                var link = response[0].link;
+                if (link == "" && where == "done")
+                    alert("To be done, a task must have a link added.Have a nice day, team TASOR! :)");
+                else {
+                    var data = { status: where };
+                    fetch('http://localhost:3000/tasks/' + id_to_update, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
 
+                    var history = username + ' move task ';
+                    fetch('http://localhost:3000/tasks/' + id_to_update)
+                        .then(response => response.json())
+                        .then(response => {
+                            var title = response[0].title;
+                            history = history + title + ' in ' + where;
+                            var data = { name_board, id_task: id_to_update, activity: history }
+                            fetch('http://localhost:3000/history', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(data),
+                            });
+                            location.reload();
+                        })
 
-        var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
+                    var data = ev.dataTransfer.getData("text");
+                    ev.target.appendChild(document.getElementById(data));
+                }
+
+            });
+
     }
 
 }

@@ -74,7 +74,7 @@ function open_modal() {
             fetch(assignedUsers)
                 .then(response => response.json())
                 .then(response => {
-                    for (var i=0; i<response.length; i++) {
+                    for (var i = 0; i < response.length; i++) {
                         var assignedUserElement = document.createElement('div');
                         assignedUserElement.setAttribute('class', 'user-div');
                         assignedUserElement.textContent = response[i].username;
@@ -103,16 +103,16 @@ function open_modal() {
         };
     }
 
-    close_url.onclick = function () {
+    close_url.onclick = function() {
         show.style.display = "none";
     }
 
-    closeButton_edit.onclick = function () {
+    closeButton_edit.onclick = function() {
         modal_edit.style.display = "none";
     };
 
     var saveButton = document.getElementById("edit-task-submit");
-    saveButton.onclick = function (event) {
+    saveButton.onclick = function(event) {
         event.preventDefault();
         title = event.target.form.elements[1].value;
         deadline = event.target.form.elements[2].value;
@@ -133,7 +133,6 @@ function open_modal() {
 
         var image = event.target.form.elements[5].value;
         var data = { id_task: taskId, image };
-
         var method = "";
 
         if (length_ == 0) {
@@ -149,9 +148,10 @@ function open_modal() {
             body: JSON.stringify(data)
         });
 
+
         [].forEach.call(arrayAssignedUsers, function(element) {
             username = element.value;
-            var data = {id_task: taskId, username}
+            var data = { id_task: taskId, username }
             fetch('http://localhost:3000/task_users', {
                 method: 'POST',
                 headers: {
@@ -161,11 +161,11 @@ function open_modal() {
             });
         });
         modal_edit.style.display = "none";
-        // location.reload();
+        location.reload();
     }
 
 }
 
-window.onload = function () {
+window.onload = function() {
     this.open_modal();
 }
