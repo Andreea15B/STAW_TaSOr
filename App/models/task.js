@@ -63,58 +63,51 @@ Task.updateTask = function(id_task, task, result) {
     var values = [];
     var mm = "UPDATE tasks SET ";
     if (task.title != undefined) {
-        if(flagIsFirst == 1) {
+        if (flagIsFirst == 1) {
             flagIsFirst = 0;
-        }
-        else mm += ", ";
+        } else mm += ", ";
         mm += "title = ?";
         values.push(task.title);
     }
     if (task.status != undefined) {
-        if(flagIsFirst == 1) {
+        if (flagIsFirst == 1) {
             flagIsFirst = 0;
-        }
-        else mm += ", ";
+        } else mm += ", ";
         mm += "status = ?";
         values.push(task.status);
     }
     if (task.description != undefined) {
-        if(flagIsFirst == 1) {
+        if (flagIsFirst == 1) {
             flagIsFirst = 0;
-        }
-        else mm += ", ";
+        } else mm += ", ";
         mm += "description = ?";
         values.push(task.description);
     }
     if (task.deadline != undefined) {
-        if(flagIsFirst == 1) {
+        if (flagIsFirst == 1) {
             flagIsFirst = 0;
-        }
-        else mm += ", ";
+        } else mm += ", ";
         mm += "deadline = ?";
         values.push(task.deadline);
     }
     if (task.geographical_area != undefined) {
-        if(flagIsFirst == 1) {
+        if (flagIsFirst == 1) {
             flagIsFirst = 0;
-        }
-        else mm += ", ";
+        } else mm += ", ";
         mm += "geographical_area = ?";
         values.push(task.geographical_area);
     }
     if (task.domain != undefined) {
-        if(flagIsFirst == 1) {
+        if (flagIsFirst == 1) {
             flagIsFirst = 0;
-        }
-        else mm += ", ";
+        } else mm += ", ";
         mm += "domain = ?";
         values.push(task.domain);
     }
     if (task.link != undefined) {
-        if(flagIsFirst == 1) {
+        if (flagIsFirst == 1) {
             flagIsFirst = 0;
-        }
-        else mm += ", ";
+        } else mm += ", ";
         mm += "link = ?";
         values.push(task.link);
     }
@@ -131,7 +124,7 @@ Task.updateTask = function(id_task, task, result) {
 };
 
 Task.removeTask = function(id_task, result) {
-    sql.query("DELETE FROM tasks WHERE id_task = ?", [id_task], function(err, res) {
+    sql.query("DELETE FROM tasks WHERE id_task = ?", id_task, function(err, res) {
         if (err) {
             result(null, err);
         } else {

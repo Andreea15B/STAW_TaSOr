@@ -72,8 +72,8 @@ exports.update_task = (req, res) => {
 };
 
 exports.delete_task = function(req, res) {
-    taskService.delete_task(req.params.id, (task, err) => {
+    taskService.delete_task(req.params.id_task, (task, err) => {
         if (err) res.send(err);
         res.json({ message: "Task successfully deleted" });
     });
-};
+}
