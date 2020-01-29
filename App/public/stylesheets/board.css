@@ -390,6 +390,10 @@
     background-color: #44c19e;
 }
 
+.info-history span {
+    margin-left: 10px;
+}
+
 .dropup-content {
     width: 90%;
     display: none;

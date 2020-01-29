@@ -6,6 +6,7 @@ class History {
         this.name_board = history.name_board;
         this.id_task = history.id_task;
         this.activity = history.activity;
+        this.date_update = history.date_update;
     }
 };
 
