@@ -307,7 +307,8 @@
     margin: 0px 0px 15px 0px;
 }
 
-.form-style-2 label>span {
+.form-style-2 label>span,
+.assigned-label {
     width: 100px;
     font-weight: bold;
     float: left;
@@ -505,4 +506,20 @@
     background: rgb(212, 97, 79);
     color: #fff;
     cursor: pointer;
+}
+
+.assigned-user-container {
+    display: flex;
+}
+
+.users-assigned {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-left: 15px;
+    padding-top: 8px;
+}
+
+.user-div {
+    padding-right: 10px;
 }

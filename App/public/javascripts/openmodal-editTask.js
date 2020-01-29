@@ -4,6 +4,7 @@ function open_modal() {
     var taskButtons = document.getElementsByClassName("btn-task");
     var close_url = document.getElementById("close-url");
     var images_container = document.getElementById('image-task-container');
+    var assignedUsersContainer = document.getElementById("show-assigned-users-div");
 
     var button = document.getElementById('share-task');
     var show = document.getElementById('show-url-container');
@@ -24,7 +25,7 @@ function open_modal() {
     }
 
     for (var i = 0; i < taskButtons.length; i++) {
-        taskButtons[i].onclick = function(event) {
+        taskButtons[i].onclick = function (event) {
             taskId = event.toElement.id;
             modal_edit.style.display = "block";
             var api_tasks = 'http://localhost:3000/tasks/' + taskId;
@@ -65,6 +66,18 @@ function open_modal() {
                     });
             }
 
+            var assignedUsers = 'http://localhost:3000/task_users/' + taskId;
+            fetch(assignedUsers)
+                .then(response => response.json())
+                .then(response => {
+                    for (var i=0; i<response.length; i++) {
+                        var assignedUserElement = document.createElement('div');
+                        assignedUserElement.setAttribute('class', 'user-div');
+                        assignedUserElement.textContent = response[i].username;
+                        assignedUsersContainer.appendChild(assignedUserElement);
+                    }
+                });
+
             function makeid(length) {
                 var result = '';
                 var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -86,16 +99,16 @@ function open_modal() {
         };
     }
 
-    close_url.onclick = function() {
+    close_url.onclick = function () {
         show.style.display = "none";
     }
 
-    closeButton_edit.onclick = function() {
+    closeButton_edit.onclick = function () {
         modal_edit.style.display = "none";
     };
 
     var saveButton = document.getElementById("edit-task-submit");
-    saveButton.onclick = function(event) {
+    saveButton.onclick = function (event) {
         event.preventDefault();
         title = event.target.form.elements[1].value;
         deadline = event.target.form.elements[2].value;
@@ -103,6 +116,8 @@ function open_modal() {
         geographical_area = event.target.form.elements[4].value;
         description = event.target.form.elements[10].value;
         link = event.target.form.elements[6].value;
+        arrayAssignedUsers = event.target.form.elements[7].selectedOptions;
+
         var data = { title, deadline, domain, geographical_area, description, link };
         fetch("http://localhost:3000/tasks/" + taskId, {
             method: "PUT",
@@ -113,10 +128,7 @@ function open_modal() {
         });
 
         var image = event.target.form.elements[5].value;
-        var data = {
-            id_task: taskId,
-            image
-        };
+        var data = { id_task: taskId, image };
 
         if (images_container.childNodes.length == 1) {
             fetch("http://localhost:3000/images", {
@@ -136,12 +148,23 @@ function open_modal() {
             });
         }
 
+        [].forEach.call(arrayAssignedUsers, function(element) {
+            username = element.value;
+            var data = {id_task: taskId, username}
+            fetch('http://localhost:3000/task_users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+        });
         modal_edit.style.display = "none";
-        location.reload();
+        // location.reload();
     }
 
 }
 
-window.onload = function() {
+window.onload = function () {
     this.open_modal();
 }
