@@ -24,13 +24,14 @@ fetch("http://localhost:3000/users")
             if (ok == 1)
                 array.push(element.username);
         });
-
         //Create and append select list
         var selectList = document.createElement("select");
         selectList.id = "mySelect";
         myParent.appendChild(selectList);
-
-        //Create and append the options
+        for (var i = 0; i < array.length; i++)
+            if (array[i] == username_session)
+                array.splice(i, 1);
+            //Create and append the options
         for (var i = 0; i < array.length; i++) {
             var option = document.createElement("option");
             option.value = array[i];

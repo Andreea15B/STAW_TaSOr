@@ -39,7 +39,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
                 errors.push({ msg: 'Board already exists' });
                 res.render('home', { username: created_by, errors });
             } else {
-                const data = { title: name, created_by: created_by, created_at: date_, updated_at: date_ };
+                var data = { title: name, created_by: created_by, created_at: date_, updated_at: date_ };
                 fetch('http://localhost:3000/boards/', {
                     method: 'POST',
                     headers: {
