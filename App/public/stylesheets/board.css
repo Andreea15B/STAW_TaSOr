@@ -287,7 +287,11 @@
 }
 
 .modal-header {
-    padding: 2px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: 10px 16px;
     background-color: #5cb85c;
     color: white;
 }
@@ -296,9 +300,16 @@
     padding: 2px 16px;
 }
 
+#image-task-container {
+    margin-bottom: 80px;
+}
+
 .form-style-2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     max-width: 500px;
-    padding: 20px 12px 10px 20px;
+    padding: 6px 12px 10px 20px;
     font: 13px Arial, Helvetica, sans-serif;
 }
 

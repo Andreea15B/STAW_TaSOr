@@ -63,8 +63,8 @@ function open_modal() {
                             var blob = new Blob([arrayBufferView], { type: "image/jpg" })
                             var image = new Image();
                             image.src = window.URL.createObjectURL(blob);
-                            image.style.width = '40px';
-                            image.style.height = '40px';
+                            image.style.width = '100px';
+                            image.style.height = '70px';
                             image.setAttribute('class', 'image-task');
                             images_container.appendChild(image);
                         }

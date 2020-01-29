@@ -153,90 +153,97 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <span id="close-edit">&times;</span>
-                        <h2>Edit task</h2>
+                        <span>Edit task</span>
                     </div>
                     <div class="modal-body">
                         <div class="form-style-2">
-                            <form name="editTask-form" onsubmit="return validateFormEdit()">
-                                <label for="field0">
-                                    <span>Board</span>
-                                    <input type="text" class="input-field" name="board_to_add" id="board_title"
-                                        readonly><br>
-                                </label>
-                                <script>
-                                    var value_ = document.getElementById('board_title');
-                                    var board = document.getElementById('board_name').innerText;
-                                    value_.value = board;
-                                </script>
-                                <label for="field1">
-                                    <span>Title <span class="required">*</span></span>
-                                    <input type="text" class="input-field" id="edit-task-title" name="title" value="" />
-                                </label>
-                                <label for="field2">
-                                    <span>Deadline</span>
-                                    <input type="date" class="input-field" id="edit-task-deadline" name="deadline"
-                                        value="" />
-                                </label>
-                                <label for="field3">
-                                    <span>Domain</span>
-                                    <select class="input-field" id="edit-task-domain" name="domain" value="">
-                                        <option value=""></option>
-                                        <option value="Frontend">Frontend</option>
-                                        <option value="Backend">Backend</option>
-                                        <option value="Design">Design</option>
-                                        <option value="Others">Others</option>
-                                    </select>
-                                </label>
-                                <label for="field4">
-                                    <span>Region</span>
-                                    <input type="text" class="input-field" id="edit-task-region"
-                                        name="geographical_area" value="" />
-                                </label>
-                                <label for="field5">
-                                    <span>Image</span>
-                                    <input type="file" class="image-field" id="edit-task-image" name="image" id="image" />
-                                    <div id="image-task-container">
+                            <div>
+                                <form name="editTask-form" onsubmit="return validateFormEdit()">
+                                    <label for="field0">
+                                        <span>Board</span>
+                                        <input type="text" class="input-field" name="board_to_add" id="board_title"
+                                            readonly><br>
+                                    </label>
+                                    <script>
+                                        var value_ = document.getElementById('board_title');
+                                        var board = document.getElementById('board_name').innerText;
+                                        value_.value = board;
+                                    </script>
+                                    <label for="field1">
+                                        <span>Title <span class="required">*</span></span>
+                                        <input type="text" class="input-field" id="edit-task-title" name="title"
+                                            value="" />
+                                    </label>
 
-                                    </div>
-                                </label>
-                                <label for="field6">
-                                    <span>Link</span>
-                                    <input type="url" class="input-field" id="edit-task-link" name="link" value="" placeholder="https://example.com" pattern="https://.*"/>
-                                </label>
-                                <label for="field7">
-                                    <span>Assign users</span>
-                                    <select id="assigned-users" class="assign-users-select" multiple size=3>
-                                        
-                                    </select>
-                                </label>
-                                <label class="show-assigned-users-label">
-                                    <div class="assigned-user-container">
-                                        <span class="assigned-label">Assigned users</span>
-                                        <div id="show-assigned-users-div" class="users-assigned">
+                                    <label for="field2">
+                                        <span>Deadline</span>
+                                        <input type="date" class="input-field" id="edit-task-deadline" name="deadline"
+                                            value="" />
+                                    </label>
+                                    <label for="field3">
+                                        <span>Domain</span>
+                                        <select class="input-field" id="edit-task-domain" name="domain" value="">
+                                            <option value=""></option>
+                                            <option value="Frontend">Frontend</option>
+                                            <option value="Backend">Backend</option>
+                                            <option value="Design">Design</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </label>
+                                    <label for="field4">
+                                        <span>Region</span>
+                                        <input type="text" class="input-field" id="edit-task-region"
+                                            name="geographical_area" value="" />
+                                    </label>
+                                    <label for="field5">
+                                        <span>Image</span>
+                                        <input type="file" class="image-field" id="edit-task-image" name="image"
+                                            id="image" />
+                                    </label>
+                                    <label for="field6">
+                                        <span>Link</span>
+                                        <input type="url" class="input-field" id="edit-task-link" name="link" value=""
+                                            placeholder="https://example.com" pattern="https://.*" />
+                                    </label>
+                                    <label for="field7">
+                                        <span>Assign users</span>
+                                        <select id="assigned-users" class="assign-users-select" multiple size=3>
 
+                                        </select>
+                                    </label>
+                                    <label class="show-assigned-users-label">
+                                        <div class="assigned-user-container">
+                                            <span class="assigned-label">Assigned users</span>
+                                            <div id="show-assigned-users-div" class="users-assigned">
+
+                                            </div>
                                         </div>
+                                    </label>
+                                    <br>
+
+                                    <label for="field8">
+                                        <span>Description</span>
+                                        <textarea name="description" id="edit-task-description"
+                                            class="textarea-field"></textarea>
+                                    </label>
+
+                                    <div class="form-buttons">
+                                        <label>
+                                            <input class="edit-task" id="edit-task-submit" type="submit" value="Save" />
+                                        </label>
+                                        <label>
+                                            <button class="delete-task" id="delete-task">Delete task</button>
+                                        </label>
+                                        <label>
+                                            <button class="share-task" id="share-task">Obtain public url</button>
+                                        </label>
                                     </div>
-                                </label>
-                                <br>
+                                </form>
+                            </div>
 
-                                <label for="field8">
-                                    <span>Description</span>
-                                    <textarea name="description" id="edit-task-description"
-                                        class="textarea-field"></textarea>
-                                </label>
+                            <div id="image-task-container">
 
-                                <div class="form-buttons">
-                                    <label>
-                                        <input class="edit-task" id="edit-task-submit" type="submit" value="Save" />
-                                    </label>
-                                    <label>
-                                        <button class="delete-task" id="delete-task">Delete task</button>
-                                    </label>
-                                    <label>
-                                        <button class="share-task" id="share-task">Obtain public url</button>
-                                    </label>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
