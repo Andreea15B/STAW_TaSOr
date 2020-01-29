@@ -3,7 +3,6 @@
 var TaskUser = require('../models/task_users');
 
 exports.createTaskUser = (newTaskUser, result) => {
-    console.log("service createTaskUser: ", newTaskUser);
     var new_taskUser = new TaskUser(newTaskUser);
     TaskUser.create_taskUser(new_taskUser, (error, request) => result(request, error));
 };
