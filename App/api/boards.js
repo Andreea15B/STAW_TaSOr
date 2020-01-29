@@ -7,7 +7,8 @@ module.exports = function(app) {
         .get(boards.list_all_boards);
 
     app.route('/boards')
-        .post(boards.create_board);
+        .post(boards.create_board)
+        .get(boards.list_boards)
 
     app.route('/board_add/:name')
         .get(boards.get_board)

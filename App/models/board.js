@@ -20,6 +20,16 @@ Board.create_Board = (newBoard, result) => {
     });
 };
 
+Board.list_boards = (result) => {
+    sql.query("Select * from boards", (error, res) => {
+        if (error) {
+            result(error, null);
+        } else {
+            result(null, res);
+        }
+    });
+};
+
 Board.getBoardForUsername = (username, result) => {
     sql.query("Select * from boards where created_by = ?", username, (error, res) => {
         if (error) {

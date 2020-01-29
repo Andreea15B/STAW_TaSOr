@@ -10,6 +10,14 @@ exports.list_all_boards = (req, res) => {
     });
 };
 
+exports.list_boards = (req, res) => {
+    boardsService.list_boards((req, err) => {
+        if (err)
+            res.send(err);
+        res.json(req);
+    });
+};
+
 exports.get_board = (req, res) => {
     boardsService.get_board_by_name(req.params.name, (req, err) => {
         if (err)
