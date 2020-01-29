@@ -3,7 +3,6 @@
 var taskUsersService = require("../services/task_users");
 
 exports.create_task_user = (req, res) => {
-    console.log("controller create_task_user: ", req.body);
     taskUsersService.createTaskUser(req.body, (board, err) => {
         if (err) res.send(err);
         res.json(board);

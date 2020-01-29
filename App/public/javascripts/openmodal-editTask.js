@@ -26,6 +26,7 @@ function open_modal() {
     }
 
     for (var i = 0; i < taskButtons.length; i++) {
+        flag = 0;
         taskButtons[i].onclick = async function(event) {
             taskId = event.toElement.id;
             modal_edit.style.display = "block";
@@ -71,16 +72,66 @@ function open_modal() {
             }
 
             var assignedUsers = 'http://localhost:3000/task_users/' + taskId;
+            var arrayUsersAlreadyAssigned = []
+            
             fetch(assignedUsers)
                 .then(response => response.json())
                 .then(response => {
-                    for (var i=0; i<response.length; i++) {
-                        var assignedUserElement = document.createElement('div');
-                        assignedUserElement.setAttribute('class', 'user-div');
-                        assignedUserElement.textContent = response[i].username;
-                        assignedUsersContainer.appendChild(assignedUserElement);
+                    if(response.length == 0 && flag == 0) {
+                        flag = 1
+                        var noUsersAssigned = document.createElement('div');
+                        noUsersAssigned.setAttribute('class', 'user-div');
+                        noUsersAssigned.setAttribute('id', 'no-users-assigned');
+                        noUsersAssigned.textContent = "No users assigned for this task.";
+                        assignedUsersContainer.appendChild(noUsersAssigned);
+                    }
+                    for (var i=0; i < response.length; i++) { 
+                        found = arrayUsersAlreadyAssigned.find(elem => elem == response[i].username);
+                        if (found == undefined) {
+                            arrayUsersAlreadyAssigned.push(response[i].username);
+                            var assignedUserElement = document.createElement('div');
+                            assignedUserElement.setAttribute('class', 'user-div');
+                            assignedUserElement.textContent = response[i].username;
+                            assignedUsersContainer.appendChild(assignedUserElement);
+                        }
                     }
                 });
+
+                var selectContainer = document.getElementById("assigned-users");
+                var boardName = document.getElementById("board_name").innerText;
+                var taskDomain = document.getElementById("edit-task-domain").value;
+                var usersArray = []
+                
+                // add users to the assign-users selectbox
+                fetch("http://localhost:3000/boards_members/" + boardName)
+                    .then(response => response.json())
+                    .then(response => {
+                        response.forEach(element => {
+                            fetch('http://localhost:3000/users/' + element.username)
+                                .then(resp => resp.json())
+                                .then(resp => {
+                                    userDomain = resp[0].domain;
+                                    if (taskDomain == userDomain) {
+                                        usersArray.push(element.username);
+                                    }
+                                    if (usersArray.length == 0) {
+                                        var noUsersOption = document.createElement('option');
+                                        noUsersOption.setAttribute('class', 'user-option');
+                                        noUsersOption.setAttribute('disabled', true);
+                                        noUsersOption.text = "No users in this domain.";
+                                        selectContainer.appendChild(noUsersOption);
+                                    }
+                                    for (var i = 0; i < usersArray.length; i++) {
+                                        var newOption = document.createElement("option");
+                                        newOption.setAttribute('class', 'user-option');
+                                        newOption.value = usersArray[i];
+                                        newOption.text = usersArray[i];
+                                        selectContainer.appendChild(newOption);
+                                    }
+                                });
+                        });
+                    });
+                
 
             function makeid(length) {
                 var result = '';
@@ -160,8 +211,9 @@ function open_modal() {
                 body: JSON.stringify(data),
             });
         });
+
         modal_edit.style.display = "none";
-        // location.reload();
+        location.reload();
     }
 
 }
