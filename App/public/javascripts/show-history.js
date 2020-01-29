@@ -7,8 +7,14 @@ fetch(history_api)
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
-            var div_ = document.createElement('div');
+            var main_div = document.createElement('div')
+            main_div.setAttribute('class', 'info-history');
+            var date_ = document.createElement('span');
+            date_.innerHTML = element.date_update + ': ';
+            main_div.appendChild(date_);
+            var div_ = document.createElement('span');
             div_.innerHTML = element.activity;
-            history_container.appendChild(div_);
+            main_div.appendChild(div_);
+            history_container.appendChild(main_div);
         });
     })

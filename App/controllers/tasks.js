@@ -18,6 +18,7 @@ exports.create_a_task = (req, res) => {
         taskService.create_task(req.body, (task, err) => {
             if (err) res.send(err);
             res.json(task);
+            res.end();
         });
     }
 };
@@ -26,6 +27,7 @@ exports.read_task = function(req, res) {
     taskService.get_task(req.params.id_task, (req, err) => {
         if (err) res.send(err);
         res.json(req);
+        res.end();
     });
 };
 
