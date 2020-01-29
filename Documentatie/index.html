@@ -2,162 +2,172 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>TaSOr Scholarly HTML report</title>
-  <link rel="stylesheet" href="css/scholarly.min.css">
-  <script src="js/scholarly.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TaSOr Scholarly HTML report</title>
+    <link rel="stylesheet" href="css/scholarly.min.css">
+    <script src="js/scholarly.min.js"></script>
 </head>
 
 <body prefix="schema: http://schema.org">
-  <header>
-    <div class="banner">
-      <img src="scholarly-html.svg" width="227" height="50" alt="Scholarly HTML logo">
-      <div class="status">TaSOr project</div>
+    <header>
+        <div class="banner">
+            <img src="scholarly-html.svg" width="227" height="50" alt="Scholarly HTML logo">
+            <div class="status">TaSOr project</div>
+        </div>
+        <h1>Task Smart Organizer report</h1>
+    </header>
+    <div role="contentinfo">
+        <dl>
+            <dt>Authors</dt>
+            <dd>
+                Andreea Bucătaru &amp; Maria Bulboacă &amp; Matei Alexandru
+            </dd>
+        </dl>
     </div>
-    <h1>Task Smart Organizer report</h1>
-  </header>
-  <div role="contentinfo">
-    <dl>
-      <dt>Authors</dt>
-      <dd>
-        Andreea Bucătaru
-        &amp;
-        Maria Bulboacă
-        &amp;
-        Matei Alexandru
-      </dd>
-    </dl>
-  </div>
-  <section id="introduction" role="doc-introduction">
-    <h2>Descrierea proiectului</h2>
-    <p>"Să se conceapă un produs Web de tip PWA (Progressive Web Application) capabil să gestioneze timpul de efectuare
-      a unor activități (tasks).
-      Utilizatorii autentificați vor propune (tipuri de) activități (task-uri), asignându-le apoi unor persoane care
-      trebuie să le execute într-o perioadă de timp specificată. </p>
-    <p>Printr-un URL anonim, informațiile despre un task ce trebuie efectuat pot fi expuse public. </p>
-    <p>Fiecare activitate va avea asociate informații privind demararea acesteia (interval orar, zona geografica, doar
-      utilizatori calificați într-un domeniu specific etc.)
-      și finalizarea (i.e. dovada realizării cu (in)succes a task-ului -- minimal, un URL indicând o resursă
-      edificatoare: fotografie, video, depozit de cod-sursă, orice altceva). </p>
-    <p>Istoricul activităților și statistici vor fi disponibile tuturor celor implicați.
-      Diversele notificări vor fi disponibile direct în browser și/sau trimise prin poșta electronică. </p>
-    <p>Inspirație: Asana și Trello."</p>
-  </section>
-  <section id="structure">
-    <h2>Tehnologii utilizate</h2>
-    <p>
-      Pentru crearea interfeței utilizatorului, folosim limbajele HTML și CSS.
-    </p>
-    <p>
-      Pe partea de client, vom utiliza doar cod-sursă ECMAScript pur. <br />
-      Pe partea de server, folosim Node.js și framework-ul Express.js. Am ales acest framework deoarece este
-      minimal, flexibil și oferă un set robust de funcții pentru web.
-    </p>
-    <p>
-      Stocarea și managementul datelor pe partea de server vor fi realizate utilizând un server de baze de date
-      relațional, MySql.
-      Stocarea datelor pe partea de client se face utilizând Cache API.
-    </p>
-  </section>
-  <section id="structure">
-    <h2>Sistemul de stocare al codului</h2>
-    <p>Pentru stocarea și managementul online al codului-sursă folosim GitHub:</p>
-    <a href="https://github.com/Andreea15B/STAW_TaSOr">Repository-ul de pe GitHub</a>
-  </section>
-  <section id="structure">
-    <h2>Funcționalități ale aplicației</h2>
-    <p>Pentru un utilizator care nu are cont singura funcționaliate va fi de a se înregistra.</p>
-    <p>Pentru un utilizator care are cont, funcționalitățile vor fi:<p>
-        <ul>
-          <li>Posibilitatea de a se loga în aplicație</li>
-          <li>Posibilitatea de a se deloga din aplicație</li>
-          <li>Vizualizarea board-urilor din care face parte</li>
-          <li>Crearea unui board</li>
-          <li>Ștergerea unui board (doar daca el este cel care a creat acel board)</li>
-          <li>Vizualizarea task-urilor prezente</li>
-          <li>Adăugarea unui task</li>
-          <li>Ștergerea unui task</li>
-          <li>Editarea unui task</li>
-          <li>Asignarea de persoane pentru un task</li>
-          <li>Adăugarea unui deadline pentru un task</li>
-          <li>Posibilitatea adăugării de imagini, link-uri, depozit de cod sursă, zonă geografică, domeniu, descriere
-            pentru fiecare task</li>
-          <li>Distribuirea unui task, în mod public, printr-un URL anonim</li>
-          <li>Adăugarea de etichete/categorii pentru task-uri</li>
-          <li>Afișarea istoricului fiecărui board, pe baza caruia va primi notificări direct în browser sau prin email</li>
-          <li>Vizualizarea de statistici</li>
-        </ul>
-  </section>
-  <section id="semantics">
-    <h2>Detalii despre proiect</h2>
-    <section id="Root">
-      <h3>Încadrarea aplicației într-o categorie de aplicație Web</h3>
-      <section>
-        <h3>Progressive Web Application (PWA)</h3>
-        <img src="./diagrame/staw_diagrama.jpeg" height=80% width=80%>
-        <p>Care sunt cerințele pentru a fi considerată o aplicație web progresivă:
-          <ul>
-            <li>Progresivă – Să funcționeze pentru orice utilizator, indiferent de browser-ul ales, deoarece este
-              construit cu o îmbunătățire progresivă ca principiu de bază</li>
-            <li>Responsive – Să aibă un design potrivit pentru orice dispozitiv: desktop, mobil sau tabletă</li>
-            <li>Independentă de conectivitate – Să funcționeze în mod offline sau în rețele de calitate scăzută</li>
-            <li>Sincronizată – Întotdeauna actualizată</li>
-          </ul>
+    <section id="introduction" role="doc-introduction">
+        <h2>Descrierea proiectului</h2>
+        <p>"Să se conceapă un produs Web de tip PWA (Progressive Web Application) capabil să gestioneze timpul de efectuare a unor activități (tasks). Utilizatorii autentificați vor propune (tipuri de) activități (task-uri), asignându-le apoi unor persoane
+            care trebuie să le execute într-o perioadă de timp specificată. </p>
+        <p>Printr-un URL anonim, informațiile despre un task ce trebuie efectuat pot fi expuse public. </p>
+        <p>Fiecare activitate va avea asociate informații privind demararea acesteia (interval orar, zona geografica, doar utilizatori calificați într-un domeniu specific etc.) și finalizarea (i.e. dovada realizării cu (in)succes a task-ului -- minimal,
+            un URL indicând o resursă edificatoare: fotografie, video, depozit de cod-sursă, orice altceva). </p>
+        <p>Istoricul activităților și statistici vor fi disponibile tuturor celor implicați. Diversele notificări vor fi disponibile direct în browser și/sau trimise prin poșta electronică. </p>
+        <p>Inspirație: Asana și Trello."</p>
+    </section>
+    <section id="structure">
+        <h2>Tehnologii utilizate</h2>
+        <p>
+            Pentru crearea interfeței utilizatorului, folosim limbajele HTML și CSS.
         </p>
-      </section>
-      <section>
-        <h3>Single Page Application (SPA)</h3>
-        <p>Care sunt cerințele pentru a fi considerată o aplicație SPA:
-          <li>Aplicația va încărca conținutul în mod dinamic. Vom încărca o pagină doar când vom intra pe ruta ei.</li>
-          <li>Vom folosi JavaScript care poate încărca conținut în document dacă și când utilizatorul are
-            nevoie, fără a reîncărca întreaga pagină - aceasta este denumită în mod obișnuit <b>Ajax</b>.<br />
-            <img src="./diagrame/ajax.png" height=80% width=80%><br /><br /></li>
-          <li>Aceste API-uri vor trimite datele sub formă de fișiere JSON.
-            <p>API-uri pentru board-uri:</p>
-            <ul>
-              <li>POST "/boards" -> va crea un nou board</li>
-              <li>GET "/boards" -> va oferi toate board-urile </li>
-              <li>GET "/boards/{id}" -> va oferi board-ul cu id-ul specificat</li>
-              <li>DELETE "/boards/{id}" -> va șterge board-ul cu id-ul specificat </li>
-              <li>PUT "/boards/{id}" -> va face update unui board </li>
-            </ul>
-            <p>API-uri pentru task-uri:</p>
-            <ul>
-              <li>POST "/tasks" -> va crea un nou task</li>
-              <li>GET "/tasks/{id_board}" -> va oferi toate task-urile unui board</li>
-              <li>DELETE "/tasks/{id}" -> va șterge task-ul cu id-ul specificat </li>
-              <li>PUT "/tasks/{id}" -> va face update la task-ul cu id-ul dat ca parametru</li>
-            </ul>
-            <p>API pentru users:</p>
-            <ul>
-              <li>GET "/users/{username}" -> va oferi detaliile despre un user</li>
-            </ul>
-            <p>API pentru istoric:</p>
-            <ul>
-              <li>GET "/history/{id_board}" -> va oferi istoricul pentru un board dat ca parametru</li>
-            </ul>
-          </li>
-          <p>API-uri externe:</p>
+        <p>
+            Pe partea de client, vom utiliza doar cod-sursă ECMAScript pur. <br /> Pe partea de server, folosim Node.js și framework-ul Express.js. Am ales acest framework deoarece este minimal, flexibil și oferă un set robust de funcții pentru web.
+        </p>
+        <p>
+            Stocarea și managementul datelor pe partea de server vor fi realizate utilizând un server de baze de date relațional, MySql.
+        </p>
+    </section>
+    <section id="structure">
+        <h2>Sistemul de stocare al codului</h2>
+        <p>Pentru stocarea și managementul online al codului-sursă folosim GitHub:</p>
+        <a href="https://github.com/Andreea15B/STAW_TaSOr">Repository-ul de pe GitHub</a>
+    </section>
+    <section id="structure">
+        <h2>Funcționalități ale aplicației</h2>
+        <p>Pentru un utilizator care nu are cont, singura funcționalitate va fi de a se înregistra.</p>
+        <p>Pentru un utilizator care are cont, funcționalitățile vor fi:
+            <p>
+                <ul>
+                    <li>Posibilitatea de a se loga în aplicație</li>
+                    <li>Posibilitatea de a se deloga din aplicație</li>
+                    <li>Vizualizarea board-urilor din care face parte</li>
+                    <li>Crearea unui board</li>
+                    <li>Ștergerea unui board (doar daca el este cel care a creat acel board)</li>
+                    <li>Vizualizarea task-urilor prezente</li>
+                    <li>Adăugarea unui task</li>
+                    <li>Ștergerea unui task</li>
+                    <li>Editarea unui task</li>
+                    <li>Asignarea de persoane pentru un task</li>
+                    <li>Adăugarea unui deadline pentru un task</li>
+                    <li>Posibilitatea adăugării unei imagini, link (depozit de cod sursă), zonă geografică, domeniu, descriere pentru fiecare task</li>
+                    <li>Distribuirea unui task, în mod public, printr-un URL anonim</li>
+                    <li>Afișarea istoricului fiecărui board</li>
+                    <li>Primirea de notificări</li>
+                    <li>Mutarea unui task în unul din cardurile "to-do", "in-progress" sau "done"</li>
+                    <li>Vizualizarea de statistici</li>
+                </ul>
+    </section>
+    <section id="semantics">
+        <h2>Detalii despre proiect</h2>
+        <section id="Root">
+            <h3>Încadrarea aplicației într-o categorie de aplicație Web</h3>
+            <section>
+                <h3>Progressive Web Application (PWA)</h3>
+                <img src="./diagrame/staw_diagrama.jpeg" height=80% width=80%>
+                <p>Care sunt cerințele pentru a fi considerată o aplicație web progresivă:
+                    <ul>
+                        <li>Progresivă – Să funcționeze pentru orice utilizator, indiferent de browser-ul ales, deoarece este construit cu o îmbunătățire progresivă ca principiu de bază</li>
+                        <li>Responsive – Să aibă un design potrivit pentru orice dispozitiv: desktop, mobil sau tabletă</li>
+                        <li>Independentă de conectivitate – Să funcționeze în mod offline sau în rețele de calitate scăzută</li>
+                        <li>Sincronizată – Întotdeauna actualizată</li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+                <h3>Multiple-Page Application</h3>
+                <p>Aplicațiile cu mai multe pagini funcționează într-un mod „tradițional”. Fiecare schimbare, de ex.afișează datele sau trimite datele înapoi la solicitările serverului care redau o pagină nouă de pe server din browser
+                </p>
+
+                <li>Aceste API-uri vor trimite datele sub formă de fișiere JSON.
+                    <p>API-uri pentru board-uri:</p>
+                    <ul>
+                        <li>POST "/boards" -> va crea un nou board</li>
+                        <li>GET "/boards/:nume_board" -> va oferi detaliile board-ului respectiv </li>
+                        <li>GET "/boards/:username" -> va oferi board-urile în care se află un user</li>
+                        <li>DELETE "/boards/:id" -> va șterge board-ul cu id-ul specificat </li>
+                    </ul>
+                    <p>API-uri pentru task-uri:</p>
+                    <ul>
+                        <li>POST "/tasks" -> va crea un nou task</li>
+                        <li>DELETE "/tasks/:id_task" -> va șterge task-ul cu id-ul specificat </li>
+                        <li>PUT "/tasks/:id_task" -> va face update la task-ul cu id-ul dat ca parametru</li>
+                        <li>GET "/tasks" -> va afișa toate taskurile</li>
+                        <li>GET "/tasks/:id_task" -> va oferi detaliile unui task</li>
+                        <li>GET "/tasks/:nume_board/:status" -> va oferi detalii despre un task în funcție de statusul în care se află
+                        </li>
+                    </ul>
+                    <p>API pentru users:</p>
+                    <ul>
+                        <li>GET "/users" -> va oferi toți userii</li>
+                        <li>GET "/users/:username" -> va oferi detaliile despre un user</li>
+                        <li>PUT "/users/:username" -> va face update unui user</li>
+                        <li>POST "/users/:username" -> va crea un user</li>
+                        <li>DELETE "/users/:username" -> va șterge un user</li>
+                    </ul>
+                    <p>API pentru istoric:</p>
+                    <ul>
+                        <li>POST "/history" -> va crea istoric</li>
+                        <li>GET "/history/:name_board" -> va oferi istoricul pentru un board dat ca parametru</li>
+                    </ul>
+                    <p>API pentru membrii unui board:</p>
+                    <ul>
+                        <li>POST "/boards_members"</li>
+                        <li>GET "/boards_members/:name_board" -> oferă membrii care sunt într-un board</li>
+                        <li>GET "/boards_members/:username" -> afișează board-urile în care se află un user</li>
+                    </ul>
+                    <p>API pentru imagini:</p>
+                    <ul>
+                        <li>POST "/images"</li>
+                        <li>PUT "/images"</li>
+                        <li>GET "/images/:id_task"</li>
+                    </ul>
+                    <p>API pentru userii asignați unui task:</p>
+                    <ul>
+                        <li>POST "/task_users"</li>
+                        <li>GET "/task_users/:id_task"</li>
+                    </ul>
+
+                    <!-- <p>API-uri externe:</p>
             Vom folosi un API extern pentru aflarea zonei geografice:
             <ul>
               <li>http://ip-api.com/json/{query}</li>
               <li>Acest API ne oferă geolocația sub formă de JSON în funcție de IP-ul dat.</li>
-			  <li>{query} poate fi o singură adresă IPv4 / IPv6 sau un nume de domeniu. Dacă nu furnizăm un query, se va utiliza adresa IP curentă.</li>
-			  <li>Parametrii de interogare (cum ar fi câmpurile personalizate și returnarea apelurilor JSON) sunt 
-			  adăugați ca parametri de solicitare GET, de exemplu: http://ip-api.com/json/?fields=61439.</li>
-			  <img src="./diagrame/campuri.PNG">
-			  <li>API-ul poate returna următoarele câmpuri și valori:<br/>
-				<img src ="./diagrame/exemplu.PNG">
-			  </li>
-			  <li>Exemplu de JSON <br/>
-				<img src="./diagrame/response.PNG">
-			  </li>  
-            </ul>
-        </p>
-      </section>
-    </section>
-    <section id="Root">
+              <li>{query} poate fi o singură adresă IPv4 / IPv6 sau un nume de domeniu. Dacă nu furnizăm un query, se va
+                utiliza adresa IP curentă.</li>
+              <li>Parametrii de interogare (cum ar fi câmpurile personalizate și returnarea apelurilor JSON) sunt
+                adăugați ca parametri de solicitare GET, de exemplu: http://ip-api.com/json/?fields=61439.</li>
+              <img src="./diagrame/campuri.PNG">
+              <li>API-ul poate returna următoarele câmpuri și valori:<br />
+                <img src="./diagrame/exemplu.PNG">
+              </li>
+              <li>Exemplu de JSON <br />
+                <img src="./diagrame/response.PNG">
+              </li>
+            </ul> -->
+                    </p>
+            </section>
+        </section>
+        <!-- <section id="Root">
       <h3>Service worker</h3>
       <p>Service Worker aparține aplicațiilor progresive web și este un script ce rulează în browser, în fundal. Service
         Worker cuprinde: Push Notification, sincronizare în fundal și posibilitatea de accesa un site pe care ai mai
@@ -171,30 +181,32 @@
       <img src="./diagrame/S2.png" height=100% width=100%>
       <h3>Confirmare cache</h3>
       <img src="./diagrame/S3.png" height=100% width=100%>
+    </section> -->
+        <section id="Root">
+            <h3>Maniera de interacțiune cu utilizatorul</h3>
+            <img src="./diagrame/UseCaseDiagram.png" height=100% width=100%>
+        </section>
+        <section id="Root">
+            <h3>Modelarea datelor</h3>
+            <img src="./diagrame/database_diagram.png" height=100% width=100%>
+        </section>
     </section>
     <section id="Root">
-      <h3>Maniera de interacțiune cu utilizatorul</h3>
-      <img src="./diagrame/UseCaseDiagram.png" height=100% width=100%>
-    </section>
-    <section id="Root">
-      <h3>Modelarea datelor</h3>
-      <img src="./diagrame/database_diagram.png" height=100% width=100%>
-    </section>
-  </section>
-  <section id="Root">
-    <h3>Resurse</h3>
-    <ul>
-      <li><a href="https://jigsaw.w3.org/css-validator/">CSS Validator</a></li>
-      <li><a href="https://validator.w3.org/">HTML Validator</a></li>
-      <li><a href="https://www.w3schools.com/">W3Schools</a></li>
-      <li><a href="https://profs.info.uaic.ro/~busaco/teach/courses/staw/">Cursuri Dezvoltarea aplicatiilor Web cu
+        <h3>Resurse</h3>
+        <ul>
+            <li><a href="https://jigsaw.w3.org/css-validator/">CSS Validator</a></li>
+            <li><a href="https://validator.w3.org/">HTML Validator</a></li>
+            <li><a href="https://www.w3schools.com/">W3Schools</a></li>
+            <li><a href="https://profs.info.uaic.ro/~busaco/teach/courses/staw/">Cursuri Dezvoltarea aplicatiilor Web cu
           JavaScript</a></li>
-      <li><a href="https://developers.google.com/web/fundamentals/primers/service-workers?fbclid=IwAR2Ffqni3rO4B7pfs3A6ATShEmPNEUtGJGquJniduzkskkcF4Jx61nWELKs">Informații despre Service Worker</a> </li>
-      <li><a href="https://www.dbdesigner.net/">Modelarea diagramei pentru baza de date</a> </li>
-      <li><a href="https://ip-api.com/">Informații API geolocație</a> </li>
-    </ul>
-  </section>
-  <br><br><br>
+            <!-- <li><a
+          href="https://developers.google.com/web/fundamentals/primers/service-workers?fbclid=IwAR2Ffqni3rO4B7pfs3A6ATShEmPNEUtGJGquJniduzkskkcF4Jx61nWELKs">Informații
+          despre Service Worker</a> </li> -->
+            <li><a href="https://www.dbdesigner.net/">Modelarea diagramei pentru baza de date</a> </li>
+            <!-- <li><a href="https://ip-api.com/">Informații API geolocație</a> </li> -->
+        </ul>
+    </section>
+    <br><br><br>
 </body>
 
 </html>
