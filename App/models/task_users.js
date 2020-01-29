@@ -9,7 +9,6 @@ class TaskUsers {
 };
 
 TaskUsers.create_taskUser = (newTaskUser, result) => {
-    console.log("modal create_taskUser: ", newTaskUser);
     sql.query("INSERT INTO task_assignments set ?", newTaskUser, (error, res) => {
         if (error) result(error, null);
         else result(null, res.insertId);

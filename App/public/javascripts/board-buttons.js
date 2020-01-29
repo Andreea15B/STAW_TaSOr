@@ -19,9 +19,7 @@ function validateFormEdit() {
     return false;
   }
   var link = document.forms["editTask-form"]["link"].value;
-  console.log(link);
   if(!"https://.*".test(link)) {
-    console.log("test if entered");
     alert("Please enter a valid URL.");
     return false;
   }
