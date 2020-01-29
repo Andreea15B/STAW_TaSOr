@@ -10,6 +10,7 @@ function open_modal() {
     var content_ = document.getElementById('content-url');
 
     var taskId = null;
+    var length_ = 0;
 
     function formatDate(date) {
         var d = new Date(date),
@@ -24,7 +25,7 @@ function open_modal() {
     }
 
     for (var i = 0; i < taskButtons.length; i++) {
-        taskButtons[i].onclick = function(event) {
+        taskButtons[i].onclick = async function(event) {
             taskId = event.toElement.id;
             modal_edit.style.display = "block";
             var api_tasks = 'http://localhost:3000/tasks/' + taskId;
@@ -47,13 +48,17 @@ function open_modal() {
 
             var images_tasks = 'http://localhost:3000/images/' + taskId;
             if (images_container.childNodes.length == 1) {
-                fetch(images_tasks)
+                await fetch(images_tasks)
                     .then(response => response.json())
                     .then(response => {
-                        if (response.length > 0) {
+                        length_ = response.length
+                        if (length_ > 0) {
+                            while (images_container.firstChild) {
+                                images_container.removeChild(images_container.firstChild);
+                            }
                             var image_res = response[0].image;
                             var arrayBufferView = new Uint8Array(image_res.data);
-                            var blob = new Blob([arrayBufferView], { type: "image/jpeg" })
+                            var blob = new Blob([arrayBufferView], { type: "image/jpg" })
                             var image = new Image();
                             image.src = window.URL.createObjectURL(blob);
                             image.style.width = '40px';
@@ -61,7 +66,6 @@ function open_modal() {
                             image.setAttribute('class', 'image-task');
                             images_container.appendChild(image);
                         }
-
                     });
             }
 
@@ -118,23 +122,20 @@ function open_modal() {
             image
         };
 
-        if (images_container.childNodes.length == 1) {
-            fetch("http://localhost:3000/images", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            });
+        var method = "";
+
+        if (length_ == 0) {
+            method = "POST";
         } else {
-            fetch("http://localhost:3000/images", {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            });
+            method = "PUT";
         }
+        fetch("http://localhost:3000/images", {
+            method: method,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
 
         modal_edit.style.display = "none";
         location.reload();
