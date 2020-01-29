@@ -20,10 +20,7 @@ fetch(api_boards)
                 }, false)
                 container.appendChild(div_);
             });
-
         }
-
-
     });
 
 function redirect_page(event) {

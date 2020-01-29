@@ -1,9 +1,18 @@
 var myParent = document.getElementById("select-container");
 var board_name = document.getElementById('board_name').innerText;
 var username_session = document.getElementById('username').innerText;
-
 var array = [];
 var board_members = [];
+
+
+var button_delete = document.getElementById('delete-board-button');
+button_delete.onclick = () => {
+    fetch("http://localhost:3000/board_add/" + board_name, {
+        method: 'delete'
+    });
+    window.location.href = "http://localhost:3000/home";
+}
+
 
 fetch('http://localhost:3000/boards_members/' + board_name)
     .then(response => response.json())

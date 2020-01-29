@@ -40,4 +40,14 @@ Board.getBoardByName = (name, result) => {
     });
 };
 
+Board.deleteBoard = (name, result) => {
+    sql.query("DELETE FROM boards WHERE title = ?; DELETE FROM history WHERE name_board = ? ; DELETE FROM tasks WHERE name_board = ? ", [name, name, name], function(err, res) {
+        if (err) {
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+}
+
 module.exports = Board;

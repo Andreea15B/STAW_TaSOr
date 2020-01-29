@@ -81,6 +81,20 @@
     margin-bottom: 10px;
 }
 
+#delete-board-button {
+    background-color: red;
+    border-radius: 40px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Raleway-SemiBold;
+    font-size: 16px;
+    padding: 6px 14px;
+    text-decoration: none;
+    outline: none;
+    margin-right: 12px;
+}
+
 .board-cards {
     display: flex;
     flex-direction: row;

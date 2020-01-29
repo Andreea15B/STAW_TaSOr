@@ -18,6 +18,14 @@ exports.get_board = (req, res) => {
     });
 };
 
+exports.delete_board = (req, res) => {
+    boardsService.delete_board(req.params.name, (req, err) => {
+        if (err)
+            res.send(err);
+        res.json(req);
+    });
+};
+
 exports.create_board = (req, res) => {
     if (!req.body.title) {
         res.status(400).send({ erorr: true, message: 'Please provide title' });

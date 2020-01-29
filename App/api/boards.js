@@ -10,6 +10,7 @@ module.exports = function(app) {
         .post(boards.create_board);
 
     app.route('/board_add/:name')
-        .get(boards.get_board);
+        .get(boards.get_board)
+        .delete(boards.delete_board)
 
 };

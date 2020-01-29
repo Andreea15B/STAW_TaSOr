@@ -14,3 +14,7 @@ exports.createBoard = (newBoard, result) => {
 exports.get_board_by_name = (name, result) => {
     Board.getBoardByName(name, (error, req) => result(req, error));
 };
+
+exports.delete_board = (name, result) => {
+    Board.deleteBoard(name, (error, req) => result(req, error));
+};
