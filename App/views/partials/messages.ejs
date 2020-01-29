@@ -11,3 +11,11 @@
         </div>
     </div>
     <%} %>
+
+        <% if(typeof success != 'undefined') { %>
+            <div class="success-container">
+                <% success.forEach(function(success) { %>
+                    <%=  success.msg %>
+                        <% }); %>
+            </div>
+            <%} %>

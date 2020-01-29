@@ -39,8 +39,10 @@ router.post('/', (req, res) => {
                             },
                             body: JSON.stringify(data),
                         });
+                        let success = [];
+                        success.push({ msg: 'Register successful' });
 
-                        res.redirect('/login');
+                        res.render('login', { success });
                     } catch {
                         res.redirect('/register');
                     }
