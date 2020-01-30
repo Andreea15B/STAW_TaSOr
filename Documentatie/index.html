@@ -62,7 +62,7 @@
                     <li>Posibilitatea de a se deloga din aplicație</li>
                     <li>Vizualizarea board-urilor din care face parte</li>
                     <li>Crearea unui board</li>
-                    <li>Ștergerea unui board (doar daca el este cel care a creat acel board)</li>
+                    <li>Ștergerea unui board</li>
                     <li>Vizualizarea task-urilor prezente</li>
                     <li>Adăugarea unui task</li>
                     <li>Ștergerea unui task</li>
@@ -72,7 +72,7 @@
                     <li>Posibilitatea adăugării unei imagini, link (depozit de cod sursă), zonă geografică, domeniu, descriere pentru fiecare task</li>
                     <li>Distribuirea unui task, în mod public, printr-un URL anonim</li>
                     <li>Afișarea istoricului fiecărui board</li>
-                    <li>Primirea de notificări</li>
+                    <li>Primirea de notificări print email</li>
                     <li>Mutarea unui task în unul din cardurile "to-do", "in-progress" sau "done"</li>
                     <li>Vizualizarea de statistici</li>
                 </ul>
@@ -87,8 +87,10 @@
                 <p>Care sunt cerințele pentru a fi considerată o aplicație web progresivă:
                     <ul>
                         <li>Progresivă – Să funcționeze pentru orice utilizator, indiferent de browser-ul ales, deoarece este construit cu o îmbunătățire progresivă ca principiu de bază</li>
-                        <li>Responsive – Să aibă un design potrivit pentru orice dispozitiv: desktop, mobil sau tabletă</li>
-                        <li>Independentă de conectivitate – Să funcționeze în mod offline sau în rețele de calitate scăzută</li>
+                        <li>Responsive – Să aibă un design potrivit pentru orice dispozitiv: desktop, mobil sau tabletă
+                        </li>
+                        <li>Independentă de conectivitate – Să funcționeze în mod offline sau în rețele de calitate scăzută
+                        </li>
                         <li>Sincronizată – Întotdeauna actualizată</li>
                     </ul>
                 </p>
@@ -102,9 +104,11 @@
                     <p>API-uri pentru board-uri:</p>
                     <ul>
                         <li>POST "/boards" -> va crea un nou board</li>
+                        <li>GET "/boards" -> va afisa toate boardurile</li>
                         <li>GET "/boards/:nume_board" -> va oferi detaliile board-ului respectiv </li>
-                        <li>GET "/boards/:username" -> va oferi board-urile în care se află un user</li>
-                        <li>DELETE "/boards/:id" -> va șterge board-ul cu id-ul specificat </li>
+                        <li>GET "/boards/:username" -> va oferi board-urile create de un user</li>
+                        <li>DELETE "/boards_add/:name" -> va șterge board-ul cu numele specificat </li>
+                        <li>GET "/boards_add/:name" -> va afisa informatii despre board-ul cu numele specificat </li>
                     </ul>
                     <p>API-uri pentru task-uri:</p>
                     <ul>
@@ -131,9 +135,9 @@
                     </ul>
                     <p>API pentru membrii unui board:</p>
                     <ul>
-                        <li>POST "/boards_members"</li>
-                        <li>GET "/boards_members/:name_board" -> oferă membrii care sunt într-un board</li>
-                        <li>GET "/boards_members/:username" -> afișează board-urile în care se află un user</li>
+                        <li>POST "/boards_members" -> adauga noi membri unui board</li>
+                        <li>GET "/boards_members/:name" -> oferă membrii care sunt într-un board</li>
+                        <li>GET "/boards_get/:username" -> afișează board-urile în care se află un user</li>
                     </ul>
                     <p>API pentru imagini:</p>
                     <ul>
@@ -167,21 +171,21 @@
                     </p>
             </section>
         </section>
-        <!-- <section id="Root">
-      <h3>Service worker</h3>
-      <p>Service Worker aparține aplicațiilor progresive web și este un script ce rulează în browser, în fundal. Service
-        Worker cuprinde: Push Notification, sincronizare în fundal și posibilitatea de accesa un site pe care ai mai
-        navigat, site pe care-l poți accesa chiar dacă ești deconectat de la Internet.</p>
-      <p>Service Worker ne permite să rulăm paginile din cache-ul browserului, pentru a accesa conținutul dorit.
-        Sincronizarea în fundal oferită de Service Worker permite să facem o acțiune chiar dacă suntem offline cu
-        certitudinea că acesta va fi făcută când ne vom conecta din nou la Internet.
-        De asemenea, paginile web pe care le accesăm și au Service Worker, pot fi accesate chiar și offline.</p>
-      <img src="./diagrame/S1.png" height=100% width=100%>
-      <h3>Cod Instalare</h3>
-      <img src="./diagrame/S2.png" height=100% width=100%>
-      <h3>Confirmare cache</h3>
-      <img src="./diagrame/S3.png" height=100% width=100%>
-    </section> -->
+        <section id="Root">
+            <h3>Node.js - Trimitere Email cu Nodemailer</h3>
+            <p>Pentru a trimite un email cu Node.js, am folosit modulul Nodemailer, care ușurează trimiterea email-urilor. Îți trebuie un cont la un furnizor de servicii email, spre exemplu Gmail care este gratuit cu limita de maximum 500 email-uri pe zi.
+            </p>
+            <ul>
+                <li>Mai intai, am instalat modulul Nodemailer cu NPM; in interfata command prompt:
+                    <b>npm install --save nodemailer</b></li>
+                <li>Dupa ce am descarcat modulul Nodemailer, am inclus modulul in aplicatie:
+                    <b>const nodemailer = require('nodemailer');</b></li>
+                <li>Acum, pentru a trimite email-uri de pe server cu Node.js, avem nevoie de numele si parola inregistrate la furnizorul de servicii email.</li>
+                <li> Acestea sunt configurarile noastre: <br />
+                    <img src="./diagrame/nodemailer.PNG" height=60% width=60%>
+                </li>
+            </ul>
+        </section>
         <section id="Root">
             <h3>Maniera de interacțiune cu utilizatorul</h3>
             <img src="./diagrame/UseCaseDiagram.png" height=100% width=100%>
@@ -198,7 +202,7 @@
             <li><a href="https://validator.w3.org/">HTML Validator</a></li>
             <li><a href="https://www.w3schools.com/">W3Schools</a></li>
             <li><a href="https://profs.info.uaic.ro/~busaco/teach/courses/staw/">Cursuri Dezvoltarea aplicatiilor Web cu
-          JavaScript</a></li>
+                    JavaScript</a></li>
             <!-- <li><a
           href="https://developers.google.com/web/fundamentals/primers/service-workers?fbclid=IwAR2Ffqni3rO4B7pfs3A6ATShEmPNEUtGJGquJniduzkskkcF4Jx61nWELKs">Informații
           despre Service Worker</a> </li> -->
