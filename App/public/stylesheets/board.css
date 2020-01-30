@@ -552,3 +552,35 @@
 .user-div {
     padding-right: 10px;
 }
+
+.panel {
+    background: #20a882;
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+}
+
+.panel-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.category {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.category span:first-child {
+    font-size: 20px;
+    opacity: 0.6;
+    color: #fff;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.category span:last-child {
+    margin-right: 5px;
+    font-size: 32px;
+    color: #fff;
+}
