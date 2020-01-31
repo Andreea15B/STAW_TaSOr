@@ -65,14 +65,15 @@ function open_modal() {
                                 images_container.removeChild(images_container.firstChild);
                             }
                             var image_res = response[0].image;
-                            var arrayBufferView = new Uint8Array(image_res.data);
-                            var blob = new Blob([arrayBufferView], { type: "image/jpg" });
+                            var blob = new Blob([image_res.data], { type: "image/jpg" });
+                            var objurl = window.URL.createObjectURL(blob);
                             var image = new Image();
-                            image.src = window.URL.createObjectURL(blob);
+                            image.src = objurl;
                             image.style.width = "100px";
                             image.style.height = "70px";
                             image.setAttribute("class", "image-task");
                             images_container.appendChild(image);
+
                         }
                     });
             }
@@ -187,6 +188,34 @@ function open_modal() {
         location.reload();
     };
 
+    var image = document.getElementById('edit-task-image');
+    image.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.addEventListener("load", function() {
+                fileeee = this.result;
+                var data = { id_task: taskId, image: this.result };
+                var method = "";
+                if (length_ == 0) {
+                    method = "POST";
+                } else {
+                    method = "PUT";
+                }
+                fetch("http://localhost:3000/images", {
+                    method: method,
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+            });
+
+            reader.readAsDataURL(file);
+        }
+    });
+
     var saveButton = document.getElementById("edit-task-submit");
     saveButton.onclick = function(event) {
         event.preventDefault();
@@ -214,23 +243,6 @@ function open_modal() {
             body: JSON.stringify(data)
         });
 
-        var image = event.target.form.elements[5].value;
-        var data = { id_task: taskId, image };
-        var method = "";
-
-        if (length_ == 0) {
-            method = "POST";
-        } else {
-            method = "PUT";
-        }
-        fetch("http://localhost:3000/images", {
-            method: method,
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-
         [].forEach.call(arrayAssignedUsers, function(element) {
             username = element.value;
             var data = { id_task: taskId, username };
@@ -244,7 +256,6 @@ function open_modal() {
         });
 
         modal_edit.style.display = "none";
-        location.reload();
     };
 }
 
