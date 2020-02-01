@@ -1,43 +1,26 @@
 'use strict';
 
 var imageService = require('../services/images');
-var fs = require("fs");
-var path = require("path");
-
+// var fs = require("fs");
+// var path = require("path");
 
 exports.assign_image = (req, res) => {
-    if (req.body.image != "") {
-        var data = { id_task, image: req.body.image };
-        imageService.assign_image(data, (req, err) => {
-            if (err)
-                res.send(err);
-            else {
-                res.json(req);
-            }
-            res.end();
-        });
-    }
-
+    imageService.assign_image(req.body, (image, err) => {
+        if (err) res.send(err);
+        res.json(image);
+    });
 };
 
 exports.update_image = (req, res) => {
-    if (req.body.image != "") {
-        var id_task = req.body.id_task;
-        imageService.update_image({ id_task, image: req.body.image }, (req, err) => {
-            if (err) {
-                res.send(err);
-            } else {
-                res.json(req);
-            }
-            res.end();
-        });
-    }
+    imageService.update_image(req.body.id_task, req.body, (image, err) => {
+        if (err) res.send(err);
+        res.json(image);
+    });
 };
 
 exports.get_image = (req, res) => {
     imageService.get_images(req.params.id_task, (req, err) => {
-        if (err)
-            res.send(err);
+        if (err) res.send(err);
         res.json(req);
     });
 };

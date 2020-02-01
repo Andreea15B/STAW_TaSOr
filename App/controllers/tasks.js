@@ -9,7 +9,6 @@ const agent = new https.Agent({
 })
 
 
-
 exports.list_all_tasks = (req, res) => {
     taskService.get_all_tasks((tasks, err) => {
         if (err) res.send(err);

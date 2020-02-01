@@ -28,6 +28,8 @@ function open_modal() {
     }
 
     var thereIsImage = 0;
+    var imageDiv = document.createElement('img');
+    imageDiv.setAttribute('class', 'imgElement');
     for (var i = 0; i < taskButtons.length; i++) {
         flag = 0;
         taskButtons[i].onclick = async function (event) {
@@ -55,14 +57,14 @@ function open_modal() {
                     taskLinkElement.value = response[0].link;
                 });
 
-            // add image
-            if (!thereIsImage) {
-                var imageDiv = document.createElement('img');
-                imageDiv.setAttribute('class', 'imgElement');
-                imageDiv.src = "../uploads/file_uploaded.jpg";
-                images_container.appendChild(imageDiv);
-                thereIsImage = 1;
-            }
+            var images = "https://localhost:3000/images/" + taskId;
+            fetch(images)
+                .then(response => response.json())
+                .then(response => {
+                    length_ = response.length;
+                    imageDiv.src = "../uploads/" + response[0].image;
+                    images_container.appendChild(imageDiv);
+                });
 
             var assignedUsers = "https://localhost:3000/task_users/" + taskId;
             var arrayUsersAlreadyAssigned = [];
@@ -96,7 +98,6 @@ function open_modal() {
             var boardName = document.getElementById("board_name").innerText;
             var taskDomain = document.getElementById("edit-task-domain").value;
             var usersArray = [];
-
             var alreadyThere = [];
 
             // add users to the assign-users selectbox
@@ -215,6 +216,33 @@ function open_modal() {
 
         modal_edit.style.display = "none";
         location.reload();
+    };
+
+    var uploadButton = document.getElementById('upload-button');
+    uploadButton.onclick = function (event) {
+        event.preventDefault();
+        image = event.toElement.form.elements[0].files[0].name;
+        data = { id_task: taskId, image };
+        var method = "";
+        if (length_ == 0) {
+            method = "POST";
+        } else {
+            method = "PUT";
+        }
+        fetch("https://localhost:3000/images/", {
+            method: method,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        // add image to uploads file
+        var imgForm = document.getElementById("imageForm");
+        imgForm.action = '/image';
+        imgForm.method = 'POST';
+        imgForm.enctype = "multipart/form-data";
+        imgForm.submit();
     };
 }
 
