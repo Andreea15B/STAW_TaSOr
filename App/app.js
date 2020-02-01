@@ -5,7 +5,7 @@ const express = require('express'),
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
 var livereload = require('connect-livereload');
-var https = require('https')
+var https = require('https');
 var fs = require('fs');
 port = process.env.PORT || 3000;
 
@@ -34,6 +34,7 @@ app.use('/board', require('./routes/board'));
 app.use('/logout', require('./routes/logout'));
 app.use('/task', require('./routes/task'));
 app.use('/user-settings', require('./routes/user-settings'));
+app.use('/image', require('./routes/image'));
 
 // for API
 var routes = require('./api/users');

@@ -194,6 +194,30 @@
     cursor: pointer;
 }
 
+.upload-file {
+    margin-left: 20px;
+    border: none;
+    padding: 8px 15px 8px 15px;
+    background: #3d6b01;
+    color: #fff;
+    box-shadow: 1px 1px 4px #dadada;
+    border-radius: 3px;
+}
+
+.upload-file:hover {
+    background: #4f8606;
+    color: #fff;
+    cursor: pointer;
+}
+
+.second-form {
+    display: flex !important;
+}
+
+.imgElement {
+    max-width: 100%;
+}
+
 .header-url {
     height: 30px;
     padding-left: 4px;
@@ -319,7 +343,7 @@
 }
 
 .form-style-2 {
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     align-items: center;
     max-width: 500px;

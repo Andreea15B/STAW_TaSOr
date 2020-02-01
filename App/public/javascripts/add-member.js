@@ -51,7 +51,7 @@ fetch("https://localhost:3000/users")
 
 
 var members_container = document.getElementById('members-container');
-fetch('http://localhost:3000/boards_members/' + board_name)
+fetch('https://localhost:3000/boards_members/' + board_name)
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
@@ -70,7 +70,7 @@ formular.addEventListener('submit', (event) => {
     var username = event.target.elements[0].value;
 
     var data = { board_name, username };
-    fetch('http://localhost:3000/boards_members', {
+    fetch('https://localhost:3000/boards_members', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ formular.addEventListener('submit', (event) => {
 
     var history = username_session + ' add new member : ' + username;
     var data = { name_board, activity: history }
-    fetch('http://localhost:3000/history', {
+    fetch('https://localhost:3000/history', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -90,6 +90,6 @@ formular.addEventListener('submit', (event) => {
 
 
 
-    window.location.href = "http://localhost:3000/board/" + board_name;
+    window.location.href = "https://localhost:3000/board/" + board_name;
 
 });

@@ -27,9 +27,10 @@ function open_modal() {
         return [year, month, day].join("-");
     }
 
+    var thereIsImage = 0;
     for (var i = 0; i < taskButtons.length; i++) {
         flag = 0;
-        taskButtons[i].onclick = async function(event) {
+        taskButtons[i].onclick = async function (event) {
             taskId = event.toElement.id;
             modal_edit.style.display = "block";
             var api_tasks = "https://localhost:3000/tasks/" + taskId;
@@ -54,28 +55,13 @@ function open_modal() {
                     taskLinkElement.value = response[0].link;
                 });
 
-            var images_tasks = "https://localhost:3000/images/" + taskId;
-            if (images_container.childNodes.length == 1) {
-                await fetch(images_tasks)
-                    .then(response => response.json())
-                    .then(response => {
-                        length_ = response.length;
-                        if (length_ > 0) {
-                            while (images_container.firstChild) {
-                                images_container.removeChild(images_container.firstChild);
-                            }
-                            var image_res = response[0].image;
-                            var blob = new Blob([image_res.data], { type: "image/jpg" });
-                            var objurl = window.URL.createObjectURL(blob);
-                            var image = new Image();
-                            image.src = objurl;
-                            image.style.width = "100px";
-                            image.style.height = "70px";
-                            image.setAttribute("class", "image-task");
-                            images_container.appendChild(image);
-
-                        }
-                    });
+            // add image
+            if (!thereIsImage) {
+                var imageDiv = document.createElement('img');
+                imageDiv.setAttribute('class', 'imgElement');
+                imageDiv.src = "../uploads/file_uploaded.jpg";
+                images_container.appendChild(imageDiv);
+                thereIsImage = 1;
             }
 
             var assignedUsers = "https://localhost:3000/task_users/" + taskId;
@@ -171,16 +157,16 @@ function open_modal() {
         };
     }
 
-    close_url.onclick = function() {
+    close_url.onclick = function () {
         show.style.display = "none";
     };
 
-    closeButton_edit.onclick = function() {
+    closeButton_edit.onclick = function () {
         modal_edit.style.display = "none";
     };
 
     var delete_button = document.getElementById("delete-task");
-    delete_button.onclick = function(event) {
+    delete_button.onclick = function (event) {
         event.preventDefault();
         fetch("https://localhost:3000/tasks/" + taskId, {
             method: 'delete'
@@ -188,36 +174,8 @@ function open_modal() {
         location.reload();
     };
 
-    var image = document.getElementById('edit-task-image');
-    image.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.addEventListener("load", function() {
-                fileeee = this.result;
-                var data = { id_task: taskId, image: this.result };
-                var method = "";
-                if (length_ == 0) {
-                    method = "POST";
-                } else {
-                    method = "PUT";
-                }
-                fetch("https://localhost:3000/images", {
-                    method: method,
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                });
-
-            });
-
-            reader.readAsDataURL(file);
-        }
-    });
-
     var saveButton = document.getElementById("edit-task-submit");
-    saveButton.onclick = function(event) {
+    saveButton.onclick = function (event) {
         event.preventDefault();
         title = event.target.form.elements[1].value;
         deadline = event.target.form.elements[2].value;
@@ -243,7 +201,7 @@ function open_modal() {
             body: JSON.stringify(data)
         });
 
-        [].forEach.call(arrayAssignedUsers, function(element) {
+        [].forEach.call(arrayAssignedUsers, function (element) {
             username = element.value;
             var data = { id_task: taskId, username };
             fetch("https://localhost:3000/task_users", {
@@ -256,9 +214,10 @@ function open_modal() {
         });
 
         modal_edit.style.display = "none";
+        location.reload();
     };
 }
 
-window.onload = function() {
+window.onload = function () {
     this.open_modal();
 };
