@@ -3,9 +3,16 @@
 var boardsService = require("../services/board_members");
 var nodemailer = require("../config/nodemailer");
 var fetch = require('node-fetch')
+const https = require("https");
+const agent = new https.Agent({
+    rejectUnauthorized: false
+})
+
+
+
 exports.create_board_member = (req, res) => {
     var username_to_Add = req.body.username;
-    fetch("http://localhost:3000/users/" + username_to_Add)
+    fetch("https://localhost:3000/users/" + username_to_Add, { agent })
         .then(response => response.json())
         .then(response => {
             const email = response[0].email;
@@ -22,11 +29,11 @@ exports.create_board_member = (req, res) => {
             });
         });
 
-    fetch("http://localhost:3000/boards_members/" + req.body.board_name)
+    fetch("https://localhost:3000/boards_members/" + req.body.board_name, { agent })
         .then(response => response.json())
         .then(response => {
             response.forEach(element => {
-                fetch("http://localhost:3000/users/" + element.username)
+                fetch("https://localhost:3000/users/" + element.username, { agent })
                     .then(response => response.json())
                     .then(response => {
 

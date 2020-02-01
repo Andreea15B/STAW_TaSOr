@@ -2,7 +2,7 @@ var container_belong = document.getElementById('board-belong');
 var username = document.getElementById('username').innerText;
 var empty_state_belong = document.getElementById('empty-state-boards-belong');
 
-var api_boards = 'http://localhost:3000/boards_get/' + username;
+var api_boards = 'https://localhost:3000/boards_get/' + username;
 var boards = []
 fetch(api_boards)
     .then(response => response.json())

@@ -7,14 +7,14 @@ var board_members = [];
 
 var button_delete = document.getElementById('delete-board-button');
 button_delete.onclick = () => {
-    fetch("http://localhost:3000/board_add/" + board_name, {
+    fetch("https://localhost:3000/board_add/" + board_name, {
         method: 'delete'
     });
-    window.location.href = "http://localhost:3000/home";
+    window.location.href = "https://localhost:3000/home";
 }
 
 
-fetch('http://localhost:3000/boards_members/' + board_name)
+fetch('https://localhost:3000/boards_members/' + board_name)
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
@@ -22,7 +22,7 @@ fetch('http://localhost:3000/boards_members/' + board_name)
         });
     });
 
-fetch("http://localhost:3000/users")
+fetch("https://localhost:3000/users")
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {

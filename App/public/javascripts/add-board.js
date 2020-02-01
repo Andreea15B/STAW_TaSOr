@@ -2,7 +2,7 @@ var container = document.getElementById('board-created');
 var username = document.getElementById('username').innerText;
 var empty_state = document.getElementById('empty-state-boards');
 
-var api_boards = 'http://localhost:3000/boards/' + username;
+var api_boards = 'https://localhost:3000/boards/' + username;
 
 fetch(api_boards)
     .then(response => response.json())
@@ -25,5 +25,5 @@ fetch(api_boards)
 
 function redirect_page(event) {
     var board_name = event.target.innerText;
-    window.location.href = "http://localhost:3000/board/" + board_name;
+    window.location.href = "https://localhost:3000/board/" + board_name;
 }

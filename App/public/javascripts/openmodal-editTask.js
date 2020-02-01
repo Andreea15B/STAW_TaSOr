@@ -32,7 +32,7 @@ function open_modal() {
         taskButtons[i].onclick = async function(event) {
             taskId = event.toElement.id;
             modal_edit.style.display = "block";
-            var api_tasks = "http://localhost:3000/tasks/" + taskId;
+            var api_tasks = "https://localhost:3000/tasks/" + taskId;
             fetch(api_tasks)
                 .then(response => response.json())
                 .then(response => {
@@ -54,7 +54,7 @@ function open_modal() {
                     taskLinkElement.value = response[0].link;
                 });
 
-            var images_tasks = "http://localhost:3000/images/" + taskId;
+            var images_tasks = "https://localhost:3000/images/" + taskId;
             if (images_container.childNodes.length == 1) {
                 await fetch(images_tasks)
                     .then(response => response.json())
@@ -78,7 +78,7 @@ function open_modal() {
                     });
             }
 
-            var assignedUsers = "http://localhost:3000/task_users/" + taskId;
+            var assignedUsers = "https://localhost:3000/task_users/" + taskId;
             var arrayUsersAlreadyAssigned = [];
 
             fetch(assignedUsers)
@@ -114,11 +114,11 @@ function open_modal() {
             var alreadyThere = [];
 
             // add users to the assign-users selectbox
-            fetch("http://localhost:3000/boards_members/" + boardName)
+            fetch("https://localhost:3000/boards_members/" + boardName)
                 .then(response => response.json())
                 .then(response => {
                     response.forEach(element => {
-                        fetch("http://localhost:3000/users/" + element.username)
+                        fetch("https://localhost:3000/users/" + element.username)
                             .then(resp => resp.json())
                             .then(resp => {
                                 userDomain = resp[0].domain;
@@ -160,7 +160,7 @@ function open_modal() {
                 return result;
             }
 
-            var value_content = "http://localhost:3000/task/" + makeid(16) + taskId;
+            var value_content = "https://localhost:3000/task/" + makeid(16) + taskId;
 
             button.addEventListener("click", event => {
                 event.preventDefault();
@@ -182,7 +182,7 @@ function open_modal() {
     var delete_button = document.getElementById("delete-task");
     delete_button.onclick = function(event) {
         event.preventDefault();
-        fetch("http://localhost:3000/tasks/" + taskId, {
+        fetch("https://localhost:3000/tasks/" + taskId, {
             method: 'delete'
         });
         location.reload();
@@ -202,7 +202,7 @@ function open_modal() {
                 } else {
                     method = "PUT";
                 }
-                fetch("http://localhost:3000/images", {
+                fetch("https://localhost:3000/images", {
                     method: method,
                     headers: {
                         "Content-Type": "application/json"
@@ -235,7 +235,7 @@ function open_modal() {
             description,
             link
         };
-        fetch("http://localhost:3000/tasks/" + taskId, {
+        fetch("https://localhost:3000/tasks/" + taskId, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -246,7 +246,7 @@ function open_modal() {
         [].forEach.call(arrayAssignedUsers, function(element) {
             username = element.value;
             var data = { id_task: taskId, username };
-            fetch("http://localhost:3000/task_users", {
+            fetch("https://localhost:3000/task_users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

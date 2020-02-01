@@ -3,6 +3,11 @@ var router = express.Router();
 var fetch = require("node-fetch");
 var bycript = require("bcryptjs");
 
+const https = require("https");
+const agent = new https.Agent({
+    rejectUnauthorized: false
+})
+
 router.get('/', (req, res) => res.redirect('/login'));
 
 router.get('/login', (req, res) => res.render('login'));
@@ -15,7 +20,7 @@ router.post('/login', (req, res) => {
         errors.push({ msg: 'Fill all the fields' });
         res.render('login', { errors });
     } else {
-        fetch('http://localhost:3000/users/' + username)
+        fetch('https://localhost:3000/users/' + username, { agent })
             .then(response => response.json())
             .then(async response => {
                 //console.log(response);

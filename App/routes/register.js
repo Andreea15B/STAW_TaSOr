@@ -2,6 +2,11 @@ var express = require('express');
 var router = express.Router();
 var fetch = require("node-fetch");
 var bycript = require("bcryptjs");
+const https = require("https");
+const agent = new https.Agent({
+    rejectUnauthorized: false
+})
+
 
 router.get('/', (req, res) => res.render('register'));
 router.post('/', (req, res) => {
@@ -12,7 +17,7 @@ router.post('/', (req, res) => {
         errors.push({ msg: 'Fill all the fields' });
         res.render('register', { errors });
     } else {
-        fetch('http://localhost:3000/users/' + username)
+        fetch('https://localhost:3000/users/' + username, { agent })
             .then(response => response.json())
             .then(async response => {
                 if (response.length > 0) {
@@ -32,12 +37,13 @@ router.post('/', (req, res) => {
                         const hashed_password = await bycript.hash(password, 10);
                         const data = { username, fullname, password: hashed_password, email, domain };
 
-                        fetch('http://localhost:3000/users/', {
+                        fetch('https://localhost:3000/users/', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
                             },
                             body: JSON.stringify(data),
+                            agent
                         });
                         let success = [];
                         success.push({ msg: 'Register successful' });

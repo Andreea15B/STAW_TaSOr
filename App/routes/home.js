@@ -2,6 +2,11 @@ var express = require('express');
 var router = express.Router();
 var { ensureAuthenticated } = require('../middleware/auth');
 var fetch = require("node-fetch");
+const https = require("https");
+const agent = new https.Agent({
+    rejectUnauthorized: false
+})
+
 
 function formatDate(date) {
     var d = new Date(date),
@@ -32,7 +37,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
     var date_ = formatDate(Date.now());
     var errors = [];
 
-    fetch('http://localhost:3000/board_add/' + name)
+    fetch('https://localhost:3000/board_add/' + name, { agent })
         .then(response => response.json())
         .then(response => {
             if (response.length > 0) {
@@ -40,22 +45,24 @@ router.post('/', ensureAuthenticated, (req, res) => {
                 res.render('home', { username: created_by, errors });
             } else {
                 var data = { title: name, created_by: created_by, created_at: date_, updated_at: date_ };
-                fetch('http://localhost:3000/boards/', {
+                fetch('https://localhost:3000/boards/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data),
+                    agent
                 });
 
                 var history = "This board was created by " + created_by;
                 var new_history = { name_board: name, activity: history }
-                fetch('http://localhost:3000/history', {
+                fetch('https://localhost:3000/history', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(new_history),
+                    agent
                 });
 
                 res.render('home', { username: created_by });

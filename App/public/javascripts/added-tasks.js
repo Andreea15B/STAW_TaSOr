@@ -4,7 +4,7 @@ var container_done = document.getElementById('done-card');
 var username = document.getElementById('username').innerText;
 var name_board = document.getElementById('board_name').innerText;
 
-var api_tasks = 'http://localhost:3000/tasks/' + name_board;
+var api_tasks = 'https://localhost:3000/tasks/' + name_board;
 var id_to_update = null;
 
 fetch(api_tasks + '/to-do')
@@ -70,7 +70,7 @@ function drag(ev) {
 function drop(ev, where) {
     ev.preventDefault();
     if (ev.target.hasAttribute('draggable') == false) {
-        fetch('http://localhost:3000/tasks/' + id_to_update)
+        fetch('https://localhost:3000/tasks/' + id_to_update)
             .then(response => response.json())
             .then(response => {
                 var link = response[0].link;
@@ -78,7 +78,7 @@ function drop(ev, where) {
                     alert("To be done, a task must have a link added.Have a nice day, team TASOR! :)");
                 else {
                     var data = { status: where };
-                    fetch('http://localhost:3000/tasks/' + id_to_update, {
+                    fetch('https://localhost:3000/tasks/' + id_to_update, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -87,13 +87,13 @@ function drop(ev, where) {
                     });
 
                     var history = username + ' move task ';
-                    fetch('http://localhost:3000/tasks/' + id_to_update)
+                    fetch('https://localhost:3000/tasks/' + id_to_update)
                         .then(response => response.json())
                         .then(response => {
                             var title = response[0].title;
                             history = history + title + ' in ' + where;
                             var data = { name_board, id_task: id_to_update, activity: history }
-                            fetch('http://localhost:3000/history', {
+                            fetch('https://localhost:3000/history', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',

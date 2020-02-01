@@ -3,6 +3,11 @@ var router = express.Router();
 var { ensureAuthenticated } = require("../middleware/auth");
 var bycript = require("bcryptjs");
 var fetch = require("node-fetch");
+const https = require("https");
+const agent = new https.Agent({
+    rejectUnauthorized: false
+})
+
 
 router.get("/", ensureAuthenticated, (req, res) => {
     const initiale = req.session.username;
@@ -32,12 +37,13 @@ router.post("/", ensureAuthenticated, async(req, res) => {
             new_username = undefined;
 
         const data = { username: new_username, password: hashed_password };
-        fetch("http://localhost:3000/users/" + initiale, {
+        fetch("https://localhost:3000/users/" + initiale, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            agent
         });
         res.redirect("/logout");
     }

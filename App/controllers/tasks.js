@@ -3,6 +3,12 @@
 var taskService = require("../services/tasks");
 var nodemailer = require("../config/nodemailer");
 var fetch = require('node-fetch');
+const https = require("https");
+const agent = new https.Agent({
+    rejectUnauthorized: false
+})
+
+
 
 exports.list_all_tasks = (req, res) => {
     taskService.get_all_tasks((tasks, err) => {
@@ -15,11 +21,11 @@ exports.create_a_task = (req, res) => {
     if (!req.body.title) {
         res.status(400).send({ error: true, message: "Please provide a title" });
     } else {
-        fetch("http://localhost:3000/boards_members/" + req.body.name_board)
+        fetch("https://localhost:3000/boards_members/" + req.body.name_board, { agent })
             .then(response => response.json())
             .then(response => {
                 response.forEach(element => {
-                    fetch("http://localhost:3000/users/" + element.username)
+                    fetch("https://localhost:3000/users/" + element.username, { agent })
                         .then(response => response.json())
                         .then(response => {
 

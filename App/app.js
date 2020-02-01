@@ -4,8 +4,9 @@ const express = require('express'),
 
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
-var livereload = require("connect-livereload");
-
+var livereload = require('connect-livereload');
+var https = require('https')
+var fs = require('fs');
 port = process.env.PORT || 3000;
 
 app.use(session({
@@ -34,8 +35,6 @@ app.use('/board', require('./routes/board'));
 app.use('/logout', require('./routes/logout'));
 app.use('/task', require('./routes/task'));
 app.use('/user-settings', require('./routes/user-settings'));
-app.listen(port);
-
 
 // for API
 var routes = require('./api/users');
@@ -52,3 +51,11 @@ var routes_history = require('./api/history');
 routes_history(app);
 var routes_taskUsers = require('./api/task_users');
 routes_taskUsers(app);
+
+https.createServer({
+        key: fs.readFileSync('server.key'),
+        cert: fs.readFileSync('server.cert')
+    }, app)
+    .listen(port, function() {
+        console.log('App listening on port 3000! Go to https://localhost:3000/')
+    })

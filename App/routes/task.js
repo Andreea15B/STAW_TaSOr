@@ -2,6 +2,11 @@ var express = require("express");
 var router = express.Router();
 var fetch = require("node-fetch");
 var { ensureAuthenticated } = require('../middleware/auth');
+const https = require("https");
+const agent = new https.Agent({
+    rejectUnauthorized: false
+})
+
 
 
 function formatDate(date) {
@@ -26,7 +31,7 @@ router.get('/:name', (req, res) => {
     var id = req.params.name;
     var send_ = id.slice(16);
 
-    fetch('http://localhost:3000/tasks/' + send_)
+    fetch('https://localhost:3000/tasks/' + send_)
         .then(response => response.json())
         .then(response => {
             res.render('task', { task: response[0] })
@@ -42,22 +47,24 @@ router.post('/', ensureAuthenticated, (req, res) => {
 
     try {
         const data = { title, status, created_at: date_, deadline, description, domain, geographical_area, link, name_board: board_to_add };
-        fetch("http://localhost:3000/tasks/", {
+        fetch("https://localhost:3000/tasks/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            agent
         });
 
         var history = username + " add new task : " + title;
         var new_history = { name_board: board_to_add, activity: history }
-        fetch('http://localhost:3000/history', {
+        fetch('https://localhost:3000/history', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(new_history),
+            agent
         });
         res.redirect('/board/' + board_to_add);
 
