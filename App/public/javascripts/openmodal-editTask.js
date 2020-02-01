@@ -4,9 +4,7 @@ function open_modal() {
     var taskButtons = document.getElementsByClassName("btn-task");
     var close_url = document.getElementById("close-url");
     var images_container = document.getElementById("image-task-container");
-    var assignedUsersContainer = document.getElementById(
-        "show-assigned-users-div"
-    );
+    var assignedUsersContainer = document.getElementById("show-assigned-users-div");
 
     var button = document.getElementById("share-task");
     var show = document.getElementById("show-url-container");
@@ -27,7 +25,6 @@ function open_modal() {
         return [year, month, day].join("-");
     }
 
-    var thereIsImage = 0;
     var imageDiv = document.createElement('img');
     imageDiv.setAttribute('class', 'imgElement');
     for (var i = 0; i < taskButtons.length; i++) {
@@ -35,19 +32,16 @@ function open_modal() {
         taskButtons[i].onclick = async function (event) {
             taskId = event.toElement.id;
             modal_edit.style.display = "block";
+            
             var api_tasks = "https://localhost:3000/tasks/" + taskId;
             fetch(api_tasks)
                 .then(response => response.json())
                 .then(response => {
                     var taskTitleElement = document.getElementById("edit-task-title");
-                    var taskDeadlineElement = document.getElementById(
-                        "edit-task-deadline"
-                    );
+                    var taskDeadlineElement = document.getElementById("edit-task-deadline");
                     var taskDomainElement = document.getElementById("edit-task-domain");
                     var taskRegionElement = document.getElementById("edit-task-region");
-                    var taskDescriptionElement = document.getElementById(
-                        "edit-task-description"
-                    );
+                    var taskDescriptionElement = document.getElementById("edit-task-description");
                     var taskLinkElement = document.getElementById("edit-task-link");
                     taskTitleElement.value = response[0].title;
                     taskDeadlineElement.value = formatDate(response[0].deadline);
@@ -99,15 +93,17 @@ function open_modal() {
             var taskDomain = document.getElementById("edit-task-domain").value;
             var usersArray = [];
             var alreadyThere = [];
-
+                
             // add users to the assign-users selectbox
             fetch("https://localhost:3000/boards_members/" + boardName)
                 .then(response => response.json())
                 .then(response => {
+                    // console.log(response);
                     response.forEach(element => {
                         fetch("https://localhost:3000/users/" + element.username)
                             .then(resp => resp.json())
                             .then(resp => {
+                                // console.log(resp);
                                 userDomain = resp[0].domain;
                                 if (taskDomain == userDomain) {
                                     usersArray.push(element.username);
@@ -178,13 +174,14 @@ function open_modal() {
     var saveButton = document.getElementById("edit-task-submit");
     saveButton.onclick = function (event) {
         event.preventDefault();
+        // console.log(event);
         title = event.target.form.elements[1].value;
         deadline = event.target.form.elements[2].value;
         domain = event.target.form.elements[3].value;
         geographical_area = event.target.form.elements[4].value;
-        description = event.target.form.elements[10].value;
-        link = event.target.form.elements[6].value;
-        arrayAssignedUsers = event.target.form.elements[7].selectedOptions;
+        description = event.target.form.elements[7].value;
+        link = event.target.form.elements[5].value;
+        arrayAssignedUsers = event.target.form.elements[6].selectedOptions;
 
         var data = {
             title,
@@ -202,6 +199,7 @@ function open_modal() {
             body: JSON.stringify(data)
         });
 
+        // console.log(arrayAssignedUsers);
         [].forEach.call(arrayAssignedUsers, function (element) {
             username = element.value;
             var data = { id_task: taskId, username };
