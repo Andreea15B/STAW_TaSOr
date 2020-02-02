@@ -2,10 +2,16 @@
     "short_name": "TASOR",
     "name": "SMART ORGANIZER",
     "icons": [{
-        "src": "/images/logo.png",
-        "type": "image/png",
-        "sizes": "512x512"
-    }],
+            "src": "/images/logo.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/images/logo.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
     "start_url": "/",
     "background_color": "#3367D6",
     "display": "standalone",

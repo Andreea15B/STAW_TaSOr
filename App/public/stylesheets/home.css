@@ -238,3 +238,29 @@
     margin-bottom: 8px;
     margin-top: 15px;
 }
+
+@media only screen and (max-width: 800px) {
+    .card-header {
+        font-size: 12px;
+    }
+    .boards {
+        flex-direction: column;
+        align-items: center;
+    }
+    .button-container-add {
+        height: 2%;
+    }
+    .boards-container {
+        width: 87%;
+        height: 48%;
+    }
+    .image-container {
+        margin-left: 0px;
+    }
+    .username-container {
+        margin: 0px;
+    }
+    .myButton {
+        margin-top: 10px;
+    }
+}

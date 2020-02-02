@@ -35,3 +35,23 @@
 .info-container:hover .profile-menu {
     display: block;
 }
+
+@media only screen and (min-width:400px) and (max-width: 800px) {
+    .username-container {
+        margin: 0px;
+    }
+    .title-container {
+        margin-left: 85px;
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .username-container {
+        margin: 0px;
+    }
+    .title-container {
+        margin-left: 40px;
+        margin-right: 20px;
+    }
+}
