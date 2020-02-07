@@ -6,6 +6,7 @@ const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
 var livereload = require('connect-livereload');
 var https = require('https');
+var http = require('http');
 var fs = require('fs');
 port = process.env.PORT || 3000;
 
@@ -52,10 +53,20 @@ routes_history(app);
 var routes_taskUsers = require('./api/task_users');
 routes_taskUsers(app);
 
+http.createServer(function(request, response) {
+    var body = "redirecting";
+    response.writeHead(302, {
+        'Content-Type': 'text/plain',
+        'Location': 'https://localhost:3000' + request.url,
+        'Content-Length': body.length
+    });
+    response.end(body);
+}).listen(8001);
+
 https.createServer({
-        key: fs.readFileSync('server.key'),
-        cert: fs.readFileSync('server.cert')
+        key: fs.readFileSync('./server.key'),
+        cert: fs.readFileSync('./server.cert')
     }, app)
     .listen(port, function() {
         console.log('App listening on port 3000! Go to https://localhost:3000/')
-    })
+    });

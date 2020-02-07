@@ -56,8 +56,7 @@
                 </div>
 
                 <div class="board-card-body">
-                    <div class="container-div" id="to-do-card" ondrop="drop(event,'to-do')"
-                        ondragover="allowDrop(event)">
+                    <div class="container-div" id="to-do-card" ondrop="drop(event,'to-do')" ondragover="allowDrop(event)">
                         <br>
                     </div>
                     <div class="container-div">
@@ -70,8 +69,7 @@
                 <div class="card-header-tasks">
                     <p>In progress</p>
                 </div>
-                <div class="board-card-body" id="in-progress-card" ondrop="drop(event,'in-progress')"
-                    ondragover="allowDrop(event)">
+                <div class="board-card-body" id="in-progress-card" ondrop="drop(event,'in-progress')" ondragover="allowDrop(event)">
                     <br>
                 </div>
             </div>
@@ -94,8 +92,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-style-2">
-                            <form name="newTask-form" action="/task" method="POST"
-                                onsubmit="return validateFormCreate()">
+                            <form name="newTask-form" action="/task" method="POST" onsubmit="return validateFormCreate()">
                                 <label for="field0">
                                     <span>Board</span>
                                     <input type="text" class="input-field" name="board_to_add" id="board_value"
@@ -249,7 +246,8 @@
                                         <span>Image</span>
                                         <input type="file" name="filetoupload" id="inpFile" class="input-field"><br>
                                         <div class="form-buttons">
-                                            <button class="upload-file" type="submit" id="upload-button">Upload File</button>
+                                            <button class="upload-file" type="submit" id="upload-button">Upload
+                                                File</button>
                                         </div>
                                     </label>
                                 </form>
@@ -291,15 +289,24 @@
             </div>
         </div>
     </div>
+</div>
+
+<noscript>
+    <style type="text/css">
+        .board-container {display:none;}
+    </style>
+    <div class="awesome-fancy-styling">
+      This site requires JavaScript. I will only be visible if you have it disabled.
+    </div>
+  </noscript>
 
 
-
-
-    <script src="/javascripts/board_statistics.js"></script>
-    <script src="/javascripts/board-buttons.js"></script>
-    <script src="/javascripts/added-tasks.js"></script>
-    <script src="/javascripts/openmodal-task.js"></script>
-    <script src="/javascripts/openmodal-editTask.js"></script>
-    <script src="/javascripts/add-member-modal.js"></script>
-    <script src="/javascripts/add-member.js"></script>
-    <script src="/javascripts/show-history.js"></script>
+<script src="/javascripts/app.js"></script>
+<script src="/javascripts/board_statistics.js"></script>
+<script src="/javascripts/board-buttons.js"></script>
+<script src="/javascripts/added-tasks.js"></script>
+<script src="/javascripts/openmodal-task.js"></script>
+<script src="/javascripts/openmodal-editTask.js"></script>
+<script src="/javascripts/add-member-modal.js"></script>
+<script src="/javascripts/add-member.js"></script>
+<script src="/javascripts/show-history.js"></script>

@@ -29,10 +29,10 @@ function open_modal() {
     imageDiv.setAttribute('class', 'imgElement');
     for (var i = 0; i < taskButtons.length; i++) {
         flag = 0;
-        taskButtons[i].onclick = async function (event) {
+        taskButtons[i].onclick = async function(event) {
             taskId = event.toElement.id;
             modal_edit.style.display = "block";
-            
+
             var api_tasks = "https://localhost:3000/tasks/" + taskId;
             fetch(api_tasks)
                 .then(response => response.json())
@@ -93,7 +93,7 @@ function open_modal() {
             var taskDomain = document.getElementById("edit-task-domain").value;
             var usersArray = [];
             var alreadyThere = [];
-                
+
             // add users to the assign-users selectbox
             fetch("https://localhost:3000/boards_members/" + boardName)
                 .then(response => response.json())
@@ -154,25 +154,29 @@ function open_modal() {
         };
     }
 
-    close_url.onclick = function () {
+    close_url.onclick = function() {
         show.style.display = "none";
     };
 
-    closeButton_edit.onclick = function () {
+    closeButton_edit.onclick = function() {
         modal_edit.style.display = "none";
     };
 
     var delete_button = document.getElementById("delete-task");
-    delete_button.onclick = function (event) {
+    delete_button.onclick = function(event) {
         event.preventDefault();
         fetch("https://localhost:3000/tasks/" + taskId, {
             method: 'delete'
+        });
+        caches.keys().then(function(names) {
+            for (let name of names)
+                caches.delete(name);
         });
         location.reload();
     };
 
     var saveButton = document.getElementById("edit-task-submit");
-    saveButton.onclick = function (event) {
+    saveButton.onclick = function(event) {
         event.preventDefault();
         // console.log(event);
         title = event.target.form.elements[1].value;
@@ -200,7 +204,7 @@ function open_modal() {
         });
 
         // console.log(arrayAssignedUsers);
-        [].forEach.call(arrayAssignedUsers, function (element) {
+        [].forEach.call(arrayAssignedUsers, function(element) {
             username = element.value;
             var data = { id_task: taskId, username };
             fetch("https://localhost:3000/task_users", {
@@ -213,11 +217,15 @@ function open_modal() {
         });
 
         modal_edit.style.display = "none";
+        caches.keys().then(function(names) {
+            for (let name of names)
+                caches.delete(name);
+        });
         location.reload();
     };
 
     var uploadButton = document.getElementById('upload-button');
-    uploadButton.onclick = function (event) {
+    uploadButton.onclick = function(event) {
         event.preventDefault();
         image = event.toElement.form.elements[0].files[0].name;
         data = { id_task: taskId, image };
@@ -235,6 +243,11 @@ function open_modal() {
             body: JSON.stringify(data)
         });
 
+        caches.keys().then(function(names) {
+            for (let name of names)
+                caches.delete(name);
+        });
+
         // add image to uploads file
         var imgForm = document.getElementById("imageForm");
         imgForm.action = '/image';
@@ -244,6 +257,6 @@ function open_modal() {
     };
 }
 
-window.onload = function () {
+window.onload = function() {
     this.open_modal();
 };
