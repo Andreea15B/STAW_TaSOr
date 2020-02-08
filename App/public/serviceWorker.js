@@ -1,9 +1,17 @@
 // install event
 
 const dynamicCache = 'dynamic-cache';
+const staticCache = 'static-cache';
+const assests = [
+    '/offline.html'
+];
+
 
 self.addEventListener('install', event => {
     console.log('service worker has been installed');
+    caches.open(staticCache).then(cache => {
+        cache.addAll(assests);
+    })
 })
 
 // activate event
@@ -23,6 +31,6 @@ self.addEventListener('fetch', function(event) {
                     }
                 )
             });
-        })
+        }).catch(() => caches.match('/offline.html'))
     );
 });
