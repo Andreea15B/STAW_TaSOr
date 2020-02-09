@@ -5,7 +5,6 @@ var array = [];
 var board_members = [];
 
 if (navigator.onLine === true) {
-
     var button_delete = document.getElementById('delete-board-button');
     button_delete.onclick = () => {
         fetch("https://localhost:3000/board_add/" + board_name, {
@@ -41,7 +40,7 @@ fetch("https://localhost:3000/users")
         for (var i = 0; i < array.length; i++)
             if (array[i] == username_session)
                 array.splice(i, 1);
-            //Create and append the options
+        //Create and append the options
         for (var i = 0; i < array.length; i++) {
             var option = document.createElement("option");
             option.value = array[i];
@@ -98,3 +97,25 @@ formular.addEventListener('submit', (event) => {
     window.location.href = "https://localhost:3000/board/" + board_name;
 
 });
+
+var myUsername = document.getElementById("username").innerText;
+itIsHereAlready = 0;
+fetch('https://localhost:3000/boards_members/' + board_name)
+    .then(response => response.json())
+    .then(response => {
+        response.forEach(element => {
+            if (element.username == myUsername) itIsHereAlready = 1;
+        });
+        if (itIsHereAlready == 0) {
+            var data = { board_name, username: myUsername };
+            fetch('https://localhost:3000/boards_members', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            window.location.href = "https://localhost:3000/board/" + board_name;
+        }
+    });
+
