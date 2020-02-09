@@ -21,7 +21,7 @@ fetch(tasks_user)
                             if (Notification.permission == 'granted') {
                                 navigator.serviceWorker.getRegistration().then(function(reg) {
                                     reg.showNotification('Tasor', {
-                                        body: 'Deadline for task ' + response[0].title + ' is close!',
+                                        body: 'Deadline for task ' + response[0].title + ' is close!\n' + 'DEADLINE:' + jsDate,
                                         icon: '../images/logo.png'
                                     });
                                 });
