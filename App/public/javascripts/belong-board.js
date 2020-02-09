@@ -7,9 +7,9 @@ var boards = []
 fetch(api_boards)
     .then(response => response.json())
     .then(response => {
-        if (response.length == 0) {
-            empty_state_belong.style.display = "flex";
-        } else {
+        var length = response.length;
+        var numbers = 0;
+        if (response.length != 0) {
             response.forEach(element => {
                 if (element.created_by != username) {
                     var div_ = document.createElement('div');
@@ -20,7 +20,12 @@ fetch(api_boards)
                         redirect_page(ev);
                     }, false)
                     container_belong.appendChild(div_);
+                } else {
+                    numbers = numbers + 1;
                 }
             });
+            if (numbers == length) {
+                empty_state_belong.style.display = "flex";
+            }
         }
     });

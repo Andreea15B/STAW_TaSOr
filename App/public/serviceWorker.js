@@ -7,6 +7,12 @@ const assests = [
 
 // activate event
 self.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.open(staticCache)
+        .then(cache => {
+            return cache.addAll(assests);
+        })
+    );
     console.log('service worker has been activated');
 });
 
