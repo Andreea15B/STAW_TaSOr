@@ -43,7 +43,7 @@ fetch("https://localhost:3000/users")
         for (var i = 0; i < array.length; i++)
             if (array[i] == username_session)
                 array.splice(i, 1);
-        //Create and append the options
+            //Create and append the options
         for (var i = 0; i < array.length; i++) {
             var option = document.createElement("option");
             option.value = array[i];
@@ -62,17 +62,6 @@ fetch('https://localhost:3000/boards_members/' + board_name)
             div_.innerHTML = element.username[0] + element.username[1];
             div_.setAttribute('class', 'username-member');
             members_container.appendChild(div_);
-
-            var overlay = document.createElement('div');
-            overlay.setAttribute('class', 'overlay-container')
-
-            var overlay_content = document.createElement('div');
-            overlay_content.setAttribute('class', 'overlay-content');
-            overlay_content.innerHTML = 'X';
-            overlay.appendChild(overlay_content);
-
-            members_container.appendChild(overlay);
-
         });
     });
 
@@ -132,4 +121,3 @@ fetch('https://localhost:3000/boards_members/' + board_name)
             window.location.href = "https://localhost:3000/board/" + board_name;
         }
     });
-
