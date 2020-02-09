@@ -27,5 +27,7 @@ fetch(api_boards)
             if (numbers == length) {
                 empty_state_belong.style.display = "flex";
             }
+        } else {
+            empty_state_belong.style.display = "flex";
         }
     });
