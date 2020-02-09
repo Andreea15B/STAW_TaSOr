@@ -8,7 +8,6 @@ class BoardMembers {
     }
 };
 
-
 BoardMembers.create_Board = (newBoard, result) => {
     sql.query("INSERT INTO boards_members set ?", newBoard, (error, res) => {
         if (error) {

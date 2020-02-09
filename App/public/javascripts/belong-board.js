@@ -8,7 +8,7 @@ fetch(api_boards)
     .then(response => response.json())
     .then(response => {
         if (response.length == 0) {
-            empty_state_belong.style.display = "block";
+            empty_state_belong.style.display = "flex";
         } else {
             response.forEach(element => {
                 if (element.created_by != username) {
