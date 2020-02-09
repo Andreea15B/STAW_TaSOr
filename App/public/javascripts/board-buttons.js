@@ -18,10 +18,10 @@ function validateFormEdit() {
         alert("Please specify the title of the task.");
         return false;
     }
-    var link = document.forms["editTask-form"]["link"].value;
-    if (!"https://.*".test(link)) {
-        alert("Please enter a valid URL.");
-        return false;
-    }
+    // var link = document.forms["editTask-form"]["link"].value;
+    // if (/(http|https)/.test(String(link)) == false) {
+    //     alert("Please enter a valid URL.");
+    //     return false;
+    // }
     return true;
 }

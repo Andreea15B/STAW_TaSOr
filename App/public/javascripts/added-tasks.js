@@ -191,17 +191,9 @@ function addModal(event) {
           assignedBigDiv.appendChild(assignedUserElement);
           assignedBigDiv.appendChild(deleteUserButton);
           assignedUsersContainer.appendChild(assignedBigDiv);
-
-          // var assignedUserElement = document.createElement("div");
-          // assignedUserElement.setAttribute("class", "user-div");
-          // assignedUserElement.textContent = response[i].username;
-          // assignedUsersContainer.appendChild(assignedUserElement);
         }
       }
     });
-
-    var deleteButtons = document.getElementsByClassName("delete-ssigned-button");
-    console.log("deleteButtons: ", deleteButtons);
 
   var boardName = document.getElementById("board_name").innerText;
   var usersArray = [];
@@ -282,6 +274,17 @@ function addModal(event) {
     });
     location.reload();
   };
+
+  // var deleteAssignedButtons = document.getElementsByClassName("delete-assigned-user");
+  // for (i=0; i < deleteAssignedButtons.length; i++) {
+  //   deleteAssignedButtons[i].onclick = function(event) {
+  //     event.preventDefault();
+  //     alert("hi");
+  //     console.log("event: ", event);
+  //     console.log("deleteAssignedButtons: ", deleteAssignedButtons);
+  //     console.log(deleteAssignedButtons[0].previousElementSibling.innerText);
+  //   }
+  // }
 
   var saveButton = document.getElementById("edit-task-submit");
   saveButton.onclick = function(event) {
