@@ -56,10 +56,7 @@ fetch(api_boards)
         if (response.length == 0) {
             empty_state.style.display = "flex";
         } else {
-            caches.keys().then(function(names) {
-                for (let name of names)
-                    caches.delete(name);
-            });
+
             response.forEach(element => {
                 var div_ = document.createElement('div');
                 div_.innerHTML = element.title;

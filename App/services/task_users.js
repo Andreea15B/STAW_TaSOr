@@ -14,3 +14,7 @@ exports.getUsersForTask = (id_task, result) => {
 exports.getTaskForUser = (username, result) => {
     TaskUser.get_all_tasks_for_user(username, (error, request) => result(request, error));
 }
+
+exports.get_task_assign = (result) => {
+    TaskUser.get_task_assign((error, request) => result(request, error));
+}

@@ -29,4 +29,11 @@ TaskUsers.get_all_tasks_for_user = (username, result) => {
     });
 };
 
+TaskUsers.get_task_assign = (result) => {
+    sql.query("SELECT * FROM task_assignments ", (error, res) => {
+        if (error) result(error, null);
+        else result(null, res);
+    });
+};
+
 module.exports = TaskUsers;

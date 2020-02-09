@@ -22,3 +22,10 @@ exports.get_tasks_for_user = (req, res) => {
         res.json(task);
     });
 };
+
+exports.get_task_assign = (req, res) => {
+    taskUsersService.get_task_assign((task, err) => {
+        if (err) res.send(err);
+        res.json(task);
+    });
+};
