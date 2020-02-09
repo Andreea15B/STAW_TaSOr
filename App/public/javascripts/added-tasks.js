@@ -106,6 +106,16 @@ fetch(api_tasks + "/done")
     });
   });
 
+// for assign users selectbox
+var selectContainer = document.getElementById("assigned-users");
+var noUsersOption = document.createElement("option");
+noUsersOption.setAttribute("class", "user-option");
+noUsersOption.setAttribute("disabled", true);
+noUsersOption.text = "No users in this domain.";
+selectContainer.appendChild(noUsersOption);
+
+flag = 0;
+
 function addModal(event) {
   caches.keys().then(function(names) {
     for (let name of names) caches.delete(name);
@@ -133,7 +143,6 @@ function addModal(event) {
       taskLinkElement.value = response[0].link;
 
       taskDomain = response[0].domain;
-      console.log("taskDomain: ", taskDomain);
     });
 
   var imageDiv = document.createElement("img");
@@ -152,7 +161,6 @@ function addModal(event) {
   var assignedUsers = "https://localhost:3000/task_users/" + taskId;
   var arrayUsersAlreadyAssigned = [];
 
-  flag = 0;
   fetch(assignedUsers)
     .then(response => response.json())
     .then(response => {
@@ -168,9 +176,7 @@ function addModal(event) {
         assignedUsersContainer.appendChild(noUsersAssigned);
       }
       for (var i = 0; i < response.length; i++) {
-        found = arrayUsersAlreadyAssigned.find(
-          elem => elem == response[i].username
-        );
+        found = arrayUsersAlreadyAssigned.find(elem => elem == response[i].username);
         if (found == undefined) {
           arrayUsersAlreadyAssigned.push(response[i].username);
           var assignedUserElement = document.createElement("div");
@@ -181,18 +187,11 @@ function addModal(event) {
       }
     });
 
-  var selectContainer = document.getElementById("assigned-users");
   var boardName = document.getElementById("board_name").innerText;
   var usersArray = [];
   var alreadyThere = [];
 
   // add users to the assign-users selectbox
-  var noUsersOption = document.createElement("option");
-  noUsersOption.setAttribute("class", "user-option");
-  noUsersOption.setAttribute("disabled", true);
-  noUsersOption.text = "No users in this domain.";
-  selectContainer.appendChild(noUsersOption);
-
   fetch("https://localhost:3000/boards_members/" + boardName)
     .then(response => response.json())
     .then(response => {
@@ -205,7 +204,7 @@ function addModal(event) {
               usersArray.push(element.username);
             }
             if (usersArray.length == 0) {
-                noUsersOption.style.visibility = "visible";
+              noUsersOption.style.visibility = "visible";
             }
             for (var i = 0; i < usersArray.length; i++) {
               foundUser = alreadyThere.find(elem => elem == usersArray[i]);
@@ -253,6 +252,7 @@ function addModal(event) {
 
   closeButton_edit.onclick = function() {
     modal_edit.style.display = "none";
+    location.reload();
   };
 
   var delete_button = document.getElementById("delete-task");
@@ -371,7 +371,7 @@ function drop(ev, where) {
         var link = response[0].link;
         if (link == "" && where == "done")
           alert(
-            "To be done, a task must have a link added.Have a nice day, team TASOR! :)"
+            "To be done, a task must have a link added. Have a nice day, team TASOR! :)"
           );
         else {
           var data = { status: where };

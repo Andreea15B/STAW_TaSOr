@@ -567,7 +567,7 @@
 
 .users-assigned {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     padding-left: 15px;
     padding-top: 8px;

@@ -11,4 +11,7 @@ module.exports = function(app) {
     app.route('/get_task_users/:username')
         .get(taskUsers.get_tasks_for_user)
 
+    app.route('/task_users/:id_task/:username')
+        .delete(taskUsers.delete_assigned_user_for_task);
+
 };
