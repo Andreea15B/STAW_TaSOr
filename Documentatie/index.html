@@ -51,8 +51,8 @@
         <h2>Sistemul de stocare al codului</h2>
         <p>Pentru stocarea și managementul online al codului-sursă folosim GitHub:</p>
         <a href="https://github.com/Andreea15B/STAW_TaSOr">Repository-ul de pe GitHub</a>
-		<p>Pentru organizare dezvoltarii proiectului am folosit Trello.</p>
-		<a href="https://trello.com/invite/b/nyfmtbHS/bb34988c1201b494f9111f33ab8d4989/staw-implementare">Link de invite</a>
+        <p>Pentru organizare dezvoltarii proiectului am folosit Trello.</p>
+        <a href="https://trello.com/invite/b/nyfmtbHS/bb34988c1201b494f9111f33ab8d4989/staw-implementare">Link de invite</a>
     </section>
     <section id="structure">
         <h2>Funcționalități ale aplicației</h2>
@@ -93,7 +93,22 @@
                         </li>
                         <li>Independentă de conectivitate – Să funcționeze în mod offline sau în rețele de calitate scăzută
                         </li>
-                        <li>Sincronizată – Întotdeauna actualizată</li>
+                        <li>Foloseste server https
+                        </li>
+                        <li>Existenta unui fisier manifest ce contine informatii despre aplicatia web:
+                            <ul>
+                                <li>Nume</li>
+                                <li>Iconite</li>
+                                <li>start_url</li>
+                                <li>background_color</li>
+                                <li>display</li>
+                                <li>scope</li>
+                                <li>theme-color</li>
+                            </ul>
+                        </li>
+                        <li>Foloseste service-workers care se ocupa aplicatie</li>
+                        <li>Support pentru iOS</li>
+                        <li>Trimiterea de push notifications.Se anunta apropierea unui deadline sau depasirea acestuia</li>
                     </ul>
                 </p>
             </section>
@@ -133,6 +148,7 @@
                     <p>API pentru istoric:</p>
                     <ul>
                         <li>POST "/history" -> va crea istoric</li>
+                        <li>GET "/history" -> va oferi istoric tuturor board-urilor</li>
                         <li>GET "/history/:name_board" -> va oferi istoricul pentru un board dat ca parametru</li>
                     </ul>
                     <p>API pentru membrii unui board:</p>
@@ -143,33 +159,20 @@
                     </ul>
                     <p>API pentru imagini:</p>
                     <ul>
-                        <li>POST "/images"</li>
-                        <li>PUT "/images"</li>
-                        <li>GET "/images/:id_task"</li>
+                        <li>POST "/images" -> adauga numele pozelor in baza de date</li>
+                        <li>PUT "/images"-> actualizeaza imaginea unui task</li>
+                        <li>GET "/images/:id_task" -> ofera numele imaginii aferent unui task</li>
                     </ul>
                     <p>API pentru userii asignați unui task:</p>
                     <ul>
-                        <li>POST "/task_users"</li>
-                        <li>GET "/task_users/:id_task"</li>
+                        <li>POST "/task_users" -> asigneaza utilizatori noi unui task</li>
+                        <li>GET "/task_users" -> ofera toate informatiile despre task-urile ce au utilizatori asignati</li>
+                        <li>GET "/task_users/:id_task" -> ofera informatii despre utilizatorii asignati unui task</li>
+                        <li>GET "/get_task_users/:username" -> ofera task-urile la care este asignat un anumit user</li>
+                        <li>DELETE "/task_users/:id_task/:username" -> elimina un user dintr-un anumit task</li>
                     </ul>
 
-                    <!-- <p>API-uri externe:</p>
-            Vom folosi un API extern pentru aflarea zonei geografice:
-            <ul>
-              <li>http://ip-api.com/json/{query}</li>
-              <li>Acest API ne oferă geolocația sub formă de JSON în funcție de IP-ul dat.</li>
-              <li>{query} poate fi o singură adresă IPv4 / IPv6 sau un nume de domeniu. Dacă nu furnizăm un query, se va
-                utiliza adresa IP curentă.</li>
-              <li>Parametrii de interogare (cum ar fi câmpurile personalizate și returnarea apelurilor JSON) sunt
-                adăugați ca parametri de solicitare GET, de exemplu: http://ip-api.com/json/?fields=61439.</li>
-              <img src="./diagrame/campuri.PNG">
-              <li>API-ul poate returna următoarele câmpuri și valori:<br />
-                <img src="./diagrame/exemplu.PNG">
-              </li>
-              <li>Exemplu de JSON <br />
-                <img src="./diagrame/response.PNG">
-              </li>
-            </ul> -->
+
                     </p>
             </section>
         </section>
