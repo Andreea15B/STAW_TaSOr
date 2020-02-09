@@ -22,7 +22,6 @@ fetch(api_boards)
                     }, false)
                     container_belong.appendChild(div_);
                 }
-
             });
         }
     });
