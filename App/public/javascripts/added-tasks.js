@@ -179,13 +179,29 @@ function addModal(event) {
         found = arrayUsersAlreadyAssigned.find(elem => elem == response[i].username);
         if (found == undefined) {
           arrayUsersAlreadyAssigned.push(response[i].username);
+
+          var assignedBigDiv = document.createElement("div");
+          assignedBigDiv.setAttribute("class", "user-big-div");
+          var deleteUserButton = document.createElement("button");
+          deleteUserButton.setAttribute("class", "delete-assigned-user");
+          deleteUserButton.textContent = "X";
           var assignedUserElement = document.createElement("div");
           assignedUserElement.setAttribute("class", "user-div");
           assignedUserElement.textContent = response[i].username;
-          assignedUsersContainer.appendChild(assignedUserElement);
+          assignedBigDiv.appendChild(assignedUserElement);
+          assignedBigDiv.appendChild(deleteUserButton);
+          assignedUsersContainer.appendChild(assignedBigDiv);
+
+          // var assignedUserElement = document.createElement("div");
+          // assignedUserElement.setAttribute("class", "user-div");
+          // assignedUserElement.textContent = response[i].username;
+          // assignedUsersContainer.appendChild(assignedUserElement);
         }
       }
     });
+
+    var deleteButtons = document.getElementsByClassName("delete-ssigned-button");
+    console.log("deleteButtons: ", deleteButtons);
 
   var boardName = document.getElementById("board_name").innerText;
   var usersArray = [];

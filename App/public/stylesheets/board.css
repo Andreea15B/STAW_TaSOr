@@ -577,6 +577,20 @@
     padding-right: 10px;
 }
 
+.user-big-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.delete-assigned-user {
+    color: red;
+    font-weight: bold;
+}
+
+.delete-assigned-user:hover {
+    color: rgb(112, 0, 0);
+}
+
 .panel {
     background: #20a882;
     box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
