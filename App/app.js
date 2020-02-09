@@ -4,9 +4,8 @@ const express = require('express'),
 
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
-var livereload = require('connect-livereload');
+// var livereload = require('connect-livereload');
 var https = require('https');
-var http = require('http');
 var fs = require('fs');
 port = process.env.PORT || 3000;
 
@@ -17,7 +16,7 @@ app.use(session({
     cookie: { secure: false, maxAge: 8 * 60 * 60 * 1000 }
 }));
 
-app.use(livereload())
+// app.use(livereload())
 
 // EJS
 app.use(expressLayouts);
@@ -52,16 +51,6 @@ var routes_history = require('./api/history');
 routes_history(app);
 var routes_taskUsers = require('./api/task_users');
 routes_taskUsers(app);
-
-http.createServer(function(request, response) {
-    var body = "redirecting";
-    response.writeHead(302, {
-        'Content-Type': 'text/plain',
-        'Location': 'https://localhost:3000' + request.url,
-        'Content-Length': body.length
-    });
-    response.end(body);
-}).listen(8001);
 
 https.createServer({
         key: fs.readFileSync('./server.key'),
