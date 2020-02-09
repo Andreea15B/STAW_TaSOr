@@ -65,6 +65,16 @@ router.post('/', ensureAuthenticated, (req, res) => {
                     agent
                 });
 
+                var data = { board_name: name, username: created_by };
+                fetch('https://localhost:3000/boards_members', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                    agent
+                });
+
                 res.render('home', { username: created_by });
             }
         });

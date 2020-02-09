@@ -12,14 +12,17 @@ fetch(api_boards)
 
         } else {
             response.forEach(element => {
-                var div_ = document.createElement('div');
-                div_.innerHTML = element.title;
-                div_.setAttribute('id', element.id_board)
-                div_.setAttribute('class', 'board-title-request');
-                div_.addEventListener('click', function(ev) {
-                    redirect_page(ev);
-                }, false)
-                container_belong.appendChild(div_);
+                if (element.created_by != username) {
+                    var div_ = document.createElement('div');
+                    div_.innerHTML = element.title;
+                    div_.setAttribute('id', element.id_board)
+                    div_.setAttribute('class', 'board-title-request');
+                    div_.addEventListener('click', function(ev) {
+                        redirect_page(ev);
+                    }, false)
+                    container_belong.appendChild(div_);
+                }
+
             });
         }
     });

@@ -100,24 +100,3 @@ formular.addEventListener('submit', (event) => {
     window.location.href = "https://localhost:3000/board/" + board_name;
 
 });
-
-var myUsername = document.getElementById("username").innerText;
-itIsHereAlready = 0;
-fetch('https://localhost:3000/boards_members/' + board_name)
-    .then(response => response.json())
-    .then(response => {
-        response.forEach(element => {
-            if (element.username == myUsername) itIsHereAlready = 1;
-        });
-        if (itIsHereAlready == 0) {
-            var data = { board_name, username: myUsername };
-            fetch('https://localhost:3000/boards_members', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-            window.location.href = "https://localhost:3000/board/" + board_name;
-        }
-    });
