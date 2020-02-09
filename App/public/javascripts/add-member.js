@@ -11,6 +11,9 @@ if (navigator.onLine === true) {
         fetch("https://localhost:3000/board_add/" + board_name, {
             method: 'delete'
         });
+        caches.keys().then(function(names) {
+            for (let name of names) caches.delete(name);
+        });
         window.location.href = "https://localhost:3000/home";
     }
 }
@@ -60,6 +63,17 @@ fetch('https://localhost:3000/boards_members/' + board_name)
             div_.innerHTML = element.username[0] + element.username[1];
             div_.setAttribute('class', 'username-member');
             members_container.appendChild(div_);
+
+            var overlay = document.createElement('div');
+            overlay.setAttribute('class', 'overlay-container')
+
+            var overlay_content = document.createElement('div');
+            overlay_content.setAttribute('class', 'overlay-content');
+            overlay_content.innerHTML = 'X';
+            overlay.appendChild(overlay_content);
+
+            members_container.appendChild(overlay);
+
         });
     });
 

@@ -6,12 +6,6 @@ var api_boards = "https://localhost:3000/boards/" + username;
 var tasks_user = "https://localhost:3000/get_task_users/" + username;
 var all_tasks = "https://localhost:3000/tasks/"
 
-// if (Notification.permission == 'granted') {
-//     navigator.serviceWorker.getRegistration().then(function(reg) {
-//         reg.showNotification('Hello world!');
-//     });
-// }
-
 fetch(tasks_user)
     .then(response => response.json())
     .then(response => {
