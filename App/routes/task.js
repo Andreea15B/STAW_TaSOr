@@ -30,7 +30,7 @@ router.get('/:name', (req, res) => {
     var id = req.params.name;
     var send_ = id.slice(16);
 
-    fetch('https://localhost:3000/tasks/' + send_)
+    fetch('https://localhost:3000/tasks/' + send_, { agent })
         .then(response => response.json())
         .then(response => {
             res.render('task', { task: response[0] })
