@@ -15,6 +15,10 @@ exports.getTaskForUser = (username, result) => {
     TaskUser.get_all_tasks_for_user(username, (error, request) => result(request, error));
 }
 
+exports.get_task_assign = (result) => {
+    TaskUser.get_task_assign((error, request) => result(request, error));
+}
+
 exports.deleteAssignedUserForTask = (req, result) => {
     TaskUser.delete_user_for_task(req, (error, req) => result(req, error));
 };

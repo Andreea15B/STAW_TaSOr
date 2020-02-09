@@ -72,3 +72,10 @@ exports.get_belong_board = (req, res) => {
         res.json(board);
     });
 };
+
+exports.get_all_boards = (req, res) => {
+    boardsService.get_all_boards((board, err) => {
+        if (err) res.send(err);
+        res.json(board);
+    });
+};

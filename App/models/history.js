@@ -23,5 +23,11 @@ History.getHistory = (name_board, result) => {
         else result(null, res);
     });
 };
+History.entire_history = (result) => {
+    sql.query("SELECT * FROM history ", (err, res) => {
+        if (err) result(err, null);
+        else result(null, res);
+    });
+};
 
 module.exports = History;

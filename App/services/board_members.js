@@ -14,3 +14,7 @@ exports.getAllUsersForBoard = (name, result) => {
 exports.get_boards = (username, result) => {
     BoardMember.get_board_for_user(username, (error, request) => result(request, error));
 }
+
+exports.get_all_boards = (result) => {
+    BoardMember.get_all_boards((error, request) => result(request, error));
+}

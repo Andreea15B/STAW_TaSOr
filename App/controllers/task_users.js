@@ -23,6 +23,13 @@ exports.get_tasks_for_user = (req, res) => {
     });
 };
 
+exports.get_task_assign = (req, res) => {
+    taskUsersService.get_task_assign((task, err) => {
+        if (err) res.send(err);
+        res.json(task);
+    });
+};
+
 exports.delete_assigned_user_for_task = (req, res) => {
     taskUsersService.deleteAssignedUserForTask(req.params, (req, err) => {
         if (err) res.send(err);

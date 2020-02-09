@@ -39,4 +39,16 @@ BoardMembers.get_board_for_user = (username, result) => {
     });
 };
 
+BoardMembers.get_all_boards = (result) => {
+    sql.query("SELECT *  FROM boards_members ", (error, res) => {
+        if (error) {
+            result(error, null);
+        } else {
+            result(null, res);
+        }
+    });
+};
+
+
+
 module.exports = BoardMembers;

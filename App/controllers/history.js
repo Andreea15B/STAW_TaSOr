@@ -46,3 +46,11 @@ exports.get_history = (req, res) => {
             res.json(req);
     });
 };
+
+exports.entire_history = (req, res) => {
+    historyService.entire_history((req, err) => {
+        if (err) res.send(err);
+        else
+            res.json(req);
+    });
+};
