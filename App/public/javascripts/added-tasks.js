@@ -77,7 +77,12 @@ function drop(ev, where) {
             fetch('https://localhost:3000/tasks/' + id_to_update)
                 .then(response => response.json())
                 .then(response => {
-                    var link = response[0].link;
+                    let link = '';
+
+                    try {
+                        link = response[0].link;
+                    } catch (err) {}
+
                     if (link == "" && where == "done")
                         alert("To be done, a task must have a link added.Have a nice day, team TASOR! :)");
                     else {

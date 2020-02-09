@@ -258,5 +258,9 @@ function open_modal() {
 }
 
 window.onload = function() {
+    caches.keys().then(function(names) {
+        for (let name of names)
+            caches.delete(name);
+    });
     this.open_modal();
 };

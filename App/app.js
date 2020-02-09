@@ -6,18 +6,20 @@ const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
 var livereload = require('connect-livereload');
 var https = require('https');
-var http = require('http');
 var fs = require('fs');
+var webpush = require('web-push');
+
+
 port = process.env.PORT || 3000;
 
 app.use(session({
     secret: 'I love cat',
     resave: true,
     saveUninitialized: true,
-    cookie: { secure: false, maxAge: 8 * 60 * 60 * 1000 }
+    cookie: { secure: false, maxAge: 8 * 60 * 60 * 10000 }
 }));
 
-app.use(livereload())
+// app.use(livereload())
 
 // EJS
 app.use(expressLayouts);
@@ -53,15 +55,21 @@ routes_history(app);
 var routes_taskUsers = require('./api/task_users');
 routes_taskUsers(app);
 
-http.createServer(function(request, response) {
-    var body = "redirecting";
-    response.writeHead(302, {
-        'Content-Type': 'text/plain',
-        'Location': 'https://localhost:3000' + request.url,
-        'Content-Length': body.length
-    });
-    response.end(body);
-}).listen(8001);
+const privateVapidKey = 'Lx7976zuR_kLWm7XVgPXoaX3WOZ1yBdGkObNS7iFeUk';
+const publicVapidKey = 'BGrZ_Y60uwSrh-Zrf_FjIBfw5kvB2ziYs6i5pgKY5iw8E601jdeePi6QHByuXB94YbLf4MxHPCS7_o_j7TtknU0';
+
+webpush.setVapidDetails('mailto:tasor.acc@gmail.com', publicVapidKey, privateVapidKey);
+
+app.post('/subscribe', (req, res) => {
+
+    const subscription = req.body;
+
+    res.json({});
+    const payload = JSON.stringify({ title: 'Push Test' });
+
+    webpush.sendNotification(subscription, payload).catch(err => console.error())
+
+})
 
 https.createServer({
         key: fs.readFileSync('./server.key'),
