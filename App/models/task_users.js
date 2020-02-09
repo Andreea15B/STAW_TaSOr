@@ -22,4 +22,11 @@ TaskUsers.get_all_users_for_task = (id_task, result) => {
     });
 };
 
+TaskUsers.get_all_tasks_for_user = (username, result) => {
+    sql.query("SELECT id_task FROM task_assignments WHERE  username = ? ", username, (error, res) => {
+        if (error) result(error, null);
+        else result(null, res);
+    });
+};
+
 module.exports = TaskUsers;

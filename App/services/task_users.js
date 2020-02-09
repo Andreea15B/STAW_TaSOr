@@ -10,3 +10,7 @@ exports.createTaskUser = (newTaskUser, result) => {
 exports.getUsersForTask = (id_task, result) => {
     TaskUser.get_all_users_for_task(id_task, (error, request) => result(request, error));
 }
+
+exports.getTaskForUser = (username, result) => {
+    TaskUser.get_all_tasks_for_user(username, (error, request) => result(request, error));
+}

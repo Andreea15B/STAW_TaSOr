@@ -8,4 +8,7 @@ module.exports = function(app) {
     app.route('/task_users/:id_task')
         .get(taskUsers.get_users_for_task);
 
+    app.route('/get_task_users/:username')
+        .get(taskUsers.get_tasks_for_user)
+
 };
